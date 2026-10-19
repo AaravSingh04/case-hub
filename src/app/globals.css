@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy-deep: #0A1930;
+  --navy-primary: #102747;
+  --navy-secondary: #1C3557;
+  --ivory-bg: #F7F4EC;
+  --ivory-warm: #EEE9DE;
+  --text-primary: #202C3B;
+  --text-muted: #737985;
+  --border-subtle: #DCD6CA;
+  --brass-accent: #AC925B;
+  --academic-success: #355C48;
+  --academic-error: #A94343;
+
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background-color: var(--ivory-bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, .font-serif {
+  font-family: var(--font-serif);
+}
+
+/* Subtle academic borders */
+.academic-border {
+  border: 1px solid var(--border-subtle);
+}
+
+.academic-divider {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* Old money subtle parchment card */
+.academic-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(10, 25, 48, 0.03);
+  transition: all 0.2s ease-in-out;
+}
+
+.academic-card:hover {
+  border-color: #C5AD78;
+  box-shadow: 0 6px 16px rgba(10, 25, 48, 0.06);
+}
+
+/* Academic primary button */
+.btn-primary {
+  background-color: #102747;
+  color: #FFFFFF;
+  font-weight: 500;
+  padding: 0.625rem 1.25rem;
+  border-radius: 4px;
+  border: 1px solid #102747;
+  transition: all 0.15s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary:hover {
+  background-color: #1C3557;
+  border-color: #1C3557;
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid #AC925B;
+  outline-offset: 2px;
+}
+
+/* Academic secondary button */
+.btn-secondary {
+  background-color: #FFFFFF;
+  color: #102747;
+  font-weight: 500;
+  padding: 0.625rem 1.25rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+  transition: all 0.15s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-secondary:hover {
+  background-color: #EEE9DE;
+  border-color: #AC925B;
+}
+
+/* Brass accent button */
+.btn-brass {
+  background-color: #AC925B;
+  color: #FFFFFF;
+  font-weight: 600;
+  padding: 0.625rem 1.25rem;
+  border-radius: 4px;
+  border: 1px solid #AC925B;
+  transition: all 0.15s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-brass:hover {
+  background-color: #8D7544;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F7F4EC;
+}
+::-webkit-scrollbar-thumb {
+  background: #DCD6CA;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #AC925B;
+}

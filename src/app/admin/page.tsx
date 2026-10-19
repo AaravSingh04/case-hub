@@ -1,0 +1,634 @@
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { useAuth } from '@/lib/auth/context';
+import { Competition, Report, User, NotificationLog } from '@/lib/db/types';
+import { formatDate, formatDateTime, getDeadlineStatus } from '@/lib/utils';
+import DeleteConfirmationModal from '@/components/DeleteConfirmationModal';
+import Link from 'next/link';
+import {
+  ShieldAlert,
+  ShieldCheck,
+  Trophy,
+  Users,
+  FileText,
+  AlertTriangle,
+  Mail,
+  Archive,
+  RotateCcw,
+  Trash2,
+  Edit3,
+  ExternalLink,
+  CheckCircle2,
+  RefreshCw,
+  Search,
+  Filter,
+  Play,
+  UploadCloud,
+} from 'lucide-react';
+
+export default function AdminDashboardPage() {
+  const { user, isAdmin, isAuthenticated, loading: authLoading } = useAuth();
+
+  const [activeTab, setActiveTab] = useState<'overview' | 'competitions' | 'reports' | 'users' | 'notifications'>('overview');
+  const [stats, setStats] = useState<any>(null);
+  const [competitions, setCompetitions] = useState<Competition[]>([]);
+  const [reports, setReports] = useState<Report[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
+  const [notificationLogs, setNotificationLogs] = useState<NotificationLog[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // Search & Filters inside Admin
+  const [searchComp, setSearchComp] = useState('');
+  const [deleteTarget, setDeleteTarget] = useState<Competition | null>(null);
+  const [cronRunning, setCronRunning] = useState(false);
+  const [cronFeedback, setCronFeedback] = useState<string | null>(null);
+
+  const fetchAdminData = async () => {
+    try {
+      setLoading(true);
+      const [statsRes, compRes, repRes, userRes, notifRes] = await Promise.all([
+        fetch('/api/admin/stats'),
+        fetch('/api/admin/competitions'),
+        fetch('/api/reports'),
+        fetch('/api/admin/users'),
+        fetch('/api/admin/notifications'),
+      ]);
+
+      if (statsRes.ok) {
+        const d = await statsRes.json();
+        setStats(d.stats);
+      }
+      if (compRes.ok) {
+        const d = await compRes.json();
+        setCompetitions(d.competitions || []);
+      }
+      if (repRes.ok) {
+        const d = await repRes.json();
+        setReports(d.reports || []);
+      }
+      if (userRes.ok) {
+        const d = await userRes.json();
+        setUsers(d.users || []);
+      }
+      if (notifRes.ok) {
+        const d = await notifRes.json();
+        setNotificationLogs(d.logs || []);
+      }
+    } catch (err) {
+      console.error('Error fetching admin data:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (isAuthenticated && isAdmin) {
+      fetchAdminData();
+    }
+  }, [isAuthenticated, isAdmin]);
+
+  const handleCompetitionAction = async (competitionId: string, action: 'archive' | 'restore' | 'verify') => {
+    try {
+      const res = await fetch('/api/admin/competitions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ competitionId, action }),
+      });
+      if (res.ok) {
+        fetchAdminData();
+      }
+    } catch {
+      alert(`Error performing ${action}`);
+    }
+  };
+
+  const handleDeleteCompetition = async () => {
+    if (!deleteTarget) return;
+    try {
+      const res = await fetch(`/api/competitions/${deleteTarget.id}`, { method: 'DELETE' });
+      if (res.ok) {
+        setCompetitions((prev) => prev.filter((c) => c.id !== deleteTarget.id));
+        setDeleteTarget(null);
+        fetchAdminData();
+      }
+    } catch {
+      alert('Error deleting competition');
+    }
+  };
+
+  const handleUpdateReport = async (reportId: string, status: 'reviewed' | 'resolved') => {
+    try {
+      const res = await fetch(`/api/reports/${reportId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status, resolutionNotes: 'Reviewed and handled by faculty administrator' }),
+      });
+      if (res.ok) {
+        fetchAdminData();
+      }
+    } catch {
+      alert('Error updating report');
+    }
+  };
+
+  const handleToggleUserRole = async (targetUser: User) => {
+    const newRole = targetUser.role === 'admin' ? 'student' : 'admin';
+    if (!confirm(`Change role for ${targetUser.display_name} to ${newRole.toUpperCase()}?`)) return;
+
+    try {
+      const res = await fetch('/api/admin/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: targetUser.id, role: newRole }),
+      });
+      if (res.ok) {
+        fetchAdminData();
+      }
+    } catch {
+      alert('Error updating user role');
+    }
+  };
+
+  const handleRetryNotification = async (notificationId: string) => {
+    try {
+      const res = await fetch('/api/admin/notifications/retry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ notificationId }),
+      });
+      if (res.ok) {
+        fetchAdminData();
+      }
+    } catch {
+      alert('Error retrying notification');
+    }
+  };
+
+  const handleTriggerClosingSoonJob = async () => {
+    try {
+      setCronRunning(true);
+      setCronFeedback(null);
+      const res = await fetch('/api/cron/closing-soon', { method: 'POST' });
+      const data = await res.json();
+      if (res.ok) {
+        setCronFeedback(`Scheduler executed: ${data.dispatchedCount} reminders processed (${data.closingSoonFound} closing soon challenges found).`);
+        fetchAdminData();
+      } else {
+        setCronFeedback(`Scheduler failed: ${data.error}`);
+      }
+    } catch (err: any) {
+      setCronFeedback(`Exception: ${err.message}`);
+    } finally {
+      setCronRunning(false);
+    }
+  };
+
+  if (authLoading) {
+    return <div className="max-w-4xl mx-auto px-4 py-20 text-center text-sm text-neutral-muted">Checking administrative authorization...</div>;
+  }
+
+  if (!isAuthenticated || !isAdmin) {
+    return (
+      <div className="max-w-xl mx-auto px-4 py-20 text-center space-y-4">
+        <ShieldAlert className="w-12 h-12 text-academic-error mx-auto" />
+        <h1 className="font-serif text-2xl font-bold text-navy-deep">Administrator Access Required</h1>
+        <p className="text-sm text-neutral-muted">
+          This section is restricted to HSB faculty and platform administrators.
+        </p>
+        <Link href="/login?redirect=/admin" className="btn-primary inline-flex text-sm px-6 py-2.5">
+          Sign In as Admin
+        </Link>
+      </div>
+    );
+  }
+
+  const filteredCompetitions = competitions.filter((c) => {
+    if (!searchComp) return true;
+    const q = searchComp.toLowerCase();
+    return c.name.toLowerCase().includes(q) || c.organizer.toLowerCase().includes(q);
+  });
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-8">
+      {/* Editorial Header */}
+      <div className="pb-6 border-b border-neutral-border flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <span className="text-xs font-bold uppercase tracking-widest text-brass block mb-1">
+            Faculty Governance & Moderation
+          </span>
+          <h1 className="font-serif text-3xl sm:text-4xl font-bold text-navy-deep">
+            Admin Dashboard
+          </h1>
+          <p className="text-sm text-neutral-muted mt-1">
+            Manage competitions, moderate student reports, oversee permissions, and inspect automated notification logs.
+          </p>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <Link href="/admin/import" className="btn-secondary text-xs px-4 py-2 flex items-center gap-1.5">
+            <UploadCloud className="w-4 h-4 text-brass" />
+            <span>Bulk Import</span>
+          </Link>
+          <button
+            onClick={fetchAdminData}
+            className="btn-secondary text-xs px-3 py-2 text-neutral-muted hover:text-navy-deep"
+            title="Refresh Data"
+          >
+            <RefreshCw className="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+
+      {/* Tab Navigation */}
+      <div className="flex border-b border-neutral-border space-x-1 sm:space-x-8 overflow-x-auto text-xs sm:text-sm font-medium">
+        {[
+          { key: 'overview', label: 'Overview & Statistics' },
+          { key: 'competitions', label: `Competitions (${competitions.length})` },
+          { key: 'reports', label: `Reports (${reports.filter((r) => r.status === 'pending').length} Pending)` },
+          { key: 'users', label: `Users (${users.length})` },
+          { key: 'notifications', label: `Notification Outbox (${notificationLogs.length})` },
+        ].map((tab) => (
+          <button
+            key={tab.key}
+            onClick={() => setActiveTab(tab.key as any)}
+            className={`pb-3 px-1 border-b-2 whitespace-nowrap transition-colors ${
+              activeTab === tab.key
+                ? 'border-navy-deep text-navy-deep font-bold'
+                : 'border-transparent text-neutral-muted hover:text-navy-deep'
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* TAB 1: OVERVIEW & STATS */}
+      {activeTab === 'overview' && (
+        <div className="space-y-8">
+          {/* Key Stat Cards */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div className="bg-white border border-neutral-border rounded p-5 shadow-subtle">
+              <span className="text-xs font-bold uppercase tracking-wider text-neutral-muted">Total Competitions</span>
+              <div className="font-serif text-3xl font-bold text-navy-deep mt-1">
+                {stats?.totalCompetitions ?? competitions.length}
+              </div>
+              <span className="text-[11px] text-academic-success mt-1 block">
+                {stats?.activeCompetitions ?? competitions.filter((c) => !c.is_archived).length} active catalog listings
+              </span>
+            </div>
+
+            <div className="bg-white border border-neutral-border rounded p-5 shadow-subtle">
+              <span className="text-xs font-bold uppercase tracking-wider text-neutral-muted">Closing Soon (&le;7d)</span>
+              <div className="font-serif text-3xl font-bold text-academic-error mt-1">
+                {stats?.closingSoon ?? 0}
+              </div>
+              <span className="text-[11px] text-neutral-muted mt-1 block">
+                {stats?.upcoming ?? 0} upcoming &gt; 7 days
+              </span>
+            </div>
+
+            <div className="bg-white border border-neutral-border rounded p-5 shadow-subtle">
+              <span className="text-xs font-bold uppercase tracking-wider text-neutral-muted">Pending Reports</span>
+              <div className="font-serif text-3xl font-bold text-academic-warning mt-1">
+                {stats?.pendingReports ?? 0}
+              </div>
+              <span className="text-[11px] text-neutral-muted mt-1 block">
+                {stats?.totalReports ?? 0} total reports filed
+              </span>
+            </div>
+
+            <div className="bg-white border border-neutral-border rounded p-5 shadow-subtle">
+              <span className="text-xs font-bold uppercase tracking-wider text-neutral-muted">Registered Users</span>
+              <div className="font-serif text-3xl font-bold text-navy-deep mt-1">
+                {stats?.registeredUsers ?? users.length}
+              </div>
+              <span className="text-[11px] text-brass mt-1 block">
+                {users.filter((u) => u.role === 'admin').length} faculty admins
+              </span>
+            </div>
+          </div>
+
+          {/* Manual Automation Trigger Card */}
+          <div className="bg-white border border-neutral-border rounded p-6 shadow-subtle space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <h3 className="font-serif text-base font-bold text-navy-deep flex items-center gap-2">
+                  <Play className="w-4 h-4 text-brass" />
+                  <span>Automated Workflow Dispatcher</span>
+                </h3>
+                <p className="text-xs text-neutral-muted mt-0.5">
+                  Trigger the 48-hour closing-soon scheduled scanner immediately or test email dispatch.
+                </p>
+              </div>
+
+              <button
+                onClick={handleTriggerClosingSoonJob}
+                disabled={cronRunning}
+                className="btn-primary text-xs px-4 py-2 font-medium whitespace-nowrap self-start sm:self-auto"
+              >
+                {cronRunning ? 'Dispatching Reminders...' : 'Run 48h Closing Job Now'}
+              </button>
+            </div>
+
+            {cronFeedback && (
+              <div className="p-3 bg-ivory border border-neutral-border rounded text-xs text-navy-deep">
+                {cronFeedback}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* TAB 2: COMPETITION MANAGEMENT */}
+      {activeTab === 'competitions' && (
+        <div className="bg-white border border-neutral-border rounded shadow-subtle p-6 space-y-5">
+          <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+            <div className="relative flex-1 max-w-md">
+              <Search className="w-4 h-4 text-neutral-muted absolute left-3 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                placeholder="Filter competitions by name or organizer..."
+                value={searchComp}
+                onChange={(e) => setSearchComp(e.target.value)}
+                className="w-full pl-9 pr-3 py-2 border border-neutral-border rounded text-xs text-neutral-text focus:outline-none focus:border-brass"
+              />
+            </div>
+            <span className="text-xs text-neutral-muted">
+              Showing {filteredCompetitions.length} competitions
+            </span>
+          </div>
+
+          <div className="overflow-x-auto border border-neutral-border rounded">
+            <table className="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr className="bg-ivory border-b border-neutral-border text-neutral-muted uppercase text-[10px] tracking-wider">
+                  <th className="py-2.5 px-3">Competition</th>
+                  <th className="py-2.5 px-3">Category</th>
+                  <th className="py-2.5 px-3">Deadline</th>
+                  <th className="py-2.5 px-3">Uploader</th>
+                  <th className="py-2.5 px-3">Status</th>
+                  <th className="py-2.5 px-3 text-right">Moderation Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-neutral-border/60">
+                {filteredCompetitions.map((c) => {
+                  const status = getDeadlineStatus(c.registration_deadline);
+                  return (
+                    <tr key={c.id} className="hover:bg-ivory/30">
+                      <td className="py-3 px-3 font-semibold text-navy-deep max-w-[200px] truncate">
+                        <Link href={`/competitions/${c.id}`} className="hover:text-brass">
+                          {c.name}
+                        </Link>
+                        <span className="block text-[11px] font-normal text-neutral-muted">{c.organizer}</span>
+                      </td>
+
+                      <td className="py-3 px-3 text-neutral-text">{c.category}</td>
+                      <td className="py-3 px-3 text-neutral-text whitespace-nowrap">{formatDate(c.registration_deadline)}</td>
+                      <td className="py-3 px-3 text-neutral-muted">{c.uploader_display_name}</td>
+
+                      <td className="py-3 px-3">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          {c.is_archived ? (
+                            <span className="text-[10px] bg-neutral-warm text-neutral-muted font-bold px-1.5 py-0.5 rounded">Archived</span>
+                          ) : (
+                            <span className="text-[10px] bg-green-50 text-academic-success font-bold px-1.5 py-0.5 rounded border border-academic-success/30">Live</span>
+                          )}
+                          {c.verification_status === 'verified' && (
+                            <span className="text-[10px] bg-blue-50 text-navy-primary font-bold px-1.5 py-0.5 rounded border border-navy-primary/30">Verified</span>
+                          )}
+                        </div>
+                      </td>
+
+                      <td className="py-3 px-3 text-right whitespace-nowrap">
+                        <div className="flex items-center justify-end gap-1.5">
+                          {c.verification_status !== 'verified' && (
+                            <button
+                              onClick={() => handleCompetitionAction(c.id, 'verify')}
+                              className="p-1 text-academic-success hover:bg-green-50 rounded"
+                              title="Verify Official Source"
+                            >
+                              <ShieldCheck className="w-4 h-4" />
+                            </button>
+                          )}
+                          <Link
+                            href={`/competitions/${c.id}/edit`}
+                            className="p-1 text-navy-primary hover:bg-ivory rounded"
+                            title="Edit"
+                          >
+                            <Edit3 className="w-4 h-4" />
+                          </Link>
+                          {c.is_archived ? (
+                            <button
+                              onClick={() => handleCompetitionAction(c.id, 'restore')}
+                              className="p-1 text-navy-deep hover:bg-ivory rounded"
+                              title="Restore from Archive"
+                            >
+                              <RotateCcw className="w-4 h-4" />
+                            </button>
+                          ) : (
+                            <button
+                              onClick={() => handleCompetitionAction(c.id, 'archive')}
+                              className="p-1 text-neutral-muted hover:text-navy-deep rounded"
+                              title="Archive Listing"
+                            >
+                              <Archive className="w-4 h-4" />
+                            </button>
+                          )}
+                          <button
+                            onClick={() => setDeleteTarget(c)}
+                            className="p-1 text-academic-error hover:bg-red-50 rounded"
+                            title="Delete"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* TAB 3: REPORT MODERATION */}
+      {activeTab === 'reports' && (
+        <div className="bg-white border border-neutral-border rounded shadow-subtle p-6 space-y-4">
+          <h3 className="font-serif text-base font-bold text-navy-deep">
+            Student Reports & Content Moderation
+          </h3>
+
+          {reports.length === 0 ? (
+            <p className="text-xs text-neutral-muted py-8 text-center">
+              No reports currently filed. All competition listings are in good standing.
+            </p>
+          ) : (
+            <div className="divide-y divide-neutral-border/60">
+              {reports.map((rep) => (
+                <div key={rep.id} className="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-bold text-academic-error bg-red-50 px-2 py-0.5 rounded border border-academic-error/30">
+                        {rep.reason}
+                      </span>
+                      <span className="text-xs font-semibold text-navy-deep">
+                        Competition: <Link href={`/competitions/${rep.competition_id}`} className="hover:underline text-navy-primary">{rep.competition_name || rep.competition_id}</Link>
+                      </span>
+                      <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded ${rep.status === 'pending' ? 'bg-amber-50 text-academic-warning' : 'bg-green-50 text-academic-success'}`}>
+                        {rep.status}
+                      </span>
+                    </div>
+                    {rep.additional_details && (
+                      <p className="text-xs text-neutral-text pl-1">{rep.additional_details}</p>
+                    )}
+                    <p className="text-[11px] text-neutral-muted pl-1">
+                      Reported by {rep.reporting_user_name || 'Student'} on {formatDateTime(rep.created_at)}
+                    </p>
+                  </div>
+
+                  {rep.status === 'pending' && (
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => handleUpdateReport(rep.id, 'reviewed')}
+                        className="btn-secondary text-xs py-1.5 px-3"
+                      >
+                        Mark Reviewed
+                      </button>
+                      <button
+                        onClick={() => handleUpdateReport(rep.id, 'resolved')}
+                        className="btn-primary text-xs py-1.5 px-3"
+                      >
+                        Resolve Report
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* TAB 4: USER MANAGEMENT */}
+      {activeTab === 'users' && (
+        <div className="bg-white border border-neutral-border rounded shadow-subtle p-6 space-y-4">
+          <h3 className="font-serif text-base font-bold text-navy-deep">
+            Registered Users & Role Management
+          </h3>
+
+          <div className="overflow-x-auto border border-neutral-border rounded">
+            <table className="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr className="bg-ivory border-b border-neutral-border text-neutral-muted uppercase text-[10px] tracking-wider">
+                  <th className="py-2.5 px-3">Name</th>
+                  <th className="py-2.5 px-3">Email</th>
+                  <th className="py-2.5 px-3">Program</th>
+                  <th className="py-2.5 px-3">Current Role</th>
+                  <th className="py-2.5 px-3 text-right">Role Assignment</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-neutral-border/60">
+                {users.map((u) => (
+                  <tr key={u.id} className="hover:bg-ivory/30">
+                    <td className="py-3 px-3 font-semibold text-navy-deep">{u.display_name}</td>
+                    <td className="py-3 px-3 text-neutral-text font-mono text-[11px]">{u.email}</td>
+                    <td className="py-3 px-3 text-neutral-muted">{u.program_of_study || 'Student'}</td>
+                    <td className="py-3 px-3">
+                      <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded ${u.role === 'admin' ? 'bg-navy-primary text-white' : 'bg-ivory text-neutral-text border border-neutral-border'}`}>
+                        {u.role}
+                      </span>
+                    </td>
+                    <td className="py-3 px-3 text-right">
+                      {u.id !== user?.id && (
+                        <button
+                          onClick={() => handleToggleUserRole(u)}
+                          className="text-xs text-navy-primary hover:text-brass font-medium underline"
+                        >
+                          {u.role === 'admin' ? 'Demote to Student' : 'Promote to Admin'}
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* TAB 5: NOTIFICATION LOGS & RETRY */}
+      {activeTab === 'notifications' && (
+        <div className="bg-white border border-neutral-border rounded shadow-subtle p-6 space-y-4">
+          <h3 className="font-serif text-base font-bold text-navy-deep">
+            Email Notification Outbox & Retry Log
+          </h3>
+          <p className="text-xs text-neutral-muted">
+            Inspect all platform-generated transactional emails, administrative new-upload alerts, closing-soon reminders, and delivery outcomes.
+          </p>
+
+          <div className="overflow-x-auto border border-neutral-border rounded">
+            <table className="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr className="bg-ivory border-b border-neutral-border text-neutral-muted uppercase text-[10px] tracking-wider">
+                  <th className="py-2.5 px-3">Recipient</th>
+                  <th className="py-2.5 px-3">Subject</th>
+                  <th className="py-2.5 px-3">Template</th>
+                  <th className="py-2.5 px-3">Status</th>
+                  <th className="py-2.5 px-3">Timestamp</th>
+                  <th className="py-2.5 px-3 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-neutral-border/60">
+                {notificationLogs.length === 0 ? (
+                  <tr>
+                    <td colSpan={6} className="py-6 text-center text-neutral-muted">
+                      No email records logged yet.
+                    </td>
+                  </tr>
+                ) : (
+                  notificationLogs.map((log) => (
+                    <tr key={log.id} className="hover:bg-ivory/30">
+                      <td className="py-2.5 px-3 font-medium text-navy-deep truncate max-w-[150px]">
+                        {log.recipient_name}
+                        <span className="block text-[10px] text-neutral-muted font-mono">{log.recipient_email}</span>
+                      </td>
+                      <td className="py-2.5 px-3 text-neutral-text truncate max-w-[200px]">{log.subject}</td>
+                      <td className="py-2.5 px-3 text-[11px] text-neutral-muted uppercase">{log.template_type}</td>
+                      <td className="py-2.5 px-3">
+                        <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded ${log.status === 'sent' ? 'bg-green-50 text-academic-success' : log.status === 'failed' ? 'bg-red-50 text-academic-error' : 'bg-ivory text-neutral-text'}`}>
+                          {log.status}
+                        </span>
+                      </td>
+                      <td className="py-2.5 px-3 text-neutral-muted whitespace-nowrap text-[11px]">{formatDateTime(log.created_at)}</td>
+                      <td className="py-2.5 px-3 text-right">
+                        {log.status === 'failed' && (
+                          <button
+                            onClick={() => handleRetryNotification(log.id)}
+                            className="text-xs text-navy-primary hover:underline font-semibold"
+                          >
+                            Retry
+                          </button>
+                        )}
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      {/* Delete Confirmation Modal */}
+      <DeleteConfirmationModal
+        isOpen={Boolean(deleteTarget)}
+        onClose={() => setDeleteTarget(null)}
+        onConfirm={handleDeleteCompetition}
+        title="Admin Delete Competition"
+        message={`Are you sure you want to permanently delete "${deleteTarget?.name}"? This removes the competition from all student dashboards.`}
+      />
+    </div>
+  );
+}
