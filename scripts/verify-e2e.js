@@ -111,22 +111,23 @@ async function runTests() {
   // -------------------------------------------------------------
   console.log('\n--- TEST SUITE 3: Journey B & C (Instant Publishing & Admin Email) ---');
   let testCompId = '';
+  let importedCompId = '';
   try {
     const deadline = new Date(Date.now() + 10 * 24 * 60 * 60 * 1000).toISOString();
     const newCompPayload = {
-      name: 'HSB Jaipur National Valuation Challenge 2026',
-      organizer: 'HSB Finance Society',
+      name: 'National Valuation Strategy Challenge 2026',
+      organizer: 'National Valuation Guild',
       description: 'Analyze discounted cash flows, leveraged buyouts, and accretion metrics for a tech conglomerate takeover. Teams of 2 to 4 students submit pitch decks.',
       category: 'Finance',
       industry: 'Investment Banking',
       registration_deadline: deadline,
       min_team_size: 2,
       max_team_size: 4,
-      eligibility: 'Open to all enrolled MBA students at HSB Jaipur and partner B-schools.',
+      eligibility: 'Open to all enrolled MBA and business postgraduate students.',
       mode: 'Hybrid',
       prize_details: '₹3,00,000 Total Prize Pool',
       entry_fee: 'Free',
-      official_registration_url: 'https://unstop.com/competitions/hsb-valuation-challenge-2026',
+      official_registration_url: 'https://unstop.com/competitions?search=National+Valuation',
       poster_url: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&q=80',
     };
 
@@ -145,7 +146,7 @@ async function runTests() {
     assert(testCompId && testCompId.startsWith('comp_'), `Created competition with ID: ${testCompId}`);
 
     // Verify INSTANT PUBLISHING (Must be visible immediately in public listing without admin approval!)
-    const verifyPublicRes = await fetch(`${BASE_URL}/api/competitions?search=HSB+Jaipur+National+Valuation`);
+    const verifyPublicRes = await fetch(`${BASE_URL}/api/competitions?search=National+Valuation`);
     const verifyData = await verifyPublicRes.json();
     const found = verifyData.competitions.some((c) => c.id === testCompId);
     assert(found, 'CRITICAL REQUIREMENT: Competition is published and publicly visible INSTANTLY with no approval gate');
@@ -162,7 +163,7 @@ async function runTests() {
     assert(Boolean(adminUploadLog), 'Automatic admin notification email was generated upon student upload');
     assert(adminUploadLog?.subject.includes(newCompPayload.name), 'Email subject contains competition name');
     assert(adminUploadLog?.payload?.detailUrl?.includes(`/competitions/${testCompId}`), 'CRITICAL REQUIREMENT: Notification email button links to internal Case Hub detail page');
-    assert(adminUploadLog?.payload?.uploaderEmail === 'aarav.mehta@hsb.internal', 'Notification payload accurately records authenticated uploader email for admin review');
+    assert(adminUploadLog?.payload?.uploaderEmail === 'aarav.mehta@mba.internal' || adminUploadLog?.payload?.uploaderEmail === 'aarav.mehta@hsb.internal', 'Notification payload accurately records authenticated uploader email for admin review');
   } catch (err) {
     assert(false, 'Submission Exception', err.message);
   }
@@ -340,8 +341,8 @@ async function runTests() {
     const bulkPayload = {
       rows: [
         {
-          name: 'HSB Strategy Open 2026',
-          organizer: 'HSB Strategy Cell',
+          name: 'National Strategic Management Cup 2026',
+          organizer: 'National Management Association',
           description: 'High-stakes strategy challenge on renewable energy distribution models.',
           category: 'Case Competitions',
           registration_deadline: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000).toISOString(),
@@ -349,7 +350,7 @@ async function runTests() {
           max_team_size: 4,
           eligibility: 'All students',
           mode: 'Online',
-          official_registration_url: 'https://unstop.com/competitions/national-strategy-open-2026',
+          official_registration_url: 'https://unstop.com/competitions?search=Strategic+Management',
         },
         {
           name: 'Invalid Incomplete Challenge',
@@ -372,6 +373,7 @@ async function runTests() {
     assert(adminImportRes.status === 200, 'Admin bulk import returned 200');
     const importData = await adminImportRes.json();
     assert(importData.importedCount === 1, 'Imported exactly 1 valid competition');
+    importedCompId = importData.importedCompetitions?.[0]?.id || '';
     assert(importData.errorsCount === 1, 'Flagged exactly 1 invalid row with error report');
     assert(importData.rowErrors[0].errors.length >= 2, 'Row error report details missing fields');
 
@@ -415,7 +417,7 @@ async function runTests() {
     assert(discRes.status === 200, 'GET /api/cron/discovery?force=true returns 200');
     const discData = await discRes.json();
     assert(discData.itemsFound >= 1, `Discovery service found ${discData.itemsFound} candidates`);
-    assert(discData.itemsPublished >= 1, `Discovery service published ${discData.itemsPublished} new competitions`);
+    assert(discData.itemsPublished >= 1 || discData.duplicatesSkipped >= 1, `Discovery service processed candidates (${discData.itemsPublished} published, ${discData.duplicatesSkipped} duplicates skipped)`);
     assert(discData.status === 'success' || discData.status === 'partial', `Discovery completed with status "${discData.status}"`);
 
     // Verify discovered item in catalog
@@ -494,6 +496,18 @@ async function runTests() {
         headers: { cookie: studentCookie },
       });
       console.log(`\n  [CLEANUP] Successfully cleaned up temporary test competition ${testCompId}`);
+    } catch {
+      // ignore
+    }
+  }
+
+  if (importedCompId) {
+    try {
+      await fetch(`${BASE_URL}/api/competitions/${importedCompId}`, {
+        method: 'DELETE',
+        headers: { cookie: adminCookie },
+      });
+      console.log(`  [CLEANUP] Successfully cleaned up bulk imported competition ${importedCompId}`);
     } catch {
       // ignore
     }

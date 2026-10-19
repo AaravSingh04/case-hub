@@ -5,29 +5,29 @@
       "email": "admin@casehub.internal",
       "display_name": "Prof. Raghavendra Sharma",
       "avatar_url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80",
-      "program_of_study": "Faculty Advisor, HSB Jaipur",
+      "program_of_study": "Faculty Advisor, Business School",
       "year_of_study": "Faculty",
       "linkedin_url": "https://linkedin.com",
-      "bio": "Faculty lead for Case Competitions and Strategic Initiatives at HSB Jaipur.",
+      "bio": "Faculty lead for Case Competitions and Strategic Initiatives .",
       "role": "admin",
       "created_at": "2026-09-01T08:00:00Z",
       "updated_at": "2026-09-01T08:00:00Z"
     },
     {
       "id": "usr_student_001",
-      "email": "aarav.mehta@hsb.internal",
+      "email": "aarav.mehta@mba.internal",
       "display_name": "Aarav Mehta",
       "avatar_url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=250&q=80",
       "program_of_study": "MBA Strategy & Finance",
       "year_of_study": "Year 2",
       "role": "student",
       "created_at": "2026-09-10T10:00:00Z",
-      "updated_at": "2026-10-19T20:06:52.695Z",
+      "updated_at": "2026-10-19T20:22:15.100Z",
       "phone_number": "+91 98765 43210"
     },
     {
       "id": "usr_student_002",
-      "email": "ananya.sen@hsb.internal",
+      "email": "ananya.sen@mba.internal",
       "display_name": "Ananya Sen",
       "avatar_url": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=250&q=80",
       "program_of_study": "MBA Marketing & Product",
@@ -55,8 +55,8 @@
       "mode": "Hybrid",
       "prize_details": "Cash awards of ₹3,00,000 + ITC PPO/PPI opportunities.",
       "entry_fee": "Free",
-      "official_registration_url": "https://unstop.com/competitions/itc-interrobang-2026",
-      "official_source_url": "https://unstop.com",
+      "official_registration_url": "https://unstop.com/competitions?search=ITC+Interrobang",
+      "official_source_url": "https://unstop.com/case-competitions",
       "poster_url": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80",
       "location": "Kolkata & Virtual",
       "id": "comp_disc_1792440412633_m254m",
@@ -86,8 +86,8 @@
       "mode": "Hybrid",
       "prize_details": "₹5,00,000 for National Champions + Direct PPIs for Product & Business tracks.",
       "entry_fee": "Free",
-      "official_registration_url": "https://unstop.com/competitions/flipkart-wired-season-9",
-      "official_source_url": "https://unstop.com",
+      "official_registration_url": "https://unstop.com/competitions?search=Flipkart+WiRED",
+      "official_source_url": "https://unstop.com/case-competitions",
       "poster_url": "https://images.unsplash.com/photo-1556742049-0a67e557224f?auto=format&fit=crop&w=1200&q=80",
       "location": "Bengaluru & Virtual",
       "id": "comp_disc_1792440412631_5qwor",
@@ -117,8 +117,8 @@
       "mode": "Hybrid",
       "prize_details": "₹7,00,000 Total Prizes + ABG Leadership Associate (LEAD) PPIs.",
       "entry_fee": "Free",
-      "official_registration_url": "https://unstop.com/competitions/aditya-birla-group-stratos-2026",
-      "official_source_url": "https://unstop.com",
+      "official_registration_url": "https://unstop.com/competitions?search=Aditya+Birla+Stratos",
+      "official_source_url": "https://unstop.com/case-competitions",
       "poster_url": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80",
       "location": "Mumbai & Virtual",
       "id": "comp_disc_1792440412629_qvw3i",
@@ -148,8 +148,8 @@
       "mode": "Online",
       "prize_details": "₹3,50,000 Winner Award + Amazon Pathways Leadership PPIs.",
       "entry_fee": "Free",
-      "official_registration_url": "https://unstop.com/competitions/amazon-ace-challenge-2026",
-      "official_source_url": "https://unstop.com",
+      "official_registration_url": "https://unstop.com/competitions?search=Amazon+ACE",
+      "official_source_url": "https://unstop.com/case-competitions",
       "poster_url": "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792440412627_1kjor",
@@ -179,8 +179,8 @@
       "mode": "Hybrid",
       "prize_details": "₹6,00,000 Prize Pool + Fast-track PPI opportunities for Reliance Group Leadership Program.",
       "entry_fee": "Free",
-      "official_registration_url": "https://unstop.com/competitions/reliance-the-ultimate-pitch-tup-season-10",
-      "official_source_url": "https://unstop.com",
+      "official_registration_url": "https://unstop.com/competitions?search=Reliance+TUP",
+      "official_source_url": "https://unstop.com/case-competitions",
       "poster_url": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
       "location": "Navi Mumbai & Virtual",
       "id": "comp_disc_1792440412625_44jq8",
@@ -210,8 +210,8 @@
       "mode": "Hybrid",
       "prize_details": "Global intrapreneurship at Station F Paris + Pre-Placement Interviews (PPI) across L’Oréal brands.",
       "entry_fee": "Free",
-      "official_registration_url": "https://unstop.com/competitions/loreal-brandstorm-2026",
-      "official_source_url": "https://unstop.com",
+      "official_registration_url": "https://brandstorm.loreal.com",
+      "official_source_url": "https://brandstorm.loreal.com",
       "poster_url": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80",
       "location": "Mumbai & Paris (Hybrid)",
       "id": "comp_disc_1792440412622_ifhor",
@@ -224,46 +224,6 @@
       "verification_status": "verified",
       "verified_at": "2026-10-19T20:06:52.622Z",
       "verified_by": "Case Hub Automated Discovery",
-      "is_archived": false
-    },
-    {
-      "name": "HSB Strategy Open 2026",
-      "organizer": "HSB Strategy Cell",
-      "description": "High-stakes strategy challenge on renewable energy distribution models.",
-      "category": "Case Competitions",
-      "registration_deadline": "2026-11-08T20:06:52.519Z",
-      "min_team_size": 2,
-      "max_team_size": 4,
-      "eligibility": "All students",
-      "mode": "Online",
-      "entry_fee": "Free",
-      "official_registration_url": "https://unstop.com/competitions/national-strategy-open-2026",
-      "uploader_id": "usr_admin_001",
-      "uploader_display_name": "Prof. Raghavendra Sharma (Admin Import)",
-      "id": "comp_1792440412527_l5lga",
-      "created_at": "2026-10-19T20:06:52.527Z",
-      "updated_at": "2026-10-19T20:06:52.527Z",
-      "verification_status": "unverified",
-      "is_archived": false
-    },
-    {
-      "name": "HSB Strategy Open 2026",
-      "organizer": "HSB Strategy Cell",
-      "description": "High-stakes strategy challenge on renewable energy distribution models.",
-      "category": "Case Competitions",
-      "registration_deadline": "2026-11-08T13:20:32.359Z",
-      "min_team_size": 2,
-      "max_team_size": 4,
-      "eligibility": "All students",
-      "mode": "Online",
-      "entry_fee": "Free",
-      "official_registration_url": "https://unstop.com/competitions/hsb-strategy-open-2026",
-      "uploader_id": "usr_admin_001",
-      "uploader_display_name": "Prof. Raghavendra Sharma (Admin Import)",
-      "id": "comp_1792416032368_md6k0",
-      "created_at": "2026-10-19T13:20:32.368Z",
-      "updated_at": "2026-10-19T13:20:32.368Z",
-      "verification_status": "unverified",
       "is_archived": false
     },
     {
@@ -283,9 +243,9 @@
       "prize_details": "₹5,00,000 Total Prize Pool + Fast-track Interview Opportunities for Summer Associate Roles.",
       "entry_fee": "Free",
       "official_source_url": "https://www.mckinsey.com/careers/students",
-      "official_registration_url": "https://unstop.com/competitions/mckinsey-strategy-challenge-2026",
+      "official_registration_url": "https://www.mckinsey.com/careers/students",
       "poster_url": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
-      "case_brief_url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "case_brief_url": "https://www.mckinsey.com/careers/interviewing/case-interview",
       "additional_resources": "Harvard Business School case frameworks, ESG valuation matrices.",
       "additional_notes": "Round 1 is executive deck submission (10 slides max). Final round is on-site boardroom presentation.",
       "location": "Jaipur / Hybrid Online",
@@ -314,8 +274,8 @@
       "mode": "Online",
       "prize_details": "₹10,00,000 Grand Prize + Pre-Placement Interviews (PPIs) for management trainee roles.",
       "entry_fee": "Free",
-      "official_source_url": "https://hul.co.in/careers",
-      "official_registration_url": "https://unstop.com/competitions/hul-lime-season-xvii",
+      "official_source_url": "https://www.hul.co.in/careers/graduates/lime/",
+      "official_registration_url": "https://unstop.com/competitions?search=HUL+LIME",
       "poster_url": "https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80",
       "additional_resources": "Brand identity guidelines and Nielsen retail audit dataset overview.",
       "additional_notes": "Strict submission format: 3-slider executive pitch + 2-minute elevator video.",
@@ -345,8 +305,8 @@
       "mode": "Online",
       "prize_details": "₹4,00,000 Winner Award + Global Mentorship Sessions with Managing Directors.",
       "entry_fee": "Free",
-      "official_source_url": "https://www.goldmansachs.com/careers/students",
-      "official_registration_url": "https://unstop.com/competitions/goldman-sachs-valuation-trophy-2026",
+      "official_source_url": "https://www.goldmansachs.com/careers/students/",
+      "official_registration_url": "https://www.goldmansachs.com/careers/students/programs/",
       "poster_url": "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&q=80",
       "additional_notes": "Financial modeling templates will be provided upon registration confirmation.",
       "location": "Online",
@@ -373,8 +333,8 @@
       "mode": "Online",
       "prize_details": "₹3,50,000 + Google Hardware Kits + Fast-track interview access.",
       "entry_fee": "Free",
-      "official_source_url": "https://careers.google.com/students",
-      "official_registration_url": "https://unstop.com/competitions/google-apm-case-open-2026",
+      "official_source_url": "https://buildyourfuture.withgoogle.com/programs",
+      "official_registration_url": "https://careers.google.com/students/",
       "poster_url": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
       "additional_notes": "PRD submission followed by interactive prototype review.",
       "location": "Online",
@@ -401,8 +361,8 @@
       "mode": "Hybrid",
       "prize_details": "₹7,50,000 National Trophy + Incubation support from Tata Digital.",
       "entry_fee": "Free",
-      "official_source_url": "https://tatacrucible.com",
-      "official_registration_url": "https://tatacrucible.com/register-2026",
+      "official_source_url": "https://www.tatacrucible.com",
+      "official_registration_url": "https://www.tatacrucible.com",
       "poster_url": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
       "additional_notes": "Regional rounds in Jaipur, Delhi, and Mumbai before national grand finale.",
       "location": "Jaipur & Mumbai",
@@ -429,8 +389,8 @@
       "mode": "Online",
       "prize_details": "₹6,00,000 in scholarships and direct interview slots.",
       "entry_fee": "Free",
-      "official_source_url": "https://www.bain.com/careers/students",
-      "official_registration_url": "https://unstop.com/competitions/bain-true-north-2026",
+      "official_source_url": "https://www.bain.com/careers/work-with-us/students/",
+      "official_registration_url": "https://www.bain.com/careers/work-with-us/students/",
       "poster_url": "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "uploader_id": "usr_student_001",
@@ -445,50 +405,38 @@
     {
       "competition_id": "comp_mck_strat_2026",
       "uploader_id": "usr_student_001",
-      "uploader_email": "aarav.mehta@hsb.internal",
+      "uploader_email": "aarav.mehta@mba.internal",
       "created_at": "2026-10-01T09:30:00Z"
     },
     {
       "competition_id": "comp_hul_lime_2026",
       "uploader_id": "usr_student_002",
-      "uploader_email": "ananya.sen@hsb.internal",
+      "uploader_email": "ananya.sen@mba.internal",
       "created_at": "2026-10-05T14:15:00Z"
     },
     {
       "competition_id": "comp_goldman_fin_2026",
       "uploader_id": "usr_student_001",
-      "uploader_email": "aarav.mehta@hsb.internal",
+      "uploader_email": "aarav.mehta@mba.internal",
       "created_at": "2026-10-08T16:00:00Z"
     },
     {
       "competition_id": "comp_google_pm_2026",
       "uploader_id": "usr_student_002",
-      "uploader_email": "ananya.sen@hsb.internal",
+      "uploader_email": "ananya.sen@mba.internal",
       "created_at": "2026-10-10T11:00:00Z"
     },
     {
       "competition_id": "comp_tata_innov_2026",
       "uploader_id": "usr_student_001",
-      "uploader_email": "aarav.mehta@hsb.internal",
+      "uploader_email": "aarav.mehta@mba.internal",
       "created_at": "2026-10-12T08:00:00Z"
     },
     {
       "competition_id": "comp_bain_true_north_2026",
       "uploader_id": "usr_student_001",
-      "uploader_email": "aarav.mehta@hsb.internal",
+      "uploader_email": "aarav.mehta@mba.internal",
       "created_at": "2026-09-20T08:00:00Z"
-    },
-    {
-      "competition_id": "comp_1792416032368_md6k0",
-      "uploader_id": "usr_admin_001",
-      "uploader_email": "admin@casehub.internal",
-      "created_at": "2026-10-19T13:20:32.368Z"
-    },
-    {
-      "competition_id": "comp_1792440412527_l5lga",
-      "uploader_id": "usr_admin_001",
-      "uploader_email": "admin@casehub.internal",
-      "created_at": "2026-10-19T20:06:52.527Z"
     },
     {
       "competition_id": "comp_disc_1792440412622_ifhor",
@@ -525,6 +473,18 @@
       "uploader_id": "system_discovery",
       "uploader_email": "discovery@casehub.internal",
       "created_at": "2026-10-19T20:06:52.633Z"
+    },
+    {
+      "competition_id": "comp_1792441122741_lgj30",
+      "uploader_id": "usr_admin_001",
+      "uploader_email": "admin@casehub.internal",
+      "created_at": "2026-10-19T20:18:42.741Z"
+    },
+    {
+      "competition_id": "comp_1792441154746_opmgp",
+      "uploader_id": "usr_admin_001",
+      "uploader_email": "admin@casehub.internal",
+      "created_at": "2026-10-19T20:19:14.746Z"
     }
   ],
   "saved_competitions": [
@@ -544,7 +504,7 @@
       "headline": "Consulting veterans seeking 1 financial modeler & slide designer",
       "description": "We are two Year-2 MBA students with consulting internship experience at Big 4. Need someone skilled in 3-statement financial modeling and storyboarding clean executive decks.",
       "target_team_size": 4,
-      "contact_method": "Reach out via Case Hub chat or meet at HSB Library Pod B.",
+      "contact_method": "Reach out via Case Hub chat or meet at Campus Library Pod B.",
       "created_at": "2026-10-02T10:00:00Z",
       "updated_at": "2026-10-02T10:00:00Z"
     },
@@ -642,6 +602,123 @@
   ],
   "notification_logs": [
     {
+      "recipient_email": "aarav.mehta@mba.internal",
+      "recipient_name": "Aarav Mehta",
+      "subject": "Update: Important Changes to National Valuation Strategy Challenge 2026 | Case Hub",
+      "template_type": "saved_update",
+      "competition_id": "comp_1792441334780_ysb5c",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_1792441334780_ysb5c",
+        "recipientId": "usr_student_001",
+        "changedFields": [
+          "registration_deadline"
+        ],
+        "previousValues": {
+          "registration_deadline": "2026-10-29T20:22:14.771Z"
+        },
+        "detailUrl": "http://localhost:3000/competitions/comp_1792441334780_ysb5c"
+      },
+      "id": "notif_1792441334948_ef5o",
+      "created_at": "2026-10-19T20:22:14.948Z",
+      "sent_at": "2026-10-19T20:22:14.951Z"
+    },
+    {
+      "recipient_email": "admin@casehub.internal",
+      "recipient_name": "Case Hub Administrator",
+      "subject": "New Competition Uploaded — National Valuation Strategy Challenge 2026 | Case Hub",
+      "template_type": "admin_new_upload",
+      "competition_id": "comp_1792441334780_ysb5c",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_1792441334780_ysb5c",
+        "competitionName": "National Valuation Strategy Challenge 2026",
+        "uploaderEmail": "aarav.mehta@mba.internal",
+        "detailUrl": "http://localhost:3000/competitions/comp_1792441334780_ysb5c"
+      },
+      "id": "notif_1792441334782_q73z",
+      "created_at": "2026-10-19T20:22:14.782Z",
+      "sent_at": "2026-10-19T20:22:14.786Z"
+    },
+    {
+      "recipient_email": "aarav.mehta@mba.internal",
+      "recipient_name": "Aarav Mehta",
+      "subject": "Update: Important Changes to HSB Jaipur National Valuation Challenge 2026 | Case Hub",
+      "template_type": "saved_update",
+      "competition_id": "comp_1792441154525_7o8yd",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_1792441154525_7o8yd",
+        "recipientId": "usr_student_001",
+        "changedFields": [
+          "registration_deadline"
+        ],
+        "previousValues": {
+          "registration_deadline": "2026-10-29T20:19:14.513Z"
+        },
+        "detailUrl": "http://localhost:3000/competitions/comp_1792441154525_7o8yd"
+      },
+      "id": "notif_1792441154710_koxo",
+      "created_at": "2026-10-19T20:19:14.710Z",
+      "sent_at": "2026-10-19T20:19:14.711Z"
+    },
+    {
+      "recipient_email": "admin@casehub.internal",
+      "recipient_name": "Case Hub Administrator",
+      "subject": "New Competition Uploaded — HSB Jaipur National Valuation Challenge 2026 | Case Hub",
+      "template_type": "admin_new_upload",
+      "competition_id": "comp_1792441154525_7o8yd",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_1792441154525_7o8yd",
+        "competitionName": "HSB Jaipur National Valuation Challenge 2026",
+        "uploaderEmail": "aarav.mehta@mba.internal",
+        "detailUrl": "http://localhost:3000/competitions/comp_1792441154525_7o8yd"
+      },
+      "id": "notif_1792441154527_nga8",
+      "created_at": "2026-10-19T20:19:14.527Z",
+      "sent_at": "2026-10-19T20:19:14.529Z"
+    },
+    {
+      "recipient_email": "aarav.mehta@mba.internal",
+      "recipient_name": "Aarav Mehta",
+      "subject": "Update: Important Changes to HSB Jaipur National Valuation Challenge 2026 | Case Hub",
+      "template_type": "saved_update",
+      "competition_id": "comp_1792441122535_45t6x",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_1792441122535_45t6x",
+        "recipientId": "usr_student_001",
+        "changedFields": [
+          "registration_deadline"
+        ],
+        "previousValues": {
+          "registration_deadline": "2026-10-29T20:18:42.525Z"
+        },
+        "detailUrl": "http://localhost:3000/competitions/comp_1792441122535_45t6x"
+      },
+      "id": "notif_1792441122713_g7uu",
+      "created_at": "2026-10-19T20:18:42.713Z",
+      "sent_at": "2026-10-19T20:18:42.715Z"
+    },
+    {
+      "recipient_email": "admin@casehub.internal",
+      "recipient_name": "Case Hub Administrator",
+      "subject": "New Competition Uploaded — HSB Jaipur National Valuation Challenge 2026 | Case Hub",
+      "template_type": "admin_new_upload",
+      "competition_id": "comp_1792441122535_45t6x",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_1792441122535_45t6x",
+        "competitionName": "HSB Jaipur National Valuation Challenge 2026",
+        "uploaderEmail": "aarav.mehta@mba.internal",
+        "detailUrl": "http://localhost:3000/competitions/comp_1792441122535_45t6x"
+      },
+      "id": "notif_1792441122538_tvmr",
+      "created_at": "2026-10-19T20:18:42.538Z",
+      "sent_at": "2026-10-19T20:18:42.540Z"
+    },
+    {
       "recipient_email": "admin@casehub.internal",
       "recipient_name": "Case Hub Administrator",
       "subject": "Automated Discovery Summary: 6 New Competitions Published | Case Hub",
@@ -660,9 +737,9 @@
       "sent_at": "2026-10-19T20:06:52.639Z"
     },
     {
-      "recipient_email": "aarav.mehta@hsb.internal",
+      "recipient_email": "aarav.mehta@mba.internal",
       "recipient_name": "Aarav Mehta",
-      "subject": "Update: Important Changes to HSB Jaipur National Valuation Challenge 2026 | Case Hub",
+      "subject": "Update: Important Changes to National Valuation Challenge 2026 | Case Hub",
       "template_type": "saved_update",
       "competition_id": "comp_1792440412315_xsuod",
       "status": "sent",
@@ -684,14 +761,14 @@
     {
       "recipient_email": "admin@casehub.internal",
       "recipient_name": "Case Hub Administrator",
-      "subject": "New Competition Uploaded — HSB Jaipur National Valuation Challenge 2026 | Case Hub",
+      "subject": "New Competition Uploaded — National Valuation Challenge 2026 | Case Hub",
       "template_type": "admin_new_upload",
       "competition_id": "comp_1792440412315_xsuod",
       "status": "sent",
       "payload": {
         "competitionId": "comp_1792440412315_xsuod",
-        "competitionName": "HSB Jaipur National Valuation Challenge 2026",
-        "uploaderEmail": "aarav.mehta@hsb.internal",
+        "competitionName": "National Valuation Challenge 2026",
+        "uploaderEmail": "aarav.mehta@mba.internal",
         "detailUrl": "http://localhost:3000/competitions/comp_1792440412315_xsuod"
       },
       "id": "notif_1792440412333_jbts",
@@ -699,9 +776,9 @@
       "sent_at": "2026-10-19T20:06:52.335Z"
     },
     {
-      "recipient_email": "aarav.mehta@hsb.internal",
+      "recipient_email": "aarav.mehta@mba.internal",
       "recipient_name": "Aarav Mehta",
-      "subject": "Update: Important Changes to HSB Jaipur National Valuation Challenge 2026 | Case Hub",
+      "subject": "Update: Important Changes to National Valuation Challenge 2026 | Case Hub",
       "template_type": "saved_update",
       "competition_id": "comp_1792416032140_u5wbi",
       "status": "sent",
@@ -723,14 +800,14 @@
     {
       "recipient_email": "admin@casehub.internal",
       "recipient_name": "Case Hub Administrator",
-      "subject": "New Competition Uploaded — HSB Jaipur National Valuation Challenge 2026 | Case Hub",
+      "subject": "New Competition Uploaded — National Valuation Challenge 2026 | Case Hub",
       "template_type": "admin_new_upload",
       "competition_id": "comp_1792416032140_u5wbi",
       "status": "sent",
       "payload": {
         "competitionId": "comp_1792416032140_u5wbi",
-        "competitionName": "HSB Jaipur National Valuation Challenge 2026",
-        "uploaderEmail": "aarav.mehta@hsb.internal",
+        "competitionName": "National Valuation Challenge 2026",
+        "uploaderEmail": "aarav.mehta@mba.internal",
         "detailUrl": "http://localhost:3000/competitions/comp_1792416032140_u5wbi"
       },
       "id": "notif_1792416032158_6ohv",
@@ -739,6 +816,45 @@
     }
   ],
   "discovery_logs": [
+    {
+      "run_id": "run_1792441335030_e93r",
+      "source": "Unstop",
+      "started_at": "2026-10-19T20:22:15.030Z",
+      "completed_at": "2026-10-19T20:22:15.034Z",
+      "status": "success",
+      "items_found": 6,
+      "items_published": 0,
+      "duplicates_skipped": 6,
+      "errors": [],
+      "next_scheduled_at": "2026-10-22T20:22:15.034Z",
+      "id": "disc_1792441335035_lfra"
+    },
+    {
+      "run_id": "run_1792441154791_ndg1",
+      "source": "Unstop",
+      "started_at": "2026-10-19T20:19:14.791Z",
+      "completed_at": "2026-10-19T20:19:14.795Z",
+      "status": "success",
+      "items_found": 6,
+      "items_published": 0,
+      "duplicates_skipped": 6,
+      "errors": [],
+      "next_scheduled_at": "2026-10-22T20:19:14.795Z",
+      "id": "disc_1792441154795_oc6a"
+    },
+    {
+      "run_id": "run_1792441122785_g7zh",
+      "source": "Unstop",
+      "started_at": "2026-10-19T20:18:42.785Z",
+      "completed_at": "2026-10-19T20:18:42.789Z",
+      "status": "success",
+      "items_found": 6,
+      "items_published": 0,
+      "duplicates_skipped": 6,
+      "errors": [],
+      "next_scheduled_at": "2026-10-22T20:18:42.789Z",
+      "id": "disc_1792441122790_occd"
+    },
     {
       "run_id": "run_1792440412620_yb3d",
       "source": "Unstop",
@@ -756,7 +872,7 @@
   "discovery_config": {
     "interval_days": 3,
     "enabled": true,
-    "last_successful_discovery_at": "2026-10-19T20:06:52.634Z",
+    "last_successful_discovery_at": "2026-10-19T20:22:15.034Z",
     "sources": [
       "Unstop",
       "Corporate & B-School Challenges"
