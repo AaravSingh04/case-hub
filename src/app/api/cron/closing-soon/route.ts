@@ -40,30 +40,25 @@ async function handleClosingSoonRun(req: NextRequest) {
       return !isPast && isWithin48h;
     });
 
-    const students = db.getUsers().filter((u) => u.role === 'student');
+    const registeredUsers = db.getRegisteredVerifiedUsers();
     const sentSummary: { competitionId: string; competitionName: string; recipients: string[] }[] = [];
 
     for (const comp of closingSoon) {
-      // Find students who saved this competition (or all students who opted in)
-      const interestedStudents = db.getUsersWhoSavedCompetition(comp.id);
-      const recipients = interestedStudents.length > 0 ? interestedStudents : students.slice(0, 5); // Fallback to student cohort
-
       const sentToThisComp: string[] = [];
 
-      for (const student of recipients) {
-        // Duplicate check: check if closing_soon was already sent to this recipient for this competition in last 48 hours
+      for (const user of registeredUsers) {
+        // Check idempotency: ensure closing_soon was not already sent to this user for this competition
         const alreadySent = existingLogs.some(
           (l) =>
             l.template_type === 'closing_soon' &&
             l.competition_id === comp.id &&
-            l.recipient_email === student.email &&
-            l.status === 'sent' &&
-            new Date(l.created_at).getTime() > now.getTime() - 48 * 60 * 60 * 1000
+            l.recipient_email.toLowerCase() === user.email.toLowerCase() &&
+            l.status === 'sent'
         );
 
         if (!alreadySent) {
-          await sendClosingSoonReminder(comp, student);
-          sentToThisComp.push(student.email);
+          await sendClosingSoonReminder(comp, user);
+          sentToThisComp.push(user.email);
         }
       }
 

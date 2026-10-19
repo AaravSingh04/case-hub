@@ -157,14 +157,14 @@ function LoginForm() {
         <form onSubmit={handleCustomLogin} className="space-y-4">
           <div>
             <label className="block text-xs font-bold uppercase tracking-wider text-neutral-muted mb-1.5">
-              HSB Student or Academic Email
+              Student or Academic Email
             </label>
             <div className="relative">
               <Mail className="w-4 h-4 text-neutral-muted absolute left-3 top-1/2 -translate-y-1/2" />
               <input
                 type="email"
                 required
-                placeholder="student.name@hsb.internal"
+                placeholder="student.name@university.edu"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full pl-9 pr-3 py-2.5 border border-neutral-border rounded text-sm text-neutral-text focus:outline-none focus:border-brass"
@@ -186,7 +186,7 @@ function LoginForm() {
         </form>
 
         <div className="pt-2 text-center text-xs text-neutral-muted">
-          <p>Built for the HSB Jaipur student community.</p>
+          <p>Case Hub — Discover. Share. Compete.</p>
         </div>
       </div>
     </div>

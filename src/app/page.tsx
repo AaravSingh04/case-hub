@@ -51,9 +51,9 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             {/* Academic badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-neutral-border text-xs font-semibold text-navy-deep shadow-subtle">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-neutral-border text-xs font-semibold text-navy-deep shadow-subtle">
               <span className="w-2 h-2 rounded-full bg-brass" />
-              <span>Academic Competition & Discovery Platform for HSB Jaipur</span>
+              <span>Premier Competition & Collaboration Platform for MBA Students</span>
             </div>
 
             {/* Main Headline */}
@@ -104,6 +104,26 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Empty State */}
+      {allActive.length === 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="academic-card p-12 text-center space-y-4">
+            <Compass className="w-12 h-12 text-brass mx-auto" />
+            <h3 className="font-serif text-2xl font-bold text-navy-deep">
+              No competitions available yet. Be the first to share an opportunity.
+            </h3>
+            <p className="text-sm text-neutral-muted max-w-md mx-auto">
+              Contribute upcoming business challenges, consulting hackathons, or pitch competitions with the community.
+            </p>
+            <div className="pt-2">
+              <Link href="/competitions/submit" className="btn-primary text-sm px-6 py-2.5">
+                Submit a Competition
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* 2. FEATURED COMPETITIONS */}
       {featured.length > 0 && (
@@ -236,7 +256,7 @@ export default function HomePage() {
               Build a Complementary Case Team
             </h2>
             <p className="text-sm sm:text-base text-neutral-border/90 leading-relaxed font-light">
-              Don’t tackle complex corporate turnarounds alone. Connect with fellow HSB students across financial modeling, market strategy, slide design, and presentation delivery.
+              Don’t tackle complex corporate turnarounds alone. Connect with fellow business students across financial modeling, market strategy, slide design, and presentation delivery.
             </p>
             <div className="pt-2 flex flex-wrap gap-3">
               <Link
@@ -396,7 +416,7 @@ export default function HomePage() {
               Know of an Upcoming Case Competition?
             </h2>
             <p className="text-sm text-neutral-text/90 leading-relaxed font-light">
-              Help your fellow students at HSB Jaipur discover national and international challenges.
+              Help fellow business students discover premier national and global challenges.
               Submissions publish instantly to the catalog upon form completion.
             </p>
             <div className="pt-2">

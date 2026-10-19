@@ -282,7 +282,16 @@ export default async function CompetitionDetailPage({ params }: Props) {
               {/* Submission Provenance */}
               <div className="p-4 bg-white border border-neutral-border rounded text-[11px] text-neutral-muted space-y-1">
                 <div>
-                  Contributed by: <strong className="text-navy-deep">{competition.uploader_display_name}</strong>
+                  {competition.uploader_id === 'system_discovery' || competition.uploader_display_name === 'Discovered by Case Hub' ? (
+                    <span>
+                      Attribution: <strong className="text-navy-deep">Discovered by Case Hub</strong>
+                      {competition.discovery_source ? ` (${competition.discovery_source})` : ''}
+                    </span>
+                  ) : (
+                    <span>
+                      Attribution: <strong className="text-navy-deep">Uploaded by {competition.uploader_display_name}</strong>
+                    </span>
+                  )}
                 </div>
                 <div>Published on: {formatDateTime(competition.created_at)}</div>
                 {competition.verified_at && (

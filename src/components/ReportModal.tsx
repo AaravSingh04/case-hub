@@ -87,7 +87,7 @@ export default function ReportModal({
               Report Submitted
             </h4>
             <p className="text-xs text-neutral-muted">
-              Thank you. The HSB faculty and platform moderators have received your report and will review it promptly.
+              Thank you. The Case Hub platform moderators have received your report and will review it promptly.
             </p>
           </div>
         ) : (

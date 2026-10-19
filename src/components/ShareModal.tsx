@@ -73,7 +73,7 @@ export default function ShareModal({
 
         <div className="mt-4 space-y-4">
           <p className="text-xs text-neutral-muted">
-            Share this link with your peers or team members at HSB Jaipur.
+            Share this link with your peers or team members.
           </p>
 
           <div className="flex items-center gap-2">

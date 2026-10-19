@@ -43,6 +43,8 @@ export interface User {
   id: string;
   email: string;
   display_name: string;
+  phone_number?: string;
+  email_verified?: boolean;
   avatar_url?: string;
   program_of_study?: string;
   year_of_study?: string;
@@ -78,6 +80,8 @@ export interface Competition {
   location?: string;
   uploader_id: string;
   uploader_display_name: string;
+  discovery_source?: string; // e.g. 'Unstop', 'Manual Upload'
+  discovery_timestamp?: string;
   created_at: string;
   updated_at: string;
   verification_status: VerificationStatus;
@@ -91,6 +95,7 @@ export interface CompetitionPrivateMetadata {
   competition_id: string;
   uploader_id: string;
   uploader_email: string;
+  uploader_phone?: string;
   created_at: string;
 }
 
@@ -198,12 +203,13 @@ export interface CaseResource {
   created_by: string;
 }
 
-export type NotificationTemplateType = 'admin_new_upload' | 'closing_soon' | 'saved_update';
+export type NotificationTemplateType = 'admin_new_upload' | 'closing_soon' | 'saved_update' | 'admin_discovery_summary';
 
 export interface NotificationLog {
   id: string;
   recipient_email: string;
   recipient_name: string;
+  user_id?: string;
   subject: string;
   template_type: NotificationTemplateType;
   competition_id: string;
@@ -212,6 +218,27 @@ export interface NotificationLog {
   payload: Record<string, any>;
   sent_at?: string;
   created_at: string;
+}
+
+export interface DiscoveryLog {
+  id: string;
+  run_id: string;
+  source: string;
+  started_at: string;
+  completed_at: string;
+  status: 'success' | 'partial' | 'failed';
+  items_found: number;
+  items_published: number;
+  duplicates_skipped: number;
+  errors: string[];
+  next_scheduled_at: string;
+}
+
+export interface DiscoveryConfig {
+  interval_days: number; // 2 or 3 days
+  enabled: boolean;
+  last_successful_discovery_at?: string;
+  sources: string[];
 }
 
 export interface CompetitionFilterParams {

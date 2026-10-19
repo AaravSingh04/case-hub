@@ -20,6 +20,7 @@ export default function StudentProfilePage() {
   const { user, isAuthenticated, refreshUser, loading: authLoading } = useAuth();
 
   const [displayName, setDisplayName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [programOfStudy, setProgramOfStudy] = useState('');
   const [yearOfStudy, setYearOfStudy] = useState('');
   const [linkedinUrl, setLinkedinUrl] = useState('');
@@ -39,6 +40,7 @@ export default function StudentProfilePage() {
           const data = await res.json();
           if (data.user) {
             setDisplayName(data.user.display_name || '');
+            setPhoneNumber(data.user.phone_number || '');
             setProgramOfStudy(data.user.program_of_study || '');
             setYearOfStudy(data.user.year_of_study || '');
             setLinkedinUrl(data.user.linkedin_url || '');
@@ -69,6 +71,7 @@ export default function StudentProfilePage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           display_name: displayName,
+          phone_number: phoneNumber,
           program_of_study: programOfStudy,
           year_of_study: yearOfStudy,
           linkedin_url: linkedinUrl,
@@ -162,7 +165,17 @@ export default function StudentProfilePage() {
             </div>
             <div>
               <h2 className="font-serif text-lg font-bold text-navy-deep">{displayName || user.display_name}</h2>
-              <p className="text-xs text-neutral-muted">{user.email}</p>
+              <div className="flex items-center justify-center gap-1.5 mt-1">
+                <span className="text-xs text-neutral-muted">{user.email}</span>
+                {user.email_verified !== false && (
+                  <span className="inline-flex items-center gap-0.5 text-[10px] font-semibold text-academic-success bg-green-50 px-1.5 py-0.5 rounded border border-academic-success/30">
+                    <CheckCircle2 className="w-3 h-3" /> Verified
+                  </span>
+                )}
+              </div>
+              {phoneNumber && (
+                <p className="text-[11px] text-neutral-muted mt-1">{phoneNumber}</p>
+              )}
             </div>
           </div>
 
@@ -174,6 +187,10 @@ export default function StudentProfilePage() {
             <div className="flex items-center justify-between">
               <span className="text-neutral-muted">Opportunities Saved:</span>
               <span className="font-bold text-navy-deep">{stats?.savedCount ?? 0}</span>
+            </div>
+            <div className="flex items-center justify-between">
+              <span className="text-neutral-muted">Program:</span>
+              <span className="font-medium text-navy-deep">{programOfStudy || 'MBA'}</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-neutral-muted">Member Since:</span>
@@ -198,20 +215,42 @@ export default function StudentProfilePage() {
               />
             </div>
 
-            <div>
-              <label className="block text-xs font-bold uppercase tracking-wider text-neutral-muted mb-1.5">
-                Account Email (Protected)
-              </label>
-              <input
-                type="email"
-                disabled
-                value={user.email}
-                className="w-full px-3.5 py-2.5 border border-neutral-border rounded text-sm text-neutral-muted bg-ivory cursor-not-allowed"
-              />
-              <p className="text-[11px] text-neutral-muted mt-1">
-                Your email is never publicly displayed on competition listings.
-              </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-neutral-muted mb-1.5">
+                  Account Email (Protected)
+                </label>
+                <div className="relative">
+                  <input
+                    type="email"
+                    disabled
+                    value={user.email}
+                    className="w-full px-3.5 py-2.5 border border-neutral-border rounded text-sm text-neutral-muted bg-ivory cursor-not-allowed"
+                  />
+                  {user.email_verified !== false && (
+                    <span className="absolute right-2.5 top-2.5 text-[10px] font-semibold text-academic-success bg-green-50 px-2 py-0.5 rounded border border-academic-success/30 flex items-center gap-1">
+                      <CheckCircle2 className="w-3 h-3" /> Verified
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-neutral-muted mb-1.5">
+                  Contact Phone Number
+                </label>
+                <input
+                  type="tel"
+                  placeholder="+91 98765 43210"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  className="w-full px-3.5 py-2.5 border border-neutral-border rounded text-sm text-neutral-text focus:outline-none focus:border-brass"
+                />
+              </div>
             </div>
+            <p className="text-[11px] text-neutral-muted -mt-2">
+              Your contact email and phone number are protected and never displayed on public competition listings.
+            </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>

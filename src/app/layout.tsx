@@ -7,20 +7,21 @@ import Footer from '@/components/Footer';
 export const metadata: Metadata = {
   title: 'Case Hub — Discover. Share. Compete.',
   description:
-    'Student competition discovery, publishing, and collaboration platform for students at HSB Jaipur. Discover business cases, hackathons, consulting challenges, and find teammates.',
+    'Premier competition discovery, publishing, and collaboration platform for MBA and business school students. Discover business cases, hackathons, consulting challenges, and find teammates.',
   keywords: [
     'Case Hub',
-    'HSB Jaipur',
+    'MBA Competitions',
     'Case Competitions',
     'Business School',
     'Consulting Challenges',
     'Student Competitions',
     'Team Finder',
+    'Unstop Competitions',
   ],
-  authors: [{ name: 'HSB Student Community' }],
+  authors: [{ name: 'Case Hub Team' }],
   openGraph: {
     title: 'Case Hub — Discover. Share. Compete.',
-    description: 'Competition discovery, publishing, and collaboration platform at HSB Jaipur.',
+    description: 'Premier competition discovery, publishing, and collaboration platform for business students.',
     siteName: 'Case Hub',
     type: 'website',
   },

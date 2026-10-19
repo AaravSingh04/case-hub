@@ -349,7 +349,7 @@ async function runTests() {
           max_team_size: 4,
           eligibility: 'All students',
           mode: 'Online',
-          official_registration_url: 'https://unstop.com/competitions/hsb-strategy-open-2026',
+          official_registration_url: 'https://unstop.com/competitions/national-strategy-open-2026',
         },
         {
           name: 'Invalid Incomplete Challenge',
@@ -402,6 +402,86 @@ async function runTests() {
     assert(resolveReportRes.status === 200, 'Admin resolved moderation report');
   } catch (err) {
     assert(false, 'Bulk import / moderation exception', err.message);
+  }
+
+  // -------------------------------------------------------------
+  // TEST 9: Automated Competition Discovery Service & Unstop
+  // -------------------------------------------------------------
+  console.log('\n--- TEST SUITE 9: Automated Competition Discovery & Attribution ---');
+  try {
+    const discRes = await fetch(`${BASE_URL}/api/cron/discovery?force=true`, {
+      headers: { cookie: adminCookie },
+    });
+    assert(discRes.status === 200, 'GET /api/cron/discovery?force=true returns 200');
+    const discData = await discRes.json();
+    assert(discData.itemsFound >= 1, `Discovery service found ${discData.itemsFound} candidates`);
+    assert(discData.itemsPublished >= 1, `Discovery service published ${discData.itemsPublished} new competitions`);
+    assert(discData.status === 'success' || discData.status === 'partial', `Discovery completed with status "${discData.status}"`);
+
+    // Verify discovered item in catalog
+    const compsRes = await fetch(`${BASE_URL}/api/competitions?limit=20`);
+    const compsData = await compsRes.json();
+    const discovered = compsData.competitions.find((c) => c.uploader_id === 'system_discovery');
+    assert(Boolean(discovered), 'Found auto-discovered competition in public catalog');
+    if (discovered) {
+      assert(discovered.uploader_display_name === 'Discovered by Case Hub', 'Attribution correctly displays "Discovered by Case Hub"');
+      assert(discovered.discovery_source === 'Unstop', 'Discovery source is tracked as "Unstop"');
+      assert(new Date(discovered.registration_deadline).getTime() > Date.now(), 'Discovered competition has actionable future deadline');
+    }
+
+    // Verify Admin Stats reflect discovery metrics
+    const adminStatsRes = await fetch(`${BASE_URL}/api/admin/stats`, {
+      headers: { cookie: adminCookie },
+    });
+    const adminStatsData = await adminStatsRes.json();
+    assert(adminStatsData.stats.totalDiscoveredItems >= 1, `Admin stats track totalDiscoveredItems: ${adminStatsData.stats.totalDiscoveredItems}`);
+    assert(adminStatsData.stats.recentDiscoveryLogs.length >= 1, 'Admin stats contain recent discovery logs');
+  } catch (err) {
+    assert(false, 'Automated Discovery Exception', err.message);
+  }
+
+  // -------------------------------------------------------------
+  // TEST 10: All-Registered-Users 48h Reminders & Student Profile
+  // -------------------------------------------------------------
+  console.log('\n--- TEST SUITE 10: All-Registered-Users 48h Reminder & Profile ---');
+  try {
+    // 1. Update Student profile with phone number
+    const profileRes = await fetch(`${BASE_URL}/api/profile`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        cookie: studentCookie,
+      },
+      body: JSON.stringify({
+        display_name: 'Aarav Mehta',
+        phone_number: '+91 98765 43210',
+        program_of_study: 'MBA Strategy & Finance',
+        year_of_study: 'Year 2',
+      }),
+    });
+    assert(profileRes.status === 200, 'PUT /api/profile with phone_number returns 200');
+    const profileData = await profileRes.json();
+    assert(profileData.user.phone_number === '+91 98765 43210', 'Phone number persisted in student profile');
+    assert(profileData.user.email_verified !== false, 'Student email is verified');
+
+    // 2. Trigger 48-Hour reminder cron
+    const cronRes = await fetch(`${BASE_URL}/api/cron/closing-soon`, {
+      method: 'POST',
+      headers: { cookie: adminCookie },
+    });
+    assert(cronRes.status === 200, 'POST /api/cron/closing-soon returns 200');
+    const cronData = await cronRes.json();
+    assert(cronData.success === true, 'Closing-soon scheduler completed successfully');
+
+    // 3. Verify Idempotency: Trigger a second time immediately
+    const cronRes2 = await fetch(`${BASE_URL}/api/cron/closing-soon`, {
+      method: 'POST',
+      headers: { cookie: adminCookie },
+    });
+    const cronData2 = await cronRes2.json();
+    assert(cronData2.dispatchedCount === 0, 'Database-backed idempotency prevented duplicate reminder emails on immediate rerun');
+  } catch (err) {
+    assert(false, 'All-Registered-Users 48h Reminder Exception', err.message);
   }
 
   // -------------------------------------------------------------

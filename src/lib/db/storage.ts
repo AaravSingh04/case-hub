@@ -10,6 +10,8 @@ import {
   Report,
   CaseResource,
   NotificationLog,
+  DiscoveryLog,
+  DiscoveryConfig,
   CompetitionFilterParams,
   UserRole,
 } from './types';
@@ -33,6 +35,8 @@ interface DatabaseSchema {
   reports: Report[];
   case_resources: CaseResource[];
   notification_logs: NotificationLog[];
+  discovery_logs: DiscoveryLog[];
+  discovery_config: DiscoveryConfig;
 }
 
 const DB_DIR = path.join(process.cwd(), 'data');
@@ -65,6 +69,13 @@ function loadDatabase(): DatabaseSchema {
       reports: [],
       case_resources: SEED_CASE_RESOURCES,
       notification_logs: [],
+      discovery_logs: [],
+      discovery_config: {
+        interval_days: 3,
+        enabled: true,
+        last_successful_discovery_at: '2026-10-18T00:00:00Z',
+        sources: ['Unstop', 'Corporate & B-School Challenges'],
+      },
     };
     saveDatabase(initialData);
     return initialData;
@@ -83,6 +94,13 @@ function loadDatabase(): DatabaseSchema {
       reports: parsed.reports || [],
       case_resources: parsed.case_resources || [],
       notification_logs: parsed.notification_logs || [],
+      discovery_logs: parsed.discovery_logs || [],
+      discovery_config: parsed.discovery_config || {
+        interval_days: 3,
+        enabled: true,
+        last_successful_discovery_at: '2026-10-18T00:00:00Z',
+        sources: ['Unstop', 'Corporate & B-School Challenges'],
+      },
     };
   } catch (error) {
     console.error('Failed to parse database file, recovering with seed data:', error);
@@ -96,6 +114,13 @@ function loadDatabase(): DatabaseSchema {
       reports: [],
       case_resources: SEED_CASE_RESOURCES,
       notification_logs: [],
+      discovery_logs: [],
+      discovery_config: {
+        interval_days: 3,
+        enabled: true,
+        last_successful_discovery_at: '2026-10-18T00:00:00Z',
+        sources: ['Unstop', 'Corporate & B-School Challenges'],
+      },
     };
   }
 }
@@ -716,6 +741,100 @@ export const db = {
     return log;
   },
 
+  getRegisteredVerifiedUsers(): User[] {
+    const state = loadDatabase();
+    return state.users.filter((u) => u.email && u.email_verified !== false);
+  },
+
+  // Discovery Management
+  getDiscoveryConfig(): DiscoveryConfig {
+    const state = loadDatabase();
+    return (
+      state.discovery_config || {
+        interval_days: 3,
+        enabled: true,
+        last_successful_discovery_at: '2026-10-18T00:00:00Z',
+        sources: ['Unstop', 'Corporate & B-School Challenges'],
+      }
+    );
+  },
+
+  updateDiscoveryConfig(updates: Partial<DiscoveryConfig>): DiscoveryConfig {
+    const state = loadDatabase();
+    state.discovery_config = {
+      ...state.discovery_config,
+      ...updates,
+    };
+    saveDatabase(state);
+    return state.discovery_config;
+  },
+
+  logDiscoveryRun(log: Omit<DiscoveryLog, 'id'>): DiscoveryLog {
+    const state = loadDatabase();
+    const newLog: DiscoveryLog = {
+      ...log,
+      id: `disc_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
+    };
+    if (!state.discovery_logs) state.discovery_logs = [];
+    state.discovery_logs.unshift(newLog);
+    if (log.status === 'success') {
+      state.discovery_config.last_successful_discovery_at = log.completed_at;
+    }
+    saveDatabase(state);
+    return newLog;
+  },
+
+  getDiscoveryLogs(): DiscoveryLog[] {
+    const state = loadDatabase();
+    return state.discovery_logs || [];
+  },
+
+  createDiscoveredCompetition(
+    competition: Omit<
+      Competition,
+      | 'id'
+      | 'created_at'
+      | 'updated_at'
+      | 'verification_status'
+      | 'is_archived'
+      | 'uploader_id'
+      | 'uploader_display_name'
+    >,
+    source = 'Unstop'
+  ): Competition {
+    const state = loadDatabase();
+    const id = `comp_disc_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
+    const nowIso = new Date().toISOString();
+
+    const newComp: Competition = {
+      ...competition,
+      id,
+      uploader_id: 'system_discovery',
+      uploader_display_name: 'Discovered by Case Hub',
+      discovery_source: source,
+      discovery_timestamp: nowIso,
+      created_at: nowIso,
+      updated_at: nowIso,
+      verification_status: 'verified',
+      verified_at: nowIso,
+      verified_by: 'Case Hub Automated Discovery',
+      is_archived: false,
+    };
+
+    const privateMeta: CompetitionPrivateMetadata = {
+      competition_id: id,
+      uploader_id: 'system_discovery',
+      uploader_email: 'discovery@casehub.internal',
+      created_at: nowIso,
+    };
+
+    state.competitions.unshift(newComp);
+    state.private_metadata.push(privateMeta);
+    saveDatabase(state);
+
+    return newComp;
+  },
+
   // Dashboard & Admin Stats
   getAdminStats() {
     const state = loadDatabase();
@@ -732,6 +851,22 @@ export const db = {
       else closed++;
     }
 
+    const config = state.discovery_config || {
+      interval_days: 3,
+      enabled: true,
+      last_successful_discovery_at: '2026-10-18T00:00:00Z',
+      sources: ['Unstop', 'Corporate & B-School Challenges'],
+    };
+
+    const lastDiscoveryMs = config.last_successful_discovery_at
+      ? new Date(config.last_successful_discovery_at).getTime()
+      : Date.now() - 3 * 24 * 60 * 60 * 1000;
+    const nextDiscoveryMs = lastDiscoveryMs + config.interval_days * 24 * 60 * 60 * 1000;
+    const nextDiscoveryIso = new Date(nextDiscoveryMs).toISOString();
+
+    const discLogs = state.discovery_logs || [];
+    const discoveredComps = state.competitions.filter((c) => c.uploader_id === 'system_discovery');
+
     return {
       totalCompetitions: state.competitions.length,
       activeCompetitions: state.competitions.filter((c) => !c.is_archived).length,
@@ -743,6 +878,14 @@ export const db = {
       pendingReports: state.reports.filter((r) => r.status === 'pending').length,
       notificationLogsCount: state.notification_logs.length,
       recentCompetitions: state.competitions.slice(0, 5),
+      lastSuccessfulDiscoveryAt: config.last_successful_discovery_at,
+      nextScheduledDiscoveryAt: nextDiscoveryIso,
+      discoveryIntervalDays: config.interval_days,
+      discoveryEnabled: config.enabled,
+      discoverySources: config.sources,
+      totalDiscoveredItems: discoveredComps.length,
+      failedDiscoveryRuns: discLogs.filter((l) => l.status === 'failed').length,
+      recentDiscoveryLogs: discLogs.slice(0, 5),
     };
   },
 

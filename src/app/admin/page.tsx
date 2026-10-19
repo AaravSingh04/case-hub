@@ -25,12 +25,13 @@ import {
   Filter,
   Play,
   UploadCloud,
+  Compass,
 } from 'lucide-react';
 
 export default function AdminDashboardPage() {
   const { user, isAdmin, isAuthenticated, loading: authLoading } = useAuth();
 
-  const [activeTab, setActiveTab] = useState<'overview' | 'competitions' | 'reports' | 'users' | 'notifications'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'competitions' | 'discovery' | 'reports' | 'users' | 'notifications'>('overview');
   const [stats, setStats] = useState<any>(null);
   const [competitions, setCompetitions] = useState<Competition[]>([]);
   const [reports, setReports] = useState<Report[]>([]);
@@ -43,6 +44,8 @@ export default function AdminDashboardPage() {
   const [deleteTarget, setDeleteTarget] = useState<Competition | null>(null);
   const [cronRunning, setCronRunning] = useState(false);
   const [cronFeedback, setCronFeedback] = useState<string | null>(null);
+  const [discoveryRunning, setDiscoveryRunning] = useState(false);
+  const [discoveryFeedback, setDiscoveryFeedback] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
 
   const fetchAdminData = async () => {
     try {
@@ -184,6 +187,34 @@ export default function AdminDashboardPage() {
     }
   };
 
+  const handleTriggerDiscovery = async () => {
+    try {
+      setDiscoveryRunning(true);
+      setDiscoveryFeedback(null);
+      const res = await fetch('/api/cron/discovery?force=true');
+      const data = await res.json();
+      if (res.ok) {
+        setDiscoveryFeedback({
+          type: 'success',
+          message: `Discovery finished successfully: ${data.itemsFound} found, ${data.itemsPublished} new published, ${data.duplicatesSkipped} duplicates skipped.`,
+        });
+        fetchAdminData();
+      } else {
+        setDiscoveryFeedback({
+          type: 'error',
+          message: `Discovery error: ${data.error || 'Failed to complete discovery'}`,
+        });
+      }
+    } catch (err: any) {
+      setDiscoveryFeedback({
+        type: 'error',
+        message: `Network error during discovery: ${err.message}`,
+      });
+    } finally {
+      setDiscoveryRunning(false);
+    }
+  };
+
   if (authLoading) {
     return <div className="max-w-4xl mx-auto px-4 py-20 text-center text-sm text-neutral-muted">Checking administrative authorization...</div>;
   }
@@ -194,7 +225,7 @@ export default function AdminDashboardPage() {
         <ShieldAlert className="w-12 h-12 text-academic-error mx-auto" />
         <h1 className="font-serif text-2xl font-bold text-navy-deep">Administrator Access Required</h1>
         <p className="text-sm text-neutral-muted">
-          This section is restricted to HSB faculty and platform administrators.
+          This section is restricted to Case Hub platform administrators.
         </p>
         <Link href="/login?redirect=/admin" className="btn-primary inline-flex text-sm px-6 py-2.5">
           Sign In as Admin
@@ -245,6 +276,7 @@ export default function AdminDashboardPage() {
         {[
           { key: 'overview', label: 'Overview & Statistics' },
           { key: 'competitions', label: `Competitions (${competitions.length})` },
+          { key: 'discovery', label: `Discovery Engine (${stats?.totalDiscoveredItems ?? 0})` },
           { key: 'reports', label: `Reports (${reports.filter((r) => r.status === 'pending').length} Pending)` },
           { key: 'users', label: `Users (${users.length})` },
           { key: 'notifications', label: `Notification Outbox (${notificationLogs.length})` },
@@ -289,12 +321,12 @@ export default function AdminDashboardPage() {
             </div>
 
             <div className="bg-white border border-neutral-border rounded p-5 shadow-subtle">
-              <span className="text-xs font-bold uppercase tracking-wider text-neutral-muted">Pending Reports</span>
-              <div className="font-serif text-3xl font-bold text-academic-warning mt-1">
-                {stats?.pendingReports ?? 0}
+              <span className="text-xs font-bold uppercase tracking-wider text-neutral-muted">Auto-Discovered</span>
+              <div className="font-serif text-3xl font-bold text-navy-deep mt-1">
+                {stats?.totalDiscoveredItems ?? 0}
               </div>
-              <span className="text-[11px] text-neutral-muted mt-1 block">
-                {stats?.totalReports ?? 0} total reports filed
+              <span className="text-[11px] text-brass mt-1 block">
+                Every {stats?.discoveryIntervalDays ?? 3} days via Unstop
               </span>
             </div>
 
@@ -318,22 +350,42 @@ export default function AdminDashboardPage() {
                   <span>Automated Workflow Dispatcher</span>
                 </h3>
                 <p className="text-xs text-neutral-muted mt-0.5">
-                  Trigger the 48-hour closing-soon scheduled scanner immediately or test email dispatch.
+                  Execute scheduled jobs on demand: scan for competitions closing within 48h to alert all registered students, or run Unstop MBA discovery.
                 </p>
               </div>
 
-              <button
-                onClick={handleTriggerClosingSoonJob}
-                disabled={cronRunning}
-                className="btn-primary text-xs px-4 py-2 font-medium whitespace-nowrap self-start sm:self-auto"
-              >
-                {cronRunning ? 'Dispatching Reminders...' : 'Run 48h Closing Job Now'}
-              </button>
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  onClick={handleTriggerClosingSoonJob}
+                  disabled={cronRunning}
+                  className="btn-secondary text-xs px-3.5 py-2 font-medium whitespace-nowrap"
+                >
+                  {cronRunning ? 'Sending Reminders...' : 'Run 48h Closing Job'}
+                </button>
+                <button
+                  onClick={handleTriggerDiscovery}
+                  disabled={discoveryRunning}
+                  className="btn-primary text-xs px-4 py-2 font-semibold whitespace-nowrap flex items-center gap-1.5"
+                >
+                  <RefreshCw className={`w-3 h-3 ${discoveryRunning ? 'animate-spin' : ''}`} />
+                  <span>{discoveryRunning ? 'Discovering...' : 'Trigger Discovery'}</span>
+                </button>
+              </div>
             </div>
 
             {cronFeedback && (
               <div className="p-3 bg-ivory border border-neutral-border rounded text-xs text-navy-deep">
                 {cronFeedback}
+              </div>
+            )}
+
+            {discoveryFeedback && (
+              <div className={`p-3 rounded text-xs border ${
+                discoveryFeedback.type === 'error'
+                  ? 'bg-red-50 border-academic-error/30 text-academic-error'
+                  : 'bg-green-50 border-academic-success/30 text-academic-success'
+              }`}>
+                {discoveryFeedback.message}
               </div>
             )}
           </div>
@@ -449,6 +501,126 @@ export default function AdminDashboardPage() {
                 })}
               </tbody>
             </table>
+          </div>
+        </div>
+      )}
+
+      {/* TAB: AUTOMATED DISCOVERY ENGINE */}
+      {activeTab === 'discovery' && (
+        <div className="space-y-6">
+          {/* Engine Status & Manual Trigger Header */}
+          <div className="bg-white border border-neutral-border rounded p-6 shadow-subtle space-y-5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-brass block mb-1">
+                  Scheduled Automation (Every 3 Days)
+                </span>
+                <h3 className="font-serif text-xl font-bold text-navy-deep flex items-center gap-2">
+                  <Compass className="w-5 h-5 text-navy-primary" />
+                  <span>Competition Discovery Engine</span>
+                </h3>
+                <p className="text-xs text-neutral-muted mt-1 max-w-2xl">
+                  Automated service searching authorized online sources (primarily Unstop and top business schools) for genuine MBA competitions.
+                  Discovered opportunities are deduplicated, verified, published immediately with attribution, and reported to the administrator.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={handleTriggerDiscovery}
+                  disabled={discoveryRunning}
+                  className="btn-primary text-xs px-5 py-2.5 font-semibold whitespace-nowrap flex items-center gap-1.5 shadow-sm"
+                >
+                  <RefreshCw className={`w-3.5 h-3.5 ${discoveryRunning ? 'animate-spin' : ''}`} />
+                  <span>{discoveryRunning ? 'Discovering Competitions...' : 'Trigger Discovery Now'}</span>
+                </button>
+              </div>
+            </div>
+
+            {discoveryFeedback && (
+              <div className={`p-4 rounded text-xs border ${
+                discoveryFeedback.type === 'error'
+                  ? 'bg-red-50 border-academic-error/30 text-academic-error'
+                  : 'bg-green-50 border-academic-success/30 text-academic-success'
+              }`}>
+                {discoveryFeedback.message}
+              </div>
+            )}
+
+            {/* Quick Metrics */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-neutral-border/80">
+              <div>
+                <span className="text-[11px] uppercase tracking-wider text-neutral-muted block">Discovery Interval</span>
+                <span className="font-bold text-navy-deep text-sm">Every {stats?.discoveryIntervalDays ?? 3} Days</span>
+              </div>
+              <div>
+                <span className="text-[11px] uppercase tracking-wider text-neutral-muted block">Primary Source</span>
+                <span className="font-bold text-navy-deep text-sm">Unstop & Online</span>
+              </div>
+              <div>
+                <span className="text-[11px] uppercase tracking-wider text-neutral-muted block">Total Discovered</span>
+                <span className="font-bold text-academic-success text-sm">{stats?.totalDiscoveredItems ?? 0} competitions</span>
+              </div>
+              <div>
+                <span className="text-[11px] uppercase tracking-wider text-neutral-muted block">Next Scheduled Run</span>
+                <span className="font-semibold text-navy-deep text-xs">
+                  {stats?.nextScheduledDiscoveryAt ? formatDate(stats.nextScheduledDiscoveryAt) : 'Pending'}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Discovery Run Logs History */}
+          <div className="bg-white border border-neutral-border rounded shadow-subtle p-6 space-y-4">
+            <h4 className="font-serif text-base font-bold text-navy-deep">
+              Recent Discovery Execution Logs
+            </h4>
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs">
+                <thead>
+                  <tr className="border-b border-neutral-border text-neutral-muted uppercase tracking-wider">
+                    <th className="py-2.5 px-3">Run ID</th>
+                    <th className="py-2.5 px-3">Source</th>
+                    <th className="py-2.5 px-3">Completed At</th>
+                    <th className="py-2.5 px-3">Found</th>
+                    <th className="py-2.5 px-3">Published</th>
+                    <th className="py-2.5 px-3">Skipped</th>
+                    <th className="py-2.5 px-3">Status</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-neutral-border/60">
+                  {(!stats?.recentDiscoveryLogs || stats.recentDiscoveryLogs.length === 0) ? (
+                    <tr>
+                      <td colSpan={7} className="py-6 text-center text-neutral-muted italic">
+                        No discovery execution logs recorded yet. Click &quot;Trigger Discovery Now&quot; above to initiate a run.
+                      </td>
+                    </tr>
+                  ) : (
+                    stats.recentDiscoveryLogs.map((log: any) => (
+                      <tr key={log.id} className="hover:bg-ivory/50">
+                        <td className="py-3 px-3 font-mono font-medium text-navy-deep">{log.run_id}</td>
+                        <td className="py-3 px-3">{log.source}</td>
+                        <td className="py-3 px-3 text-neutral-muted">{formatDateTime(log.completed_at)}</td>
+                        <td className="py-3 px-3 font-semibold">{log.items_found}</td>
+                        <td className="py-3 px-3 font-bold text-academic-success">+{log.items_published}</td>
+                        <td className="py-3 px-3 text-neutral-muted">{log.duplicates_skipped}</td>
+                        <td className="py-3 px-3">
+                          <span className={`inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${
+                            log.status === 'success'
+                              ? 'bg-green-50 text-academic-success border border-academic-success/30'
+                              : log.status === 'partial'
+                              ? 'bg-yellow-50 text-yellow-800 border border-yellow-300'
+                              : 'bg-red-50 text-academic-error border border-academic-error/30'
+                          }`}>
+                            {log.status}
+                          </span>
+                        </td>
+                      </tr>
+                    ))
+                  )}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       )}

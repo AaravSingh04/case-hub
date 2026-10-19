@@ -97,7 +97,7 @@ function DiscoverCompetitionsContent() {
             Discover Competitions
           </h1>
           <p className="text-sm text-neutral-muted mt-1 max-w-2xl">
-            Explore active case competitions, consulting challenges, and hackathons open to students at HSB Jaipur.
+            Explore active case competitions, consulting challenges, and hackathons open to MBA and business students.
           </p>
         </div>
 
@@ -127,27 +127,33 @@ function DiscoverCompetitionsContent() {
         </div>
       ) : competitions.length === 0 ? (
         <div className="bg-white border border-neutral-border rounded p-12 text-center max-w-xl mx-auto my-12 shadow-subtle">
-          <Compass className="w-12 h-12 text-neutral-muted mx-auto mb-3 opacity-50" />
+          <Compass className="w-12 h-12 text-brass mx-auto mb-3" />
           <h2 className="font-serif text-xl font-bold text-navy-deep">
-            No matching competitions found
+            {filters.search || filters.category || filters.deadlineStatus !== 'all'
+              ? 'No matching competitions found'
+              : 'No competitions available yet. Be the first to share an opportunity.'}
           </h2>
           <p className="text-xs sm:text-sm text-neutral-muted mt-2 mb-6">
-            We couldn't find any opportunities matching your active search and filter criteria.
+            {filters.search || filters.category || filters.deadlineStatus !== 'all'
+              ? "We couldn't find any opportunities matching your active search and filter criteria."
+              : 'Contribute upcoming business challenges, consulting hackathons, or pitch competitions with the community.'}
           </p>
           <div className="flex items-center justify-center gap-3">
-            <button
-              onClick={handleResetFilters}
-              className="btn-secondary text-xs px-4 py-2"
-            >
-              <RotateCcw className="w-3.5 h-3.5" />
-              <span>Reset Filters</span>
-            </button>
+            {(filters.search || filters.category || filters.deadlineStatus !== 'all') && (
+              <button
+                onClick={handleResetFilters}
+                className="btn-secondary text-xs px-4 py-2"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Reset Filters</span>
+              </button>
+            )}
             <Link
               href="/competitions/submit"
               className="btn-primary text-xs px-4 py-2"
             >
               <PlusCircle className="w-3.5 h-3.5" />
-              <span>Submit this Competition</span>
+              <span>Submit a Competition</span>
             </Link>
           </div>
         </div>

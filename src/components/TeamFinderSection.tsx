@@ -151,7 +151,7 @@ export default function TeamFinderSection({ competition: c }: TeamFinderSectionP
             Team Finder
           </h2>
           <p className="text-xs sm:text-sm text-neutral-muted mt-1">
-            Connect with other HSB students forming teams for this challenge ({c.min_team_size === c.max_team_size ? `${c.min_team_size} members required` : `${c.min_team_size} – ${c.max_team_size} members`}).
+            Connect with fellow business students forming teams for this challenge ({c.min_team_size === c.max_team_size ? `${c.min_team_size} members required` : `${c.min_team_size} – ${c.max_team_size} members`}).
           </p>
         </div>
 
@@ -383,7 +383,7 @@ export default function TeamFinderSection({ competition: c }: TeamFinderSectionP
                 <input
                   type="text"
                   required
-                  placeholder="e.g. WhatsApp, LinkedIn profile, or meet in HSB Study Pod C"
+                  placeholder="e.g. WhatsApp, LinkedIn profile, or campus study lounge"
                   value={contactMethod}
                   onChange={(e) => setContactMethod(e.target.value)}
                   className="w-full px-3 py-2 border border-neutral-border rounded text-sm text-neutral-text focus:outline-none focus:border-brass"

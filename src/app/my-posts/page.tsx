@@ -118,7 +118,7 @@ export default function MyPostsPage() {
             You haven't uploaded any competitions yet.
           </h2>
           <p className="text-xs sm:text-sm text-neutral-muted mt-2 mb-6">
-            Found a consulting challenge, marketing tournament, or hackathon? Share it with the HSB student community.
+            Found a consulting challenge, marketing tournament, or hackathon? Share it with the business student community.
           </p>
           <Link href="/competitions/submit" className="btn-primary inline-flex text-xs px-5 py-2.5">
             <PlusCircle className="w-4 h-4" />

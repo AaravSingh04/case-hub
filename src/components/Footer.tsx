@@ -17,12 +17,12 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sm text-neutral-border/80 max-w-md leading-relaxed font-light">
-              The premier competition discovery, publishing, and collaboration platform for students at HSB Jaipur.
+              The premier competition discovery, publishing, and collaboration platform for business school students.
               Discover business cases, find teammates, and build competitive excellence.
             </p>
             <div className="pt-2">
               <span className="inline-flex items-center text-xs font-medium text-brass bg-navy-primary/80 border border-brass/30 px-3 py-1 rounded">
-                Built for the HSB student community.
+                Connecting ambitious business students with premier case competitions.
               </span>
             </div>
           </div>

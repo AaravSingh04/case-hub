@@ -1,10 +1,11 @@
-import { Competition, User } from '../db/types';
+import { Competition, User, DiscoveryLog } from '../db/types';
 import { db } from '../db/storage';
 import { getAppBaseUrl } from '../utils';
 import {
   getAdminUploadEmailHtml,
   getClosingSoonEmailHtml,
   getSavedUpdateEmailHtml,
+  getAdminDiscoveryEmailHtml,
 } from './templates';
 
 export interface SendEmailResult {
@@ -270,3 +271,57 @@ export async function retryNotification(notificationId: string): Promise<boolean
     return false;
   }
 }
+
+/**
+ * Sends summary notification to Administrator following an automated discovery run
+ */
+export async function sendAdminDiscoveryEmail(params: {
+  discoveredCompetitions: Competition[];
+  runLog: DiscoveryLog;
+}): Promise<void> {
+  const { discoveredCompetitions, runLog } = params;
+  const adminEmail = process.env.ADMIN_NOTIFICATION_EMAIL || 'admin@casehub.internal';
+  const baseUrl = getAppBaseUrl();
+  const adminDashboardUrl = `${baseUrl}/admin`;
+  const subject = `Automated Discovery Summary: ${runLog.items_published} New Competitions Published | Case Hub`;
+
+  const html = getAdminDiscoveryEmailHtml({
+    discoveredCompetitions,
+    runLog,
+    adminDashboardUrl,
+    baseUrl,
+  });
+
+  const notifLog = db.logNotification({
+    recipient_email: adminEmail,
+    recipient_name: 'Case Hub Administrator',
+    subject,
+    template_type: 'admin_discovery_summary',
+    competition_id: discoveredCompetitions[0]?.id || 'system_discovery',
+    status: 'pending',
+    payload: {
+      items_found: runLog.items_found,
+      items_published: runLog.items_published,
+      duplicates_skipped: runLog.duplicates_skipped,
+      run_id: runLog.run_id,
+      adminDashboardUrl,
+    },
+  });
+
+  try {
+    const result = await sendRawEmail({
+      to: adminEmail,
+      subject,
+      html,
+    });
+
+    if (result.success) {
+      db.updateNotificationStatus(notifLog.id, 'sent');
+    } else {
+      db.updateNotificationStatus(notifLog.id, 'failed', result.error);
+    }
+  } catch (err: any) {
+    db.updateNotificationStatus(notifLog.id, 'failed', err.message || 'Unknown send error');
+  }
+}
+

@@ -1,4 +1,4 @@
-import { Competition, User } from '../db/types';
+import { Competition, User, DiscoveryLog } from '../db/types';
 import { formatDate, formatDateTime } from '../utils';
 
 export function getAdminUploadEmailHtml(params: {
@@ -114,7 +114,7 @@ export function getAdminUploadEmailHtml(params: {
     </div>
     <div class="footer">
       <div>Case Hub — Discover. Share. Compete.</div>
-      <div style="margin-top: 4px;">Built for the HSB student community.</div>
+      <div style="margin-top: 4px;">Connecting ambitious business students with premier case competitions.</div>
     </div>
   </div>
 </body>
@@ -184,7 +184,7 @@ export function getClosingSoonEmailHtml(params: {
     </div>
     <div class="footer">
       <div>Case Hub — Discover. Share. Compete.</div>
-      <div style="margin-top: 4px;">Built for the HSB student community.</div>
+      <div style="margin-top: 4px;">Connecting ambitious business students with premier case competitions.</div>
     </div>
   </div>
 </body>
@@ -268,7 +268,103 @@ export function getSavedUpdateEmailHtml(params: {
     </div>
     <div class="footer">
       <div>Case Hub — Discover. Share. Compete.</div>
-      <div style="margin-top: 4px;">Built for the HSB student community.</div>
+      <div style="margin-top: 4px;">Connecting ambitious business students with premier case competitions.</div>
+    </div>
+  </div>
+</body>
+</html>
+  `.trim();
+}
+
+export function getAdminDiscoveryEmailHtml(params: {
+  discoveredCompetitions: Competition[];
+  runLog: DiscoveryLog;
+  adminDashboardUrl: string;
+  baseUrl: string;
+}): string {
+  const { discoveredCompetitions, runLog, adminDashboardUrl, baseUrl } = params;
+
+  return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Automated Discovery Summary — Case Hub</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #F7F4EC; margin: 0; padding: 24px; color: #202C3B; }
+    .container { max-width: 680px; margin: 0 auto; background: #FFFFFF; border: 1px solid #DCD6CA; border-radius: 4px; overflow: hidden; }
+    .header { background: #102747; padding: 32px; text-align: center; }
+    .wordmark { color: #FFFFFF; font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 700; margin: 0; }
+    .tagline { color: #AC925B; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; margin-top: 6px; font-weight: 600; }
+    .body { padding: 32px; }
+    .badge { display: inline-block; background: #355C48; color: #FFFFFF; padding: 4px 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 2px; margin-bottom: 12px; }
+    .title { font-family: 'Playfair Display', Georgia, serif; font-size: 24px; color: #0A1930; margin: 0 0 8px 0; }
+    .subtitle { color: #737985; font-size: 14px; margin-bottom: 24px; }
+    .stat-row { display: flex; gap: 12px; margin-bottom: 24px; }
+    .stat-box { flex: 1; background: #FCFAF6; border: 1px solid #DCD6CA; padding: 12px; text-align: center; border-radius: 4px; }
+    .stat-val { font-size: 20px; font-weight: 700; color: #102747; }
+    .stat-lbl { font-size: 11px; text-transform: uppercase; color: #737985; letter-spacing: 0.5px; margin-top: 4px; }
+    .comp-item { border: 1px solid #DCD6CA; border-radius: 4px; padding: 16px; margin-bottom: 14px; background: #FCFAF6; }
+    .comp-title { font-family: 'Playfair Display', Georgia, serif; font-size: 17px; font-weight: 700; color: #0A1930; margin: 0 0 4px 0; }
+    .comp-meta { font-size: 13px; color: #737985; margin-bottom: 8px; }
+    .comp-deadline { font-size: 13px; font-weight: 600; color: #355C48; }
+    .comp-link { display: inline-block; margin-top: 10px; font-size: 13px; font-weight: 600; color: #102747; text-decoration: underline; }
+    .cta-container { text-align: center; margin: 32px 0 16px 0; }
+    .btn { display: inline-block; background-color: #102747; color: #FFFFFF !important; text-decoration: none; padding: 14px 28px; font-size: 15px; font-weight: 600; border-radius: 4px; }
+    .footer { background: #EEE9DE; padding: 20px; text-align: center; font-size: 12px; color: #737985; border-top: 1px solid #DCD6CA; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="wordmark">Case Hub</h1>
+      <div class="tagline">Discover. Share. Compete.</div>
+    </div>
+    <div class="body">
+      <span class="badge">Automated Discovery Run</span>
+      <h2 class="title">Competition Discovery Summary</h2>
+      <div class="subtitle">Completed on ${formatDateTime(runLog.completed_at)} • Source: ${runLog.source}</div>
+
+      <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 24px;">
+        <tr>
+          <td style="padding: 10px; background: #FCFAF6; border: 1px solid #DCD6CA; text-align: center; width: 33%;">
+            <div style="font-size: 20px; font-weight: 700; color: #102747;">${runLog.items_found}</div>
+            <div style="font-size: 11px; text-transform: uppercase; color: #737985; margin-top: 4px;">Found</div>
+          </td>
+          <td style="padding: 10px; background: #FCFAF6; border: 1px solid #DCD6CA; text-align: center; width: 33%; border-left: none;">
+            <div style="font-size: 20px; font-weight: 700; color: #355C48;">${runLog.items_published}</div>
+            <div style="font-size: 11px; text-transform: uppercase; color: #737985; margin-top: 4px;">Published</div>
+          </td>
+          <td style="padding: 10px; background: #FCFAF6; border: 1px solid #DCD6CA; text-align: center; width: 33%; border-left: none;">
+            <div style="font-size: 20px; font-weight: 700; color: #737985;">${runLog.duplicates_skipped}</div>
+            <div style="font-size: 11px; text-transform: uppercase; color: #737985; margin-top: 4px;">Duplicates Skipped</div>
+          </td>
+        </tr>
+      </table>
+
+      ${discoveredCompetitions.length > 0 ? `
+        <h3 style="font-size: 16px; color: #102747; margin-bottom: 12px; font-family: 'Playfair Display', Georgia, serif;">Newly Published Competitions</h3>
+        ${discoveredCompetitions.map((c) => `
+          <div class="comp-item">
+            <div class="comp-title">${c.name}</div>
+            <div class="comp-meta">Organized by ${c.organizer} • ${c.category} • ${c.mode}</div>
+            <div class="comp-deadline">Registration Deadline: ${formatDate(c.registration_deadline)}</div>
+            <div>
+              <a href="${baseUrl}/competitions/${c.id}" class="comp-link" target="_blank" rel="noopener noreferrer">View Competition on Case Hub &rarr;</a>
+            </div>
+          </div>
+        `).join('')}
+      ` : `
+        <p style="font-size: 14px; color: #737985; font-style: italic;">No new unique competitions were found in this scheduled run.</p>
+      `}
+
+      <div class="cta-container">
+        <a href="${adminDashboardUrl}" class="btn" target="_blank" rel="noopener noreferrer">Open Admin Dashboard</a>
+      </div>
+    </div>
+    <div class="footer">
+      <div>Case Hub — Discover. Share. Compete.</div>
+      <div style="margin-top: 4px;">Connecting ambitious business students with premier case competitions.</div>
     </div>
   </div>
 </body>

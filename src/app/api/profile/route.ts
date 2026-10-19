@@ -24,10 +24,11 @@ export async function PUT(req: NextRequest) {
     }
 
     const body = await req.json();
-    const { display_name, program_of_study, year_of_study, linkedin_url, bio, avatar_url } = body;
+    const { display_name, phone_number, program_of_study, year_of_study, linkedin_url, bio, avatar_url } = body;
 
     const updated = db.updateUserProfile(user.id, {
       display_name: display_name?.trim() || user.display_name,
+      phone_number: phone_number !== undefined ? phone_number.trim() : user.phone_number,
       program_of_study: program_of_study?.trim(),
       year_of_study: year_of_study?.trim(),
       linkedin_url: linkedin_url?.trim(),

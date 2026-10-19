@@ -135,10 +135,17 @@ export default function CompetitionCard({
 
       {/* Card Body */}
       <div className="p-5 flex flex-col flex-1">
-        {/* Organizer */}
-        <p className="text-xs font-semibold uppercase tracking-wider text-neutral-muted mb-1 truncate">
-          {c.organizer}
-        </p>
+        {/* Organizer & Attribution */}
+        <div className="flex items-center justify-between gap-2 mb-1">
+          <p className="text-xs font-semibold uppercase tracking-wider text-neutral-muted truncate">
+            {c.organizer}
+          </p>
+          <span className="text-[10px] font-medium text-neutral-muted/80 truncate shrink-0">
+            {c.uploader_id === 'system_discovery' || c.uploader_display_name === 'Discovered by Case Hub'
+              ? 'Discovered by Case Hub'
+              : `Uploaded by ${c.uploader_display_name}`}
+          </span>
+        </div>
 
         {/* Competition Name */}
         <h3 className="font-serif text-lg font-bold text-navy-deep leading-snug line-clamp-2 group-hover:text-brass transition-colors mb-2.5">
