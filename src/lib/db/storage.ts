@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import os from 'node:os';
 import {
   User,
   Competition,
@@ -43,99 +44,167 @@ interface DatabaseSchema {
   discovery_config: DiscoveryConfig;
 }
 
-const DB_DIR = path.join(process.cwd(), 'data');
-const DB_PATH = path.join(DB_DIR, 'case_hub.db.json');
+const LOCAL_DB_DIR = path.join(process.cwd(), 'data');
+const LOCAL_DB_PATH = path.join(LOCAL_DB_DIR, 'case_hub.db.json');
+const TMP_DB_PATH = path.join(os.tmpdir(), 'case_hub.db.json');
 
-function ensureDbDirectory() {
-  if (!fs.existsSync(DB_DIR)) {
-    fs.mkdirSync(DB_DIR, { recursive: true });
+// In-memory state cache across warm serverless function invocations
+let memoryState: DatabaseSchema | null = null;
+let isLocalWritableCached: boolean | null = null;
+
+function getWritableDbPath(): string {
+  // If running in Vercel or AWS Lambda, use os.tmpdir() to avoid EROFS read-only filesystem errors
+  if (process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME || process.env.LAMBDA_TASK_ROOT) {
+    return TMP_DB_PATH;
   }
-}
 
-function loadDatabase(): DatabaseSchema {
-  ensureDbDirectory();
-
-  if (!fs.existsSync(DB_PATH)) {
-    const initialData: DatabaseSchema = {
-      users: SEED_USERS,
-      competitions: SEED_COMPETITIONS,
-      private_metadata: SEED_PRIVATE_METADATA,
-      saved_competitions: [
-        {
-          id: 'saved_001',
-          user_id: 'usr_student_001',
-          competition_id: 'comp_hul_lime_2026',
-          created_at: '2026-10-06T09:00:00Z',
-        },
-      ],
-      team_listings: SEED_TEAM_LISTINGS,
-      team_members: SEED_TEAM_MEMBERS,
-      reports: [],
-      case_resources: SEED_CASE_RESOURCES,
-      notification_logs: [],
-      discovery_logs: [],
-      discovery_config: {
-        interval_days: 3,
-        enabled: true,
-        last_successful_discovery_at: '2026-10-18T00:00:00Z',
-        sources: ['Unstop', 'Corporate & B-School Challenges'],
-      },
-    };
-    saveDatabase(initialData);
-    return initialData;
+  if (isLocalWritableCached === false) {
+    return TMP_DB_PATH;
+  }
+  if (isLocalWritableCached === true) {
+    return LOCAL_DB_PATH;
   }
 
   try {
-    const raw = fs.readFileSync(DB_PATH, 'utf-8');
-    const parsed = JSON.parse(raw);
-    return {
-      users: parsed.users || SEED_USERS,
-      auth_credentials: parsed.auth_credentials || [],
-      email_verifications: parsed.email_verifications || [],
-      competitions: parsed.competitions || SEED_COMPETITIONS,
-      private_metadata: parsed.private_metadata || SEED_PRIVATE_METADATA,
-      saved_competitions: parsed.saved_competitions || [],
-      team_listings: parsed.team_listings || [],
-      team_members: parsed.team_members || [],
-      reports: parsed.reports || [],
-      case_resources: parsed.case_resources || [],
-      notification_logs: parsed.notification_logs || [],
-      discovery_logs: parsed.discovery_logs || [],
-      discovery_config: parsed.discovery_config || {
-        interval_days: 3,
-        enabled: true,
-        last_successful_discovery_at: '2026-10-18T00:00:00Z',
-        sources: ['Unstop', 'Corporate & B-School Challenges'],
-      },
-    };
-  } catch (error) {
-    console.error('Failed to parse database file, recovering with seed data:', error);
-    return {
-      users: SEED_USERS,
-      competitions: SEED_COMPETITIONS,
-      private_metadata: SEED_PRIVATE_METADATA,
-      saved_competitions: [],
-      team_listings: SEED_TEAM_LISTINGS,
-      team_members: SEED_TEAM_MEMBERS,
-      reports: [],
-      case_resources: SEED_CASE_RESOURCES,
-      notification_logs: [],
-      discovery_logs: [],
-      discovery_config: {
-        interval_days: 3,
-        enabled: true,
-        last_successful_discovery_at: '2026-10-18T00:00:00Z',
-        sources: ['Unstop', 'Corporate & B-School Challenges'],
-      },
-    };
+    if (!fs.existsSync(LOCAL_DB_DIR)) {
+      fs.mkdirSync(LOCAL_DB_DIR, { recursive: true });
+    }
+    const testFile = path.join(LOCAL_DB_DIR, `.write_check_${Date.now()}`);
+    fs.writeFileSync(testFile, 'ok');
+    fs.unlinkSync(testFile);
+    isLocalWritableCached = true;
+    return LOCAL_DB_PATH;
+  } catch {
+    isLocalWritableCached = false;
+    return TMP_DB_PATH;
   }
 }
 
+function normalizeSchema(parsed: any): DatabaseSchema {
+  return {
+    users: parsed?.users || SEED_USERS,
+    auth_credentials: parsed?.auth_credentials || [],
+    email_verifications: parsed?.email_verifications || [],
+    competitions: parsed?.competitions || SEED_COMPETITIONS,
+    private_metadata: parsed?.private_metadata || SEED_PRIVATE_METADATA,
+    saved_competitions: parsed?.saved_competitions || [],
+    team_listings: parsed?.team_listings || [],
+    team_members: parsed?.team_members || [],
+    reports: parsed?.reports || [],
+    case_resources: parsed?.case_resources || [],
+    notification_logs: parsed?.notification_logs || [],
+    discovery_logs: parsed?.discovery_logs || [],
+    discovery_config: parsed?.discovery_config || {
+      interval_days: 3,
+      enabled: true,
+      last_successful_discovery_at: '2026-10-18T00:00:00Z',
+      sources: ['Unstop', 'Corporate & B-School Challenges'],
+    },
+  };
+}
+
+function loadDatabase(): DatabaseSchema {
+  const targetPath = getWritableDbPath();
+
+  // 1. Try reading from target writable location
+  if (fs.existsSync(targetPath)) {
+    try {
+      const raw = fs.readFileSync(targetPath, 'utf-8');
+      const parsed = JSON.parse(raw);
+      memoryState = normalizeSchema(parsed);
+      return memoryState;
+    } catch (err) {
+      console.error('Error reading database from target path:', err);
+    }
+  }
+
+  // 2. If targetPath is in /tmp (e.g. Vercel), bootstrap from bundled read-only database
+  if (targetPath !== LOCAL_DB_PATH && fs.existsSync(LOCAL_DB_PATH)) {
+    try {
+      const raw = fs.readFileSync(LOCAL_DB_PATH, 'utf-8');
+      const parsed = JSON.parse(raw);
+      memoryState = normalizeSchema(parsed);
+      try {
+        fs.writeFileSync(targetPath, JSON.stringify(memoryState, null, 2), 'utf-8');
+      } catch (copyErr) {
+        console.warn('Could not mirror bundled DB to tmp storage:', copyErr);
+      }
+      return memoryState;
+    } catch (err) {
+      console.error('Error reading bundled database file:', err);
+    }
+  }
+
+  // 3. If in-memory state already exists, return it
+  if (memoryState) {
+    return memoryState;
+  }
+
+  // 4. Initial seed fallback
+  const initialData: DatabaseSchema = {
+    users: SEED_USERS,
+    auth_credentials: [],
+    email_verifications: [],
+    competitions: SEED_COMPETITIONS,
+    private_metadata: SEED_PRIVATE_METADATA,
+    saved_competitions: [
+      {
+        id: 'saved_001',
+        user_id: 'usr_student_001',
+        competition_id: 'comp_hul_lime_2026',
+        created_at: '2026-10-06T09:00:00Z',
+      },
+    ],
+    team_listings: SEED_TEAM_LISTINGS,
+    team_members: SEED_TEAM_MEMBERS,
+    reports: [],
+    case_resources: SEED_CASE_RESOURCES,
+    notification_logs: [],
+    discovery_logs: [],
+    discovery_config: {
+      interval_days: 3,
+      enabled: true,
+      last_successful_discovery_at: '2026-10-18T00:00:00Z',
+      sources: ['Unstop', 'Corporate & B-School Challenges'],
+    },
+  };
+
+  memoryState = initialData;
+  saveDatabase(initialData);
+  return initialData;
+}
+
 function saveDatabase(data: DatabaseSchema): void {
-  ensureDbDirectory();
-  const tempPath = `${DB_PATH}.tmp.${Date.now()}`;
-  fs.writeFileSync(tempPath, JSON.stringify(data, null, 2), 'utf-8');
-  fs.renameSync(tempPath, DB_PATH);
+  memoryState = data;
+  const targetPath = getWritableDbPath();
+  const dir = path.dirname(targetPath);
+
+  try {
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+  } catch (dirErr) {
+    console.warn('Could not ensure db directory:', dirErr);
+  }
+
+  const tempPath = path.join(dir, `case_hub_${Date.now()}_${Math.random().toString(36).substring(2, 6)}.tmp`);
+  try {
+    fs.writeFileSync(tempPath, JSON.stringify(data, null, 2), 'utf-8');
+    fs.renameSync(tempPath, targetPath);
+  } catch (err: any) {
+    // If atomic rename fails (e.g. cross-device link or EROFS on temp path), try direct write
+    try {
+      fs.writeFileSync(targetPath, JSON.stringify(data, null, 2), 'utf-8');
+    } catch (writeErr: any) {
+      console.error('CRITICAL: Failed to write database to disk:', writeErr?.message || writeErr);
+      // memoryState remains preserved in warm memory cache
+    }
+    if (fs.existsSync(tempPath)) {
+      try {
+        fs.unlinkSync(tempPath);
+      } catch {}
+    }
+  }
 }
 
 // ----------------------------------------------------

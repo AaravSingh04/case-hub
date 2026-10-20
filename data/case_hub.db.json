@@ -23,7 +23,7 @@
       "year_of_study": "Year 2",
       "role": "student",
       "created_at": "2026-09-10T10:00:00Z",
-      "updated_at": "2026-10-20T14:46:20.446Z",
+      "updated_at": "2026-10-20T15:02:34.728Z",
       "phone_number": "+91 98765 43210",
       "email_verified": true
     },
@@ -75,6 +75,30 @@
       "role": "student",
       "created_at": "2026-10-20T14:47:23.145Z",
       "updated_at": "2026-10-20T14:47:23.145Z"
+    },
+    {
+      "id": "usr_student_1792507726538",
+      "email": "student_1792507724873@casehub.internal",
+      "display_name": "Vikramaditya Singhania",
+      "phone_number": "+91 98765 43210",
+      "program_of_study": "MBA Strategy & Finance",
+      "year_of_study": "Class of 2026",
+      "email_verified": true,
+      "role": "student",
+      "created_at": "2026-10-20T14:48:46.538Z",
+      "updated_at": "2026-10-20T14:48:46.538Z"
+    },
+    {
+      "id": "usr_student_1792508555771",
+      "email": "student_1792508554929@casehub.internal",
+      "display_name": "Vikramaditya Singhania",
+      "phone_number": "+91 98765 43210",
+      "program_of_study": "MBA Strategy & Finance",
+      "year_of_study": "Class of 2026",
+      "email_verified": true,
+      "role": "student",
+      "created_at": "2026-10-20T15:02:35.771Z",
+      "updated_at": "2026-10-20T15:02:35.771Z"
     }
   ],
   "auth_credentials": [
@@ -117,6 +141,22 @@
       "salt": "ce4be1b50bc7cab53b44de263c5b0b81",
       "created_at": "2026-10-20T14:47:23.148Z",
       "updated_at": "2026-10-20T14:47:23.148Z"
+    },
+    {
+      "user_id": "usr_student_1792507726538",
+      "email": "student_1792507724873@casehub.internal",
+      "password_hash": "782aa8af7e16fb1cbbf16199f6f8cb3eee9836c080fbdbe0a9da3072669ab7e9afbba4b2298390180e6b816dacbe6808867cf94934677a5a8d7476cb7d0d9f61",
+      "salt": "91815da9c13c148eef0f3d9e6e3cf64e",
+      "created_at": "2026-10-20T14:48:46.541Z",
+      "updated_at": "2026-10-20T14:48:46.541Z"
+    },
+    {
+      "user_id": "usr_student_1792508555771",
+      "email": "student_1792508554929@casehub.internal",
+      "password_hash": "4b485d975bed18cb1c97482397f6a792b880819c48adb0d521ba8745fd13dcb41b3d6010f4bcc6486f72616fe2d6b1bfaa87e510829a5e6891ea63cf86a22a57",
+      "salt": "77394232c0535183889270ca99200221",
+      "created_at": "2026-10-20T15:02:35.775Z",
+      "updated_at": "2026-10-20T15:02:35.775Z"
     }
   ],
   "email_verifications": [
@@ -1744,6 +1784,464 @@
   "reports": [],
   "case_resources": [],
   "notification_logs": [
+    {
+      "recipient_email": "aarav.mehta@mba.internal",
+      "recipient_name": "Aarav Mehta",
+      "user_id": "usr_student_001",
+      "subject": "Schedule Update: National Valuation Strategy Challenge 2026 | Case Hub",
+      "template_type": "saved_update",
+      "competition_id": "comp_1792508552199_ixka7",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_1792508552199_ixka7",
+        "competitionName": "National Valuation Strategy Challenge 2026",
+        "changedFields": [
+          "registration_deadline"
+        ],
+        "previousValues": {
+          "registration_deadline": "2026-10-30T15:02:32.187Z"
+        },
+        "detailUrl": "http://localhost:3000/competitions/comp_1792508552199_ixka7"
+      },
+      "id": "notif_1792508552506_vi6x",
+      "created_at": "2026-10-20T15:02:32.506Z",
+      "sent_at": "2026-10-20T15:02:32.509Z"
+    },
+    {
+      "recipient_email": "student_1792507724873@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507726538",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792508552456_0yn0",
+      "created_at": "2026-10-20T15:02:32.456Z",
+      "sent_at": "2026-10-20T15:02:32.460Z"
+    },
+    {
+      "recipient_email": "student_1792507724873@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507726538",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792508552449_3995",
+      "created_at": "2026-10-20T15:02:32.449Z",
+      "sent_at": "2026-10-20T15:02:32.452Z"
+    },
+    {
+      "recipient_email": "student_1792507724873@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507726538",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792508552441_7p6d",
+      "created_at": "2026-10-20T15:02:32.441Z",
+      "sent_at": "2026-10-20T15:02:32.446Z"
+    },
+    {
+      "recipient_email": "student_1792507724873@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507726538",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792508552434_5bo6",
+      "created_at": "2026-10-20T15:02:32.434Z",
+      "sent_at": "2026-10-20T15:02:32.438Z"
+    },
+    {
+      "recipient_email": "student_1792507724873@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507726538",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792508552427_ucju",
+      "created_at": "2026-10-20T15:02:32.427Z",
+      "sent_at": "2026-10-20T15:02:32.430Z"
+    },
+    {
+      "recipient_email": "student_1792507724873@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507726538",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792508552417_qsaj",
+      "created_at": "2026-10-20T15:02:32.417Z",
+      "sent_at": "2026-10-20T15:02:32.421Z"
+    },
+    {
+      "recipient_email": "student_1792507724873@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507726538",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792508552410_iyv7",
+      "created_at": "2026-10-20T15:02:32.410Z",
+      "sent_at": "2026-10-20T15:02:32.413Z"
+    },
+    {
+      "recipient_email": "admin@casehub.internal",
+      "recipient_name": "Case Hub Administrator",
+      "subject": "New Competition Uploaded — National Valuation Strategy Challenge 2026 | Case Hub",
+      "template_type": "admin_new_upload",
+      "competition_id": "comp_1792508552199_ixka7",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_1792508552199_ixka7",
+        "competitionName": "National Valuation Strategy Challenge 2026",
+        "uploaderEmail": "aarav.mehta@mba.internal",
+        "detailUrl": "http://localhost:3000/competitions/comp_1792508552199_ixka7"
+      },
+      "id": "notif_1792508552220_qk3n",
+      "created_at": "2026-10-20T15:02:32.220Z",
+      "sent_at": "2026-10-20T15:02:32.224Z"
+    },
+    {
+      "recipient_email": "aarav.mehta@mba.internal",
+      "recipient_name": "Aarav Mehta",
+      "user_id": "usr_student_001",
+      "subject": "Schedule Update: National Valuation Strategy Challenge 2026 | Case Hub",
+      "template_type": "saved_update",
+      "competition_id": "comp_1792507721924_eodly",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_1792507721924_eodly",
+        "competitionName": "National Valuation Strategy Challenge 2026",
+        "changedFields": [
+          "registration_deadline"
+        ],
+        "previousValues": {
+          "registration_deadline": "2026-10-30T14:48:41.914Z"
+        },
+        "detailUrl": "http://localhost:3000/competitions/comp_1792507721924_eodly"
+      },
+      "id": "notif_1792507722281_6p58",
+      "created_at": "2026-10-20T14:48:42.281Z",
+      "sent_at": "2026-10-20T14:48:42.285Z"
+    },
+    {
+      "recipient_email": "student_1792507642131@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507643145",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792507722227_dryn",
+      "created_at": "2026-10-20T14:48:42.227Z",
+      "sent_at": "2026-10-20T14:48:42.232Z"
+    },
+    {
+      "recipient_email": "student_1792507624704@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507626200",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792507722217_fdbr",
+      "created_at": "2026-10-20T14:48:42.217Z",
+      "sent_at": "2026-10-20T14:48:42.222Z"
+    },
+    {
+      "recipient_email": "student_1792507642131@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507643145",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792507722207_zz0h",
+      "created_at": "2026-10-20T14:48:42.207Z",
+      "sent_at": "2026-10-20T14:48:42.212Z"
+    },
+    {
+      "recipient_email": "student_1792507624704@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507626200",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792507722198_78xy",
+      "created_at": "2026-10-20T14:48:42.198Z",
+      "sent_at": "2026-10-20T14:48:42.202Z"
+    },
+    {
+      "recipient_email": "student_1792507642131@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507643145",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792507722190_kn0m",
+      "created_at": "2026-10-20T14:48:42.190Z",
+      "sent_at": "2026-10-20T14:48:42.194Z"
+    },
+    {
+      "recipient_email": "student_1792507624704@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507626200",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792507722183_3i80",
+      "created_at": "2026-10-20T14:48:42.183Z",
+      "sent_at": "2026-10-20T14:48:42.186Z"
+    },
+    {
+      "recipient_email": "student_1792507642131@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507643145",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792507722174_i0os",
+      "created_at": "2026-10-20T14:48:42.174Z",
+      "sent_at": "2026-10-20T14:48:42.178Z"
+    },
+    {
+      "recipient_email": "student_1792507624704@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507626200",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792507722164_spps",
+      "created_at": "2026-10-20T14:48:42.164Z",
+      "sent_at": "2026-10-20T14:48:42.169Z"
+    },
+    {
+      "recipient_email": "student_1792507642131@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507643145",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792507722154_ukn9",
+      "created_at": "2026-10-20T14:48:42.154Z",
+      "sent_at": "2026-10-20T14:48:42.159Z"
+    },
+    {
+      "recipient_email": "student_1792507624704@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507626200",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792507722144_sgqx",
+      "created_at": "2026-10-20T14:48:42.144Z",
+      "sent_at": "2026-10-20T14:48:42.149Z"
+    },
+    {
+      "recipient_email": "student_1792507642131@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507643145",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792507722133_jzpp",
+      "created_at": "2026-10-20T14:48:42.133Z",
+      "sent_at": "2026-10-20T14:48:42.139Z"
+    },
+    {
+      "recipient_email": "student_1792507624704@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507626200",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792507722126_1y5c",
+      "created_at": "2026-10-20T14:48:42.126Z",
+      "sent_at": "2026-10-20T14:48:42.129Z"
+    },
+    {
+      "recipient_email": "student_1792507642131@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507643145",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792507722117_p3t1",
+      "created_at": "2026-10-20T14:48:42.117Z",
+      "sent_at": "2026-10-20T14:48:42.121Z"
+    },
+    {
+      "recipient_email": "student_1792507624704@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792507626200",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792507722107_0ap8",
+      "created_at": "2026-10-20T14:48:42.107Z",
+      "sent_at": "2026-10-20T14:48:42.112Z"
+    },
+    {
+      "recipient_email": "admin@casehub.internal",
+      "recipient_name": "Case Hub Administrator",
+      "subject": "New Competition Uploaded — National Valuation Strategy Challenge 2026 | Case Hub",
+      "template_type": "admin_new_upload",
+      "competition_id": "comp_1792507721924_eodly",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_1792507721924_eodly",
+        "competitionName": "National Valuation Strategy Challenge 2026",
+        "uploaderEmail": "aarav.mehta@mba.internal",
+        "detailUrl": "http://localhost:3000/competitions/comp_1792507721924_eodly"
+      },
+      "id": "notif_1792507721927_bpzq",
+      "created_at": "2026-10-20T14:48:41.927Z",
+      "sent_at": "2026-10-20T14:48:41.931Z"
+    },
     {
       "recipient_email": "aarav.mehta@mba.internal",
       "recipient_name": "Aarav Mehta",
@@ -3382,6 +3880,32 @@
   ],
   "discovery_logs": [
     {
+      "run_id": "run_1792508552662_u3jp",
+      "source": "Unstop",
+      "started_at": "2026-10-20T15:02:32.662Z",
+      "completed_at": "2026-10-20T15:02:34.667Z",
+      "status": "success",
+      "items_found": 38,
+      "items_published": 0,
+      "duplicates_skipped": 38,
+      "errors": [],
+      "next_scheduled_at": "2026-10-23T15:02:34.667Z",
+      "id": "disc_1792508554669_zrui"
+    },
+    {
+      "run_id": "run_1792507722383_x86g",
+      "source": "Unstop",
+      "started_at": "2026-10-20T14:48:42.383Z",
+      "completed_at": "2026-10-20T14:48:44.632Z",
+      "status": "success",
+      "items_found": 38,
+      "items_published": 0,
+      "duplicates_skipped": 38,
+      "errors": [],
+      "next_scheduled_at": "2026-10-23T14:48:44.632Z",
+      "id": "disc_1792507724633_op9e"
+    },
+    {
       "run_id": "run_1792507579557_8ols",
       "source": "Unstop",
       "started_at": "2026-10-20T14:46:19.557Z",
@@ -3528,7 +4052,7 @@
   "discovery_config": {
     "interval_days": 3,
     "enabled": true,
-    "last_successful_discovery_at": "2026-10-20T14:46:20.397Z",
+    "last_successful_discovery_at": "2026-10-20T15:02:34.667Z",
     "sources": [
       "Unstop",
       "Corporate & B-School Challenges"

@@ -54,19 +54,24 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Save to public/uploads
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
-
+    // Save to public/uploads if filesystem is writable; fallback to data URI on read-only serverless platforms (Vercel)
+    let publicUrl = '';
     const cleanBaseName = path.basename(originalName, ext).replace(/[^a-zA-Z0-9_-]/g, '_').substring(0, 30);
     const filename = `${type}_${Date.now()}_${cleanBaseName}${ext}`;
-    const destinationPath = path.join(uploadDir, filename);
 
-    fs.writeFileSync(destinationPath, buffer);
-
-    const publicUrl = `/uploads/${filename}`;
+    try {
+      const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+      if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir, { recursive: true });
+      }
+      const destinationPath = path.join(uploadDir, filename);
+      fs.writeFileSync(destinationPath, buffer);
+      publicUrl = `/uploads/${filename}`;
+    } catch (writeErr) {
+      // Serverless read-only fallback: encode as data URI
+      const mime = file.type || (type === 'poster' ? 'image/jpeg' : 'application/pdf');
+      publicUrl = `data:${mime};base64,${buffer.toString('base64')}`;
+    }
 
     return NextResponse.json({
       success: true,
