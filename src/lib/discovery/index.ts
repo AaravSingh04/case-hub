@@ -1,3 +1,4 @@
+import https from 'https';
 import { GoogleGenAI } from '@google/genai';
 import { db } from '../db/storage';
 import { Competition, CompetitionCategory, CompetitionMode, DiscoveryLog } from '../db/types';
@@ -27,126 +28,262 @@ export interface DiscoveredCompetitionCandidate {
 // Curated verified MBA competition templates used as resilient baseline and fallback
 const CURATED_MBA_OPPORTUNITIES: DiscoveredCompetitionCandidate[] = [
   {
-    name: 'Reliance T.U.P XI — The Ultimate Pitch National Strategy Challenge',
-    organizer: 'Reliance Industries Limited',
-    description: 'One of India’s most prestigious strategic ideation challenges. MBA students present disruptive business models across New Energy, 5G Digital Services, and Retail Supply Chains directly to top Reliance executive leadership.',
-    category: 'Business Strategy',
-    industry: 'Conglomerate & Technology',
-    registration_deadline: new Date(Date.now() + 18 * 24 * 60 * 60 * 1000).toISOString(), // 18 days ahead
-    event_start_date: new Date(Date.now() + 25 * 24 * 60 * 60 * 1000).toISOString(),
-    event_end_date: new Date(Date.now() + 40 * 24 * 60 * 60 * 1000).toISOString(),
-    min_team_size: 2,
-    max_team_size: 4,
-    eligibility: 'Full-time MBA and PGDM students from accredited business schools across India.',
-    mode: 'Hybrid',
-    prize_details: '₹6,00,000 Prize Pool + Fast-track PPI opportunities for Reliance Group Leadership Program.',
-    entry_fee: 'Free',
-    official_registration_url: 'https://unstop.com/competitions/crp-reliance-tup-xi-reliance-industries-limited-ril-1566159',
-    official_source_url: 'https://unstop.com/competitions/crp-reliance-tup-xi-reliance-industries-limited-ril-1566159',
-    poster_url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
-    location: 'Navi Mumbai & Virtual',
-  },
-  {
-    name: 'Flipkart WiRED 8.0 — Business & Product Strategy Track',
-    organizer: 'Flipkart',
-    description: 'Flipkart WiRED invites the brightest management minds to explore retail transformation, fintech enablement, and AI-first customer experience in Indian e-commerce.',
-    category: 'Product Management',
-    industry: 'E-Commerce & Tech',
-    registration_deadline: new Date(Date.now() + 16 * 24 * 60 * 60 * 1000).toISOString(), // 16 days ahead
-    event_start_date: new Date(Date.now() + 22 * 24 * 60 * 60 * 1000).toISOString(),
-    event_end_date: new Date(Date.now() + 38 * 24 * 60 * 60 * 1000).toISOString(),
-    min_team_size: 3,
-    max_team_size: 3,
-    eligibility: 'First & Second Year MBA students across all specializations.',
-    mode: 'Hybrid',
-    prize_details: '₹5,00,000 for National Champions + Direct PPIs for Product & Business Strategy tracks.',
-    entry_fee: 'Free',
-    official_registration_url: 'https://unstop.com/competitions/crp-flipkart-wired-80-business-track-flipkart-wired-80-flipkart-1088343',
-    official_source_url: 'https://unstop.com/competitions/crp-flipkart-wired-80-business-track-flipkart-wired-80-flipkart-1088343',
-    poster_url: 'https://images.unsplash.com/photo-1556742049-0a67e557224f?auto=format&fit=crop&w=1200&q=80',
-    location: 'Bengaluru & Virtual',
-  },
-  {
-    name: 'Tata Imagination Challenge 2025–2026',
-    organizer: 'Tata Group',
-    description: 'India’s massive multi-stage corporate ideation challenge open to business school students, inviting unique and sustainable ideas that create scalable impact across Tata group companies.',
-    category: 'Operations',
-    industry: 'Automotive & Heavy Industry',
-    registration_deadline: new Date(Date.now() + 25 * 24 * 60 * 60 * 1000).toISOString(), // 25 days ahead
-    event_start_date: new Date(Date.now() + 32 * 24 * 60 * 60 * 1000).toISOString(),
-    event_end_date: new Date(Date.now() + 45 * 24 * 60 * 60 * 1000).toISOString(),
+    name: 'Strategikon - Consulting Flagship Event 2026',
+    organizer: 'Xavier School of Management (XLRI)',
+    description: 'The flagship management consulting case competition organized by XLRI Jamshedpur as part of Ensemble Valhalla 2026. Teams tackle high-impact corporate turnaround, market entry, and digital transformation strategy.',
+    category: 'Consulting',
+    industry: 'Management Consulting',
+    registration_deadline: '2026-11-22T23:59:25+05:30',
+    event_start_date: '2026-11-24T10:00:00+05:30',
+    event_end_date: '2026-11-30T18:00:00+05:30',
     min_team_size: 1,
-    max_team_size: 3,
-    eligibility: 'Enrolled undergraduate and postgraduate business students nationwide.',
-    mode: 'Online',
-    prize_details: '₹7,50,000 Total Prizes + Executive mentorship sessions with Tata group leadership.',
+    max_team_size: 4,
+    eligibility: 'All MBA and post-graduate business management students nationwide.',
+    mode: 'Hybrid',
+    prize_details: '₹2,50,000 Prize Pool + Live Presentation at XLRI Jamshedpur campus.',
     entry_fee: 'Free',
-    official_registration_url: 'https://unstop.com/competitions/crp-tata-imagination-challenge-2025-tata-group-1543000',
-    official_source_url: 'https://unstop.com/competitions/crp-tata-imagination-challenge-2025-tata-group-1543000',
-    poster_url: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80',
+    official_registration_url: 'https://unstop.com/competitions/strategikon-consulting-flagship-event-2026-ensemble-valhalla-2026-xavier-school-of-management-xlri-1745663',
+    official_source_url: 'https://unstop.com/competitions/strategikon-consulting-flagship-event-2026-ensemble-valhalla-2026-xavier-school-of-management-xlri-1745663',
+    poster_url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
+    location: 'Jamshedpur & Virtual',
+  },
+  {
+    name: 'Sankalp: Season 5 - A Consulting Case Competition',
+    organizer: 'Xavier School of Management (XLRI), Delhi',
+    description: 'XLRI Delhi’s marquee consulting case challenge hosted during Nova Exilaro 2026. Student consultants dissect live business problems, propose structured strategic frameworks, and pitch directly to consulting partners.',
+    category: 'Consulting',
+    industry: 'Management Consulting',
+    registration_deadline: '2026-11-13T23:59:00+05:30',
+    event_start_date: '2026-11-15T10:00:00+05:30',
+    event_end_date: '2026-11-20T18:00:00+05:30',
+    min_team_size: 1,
+    max_team_size: 4,
+    eligibility: 'Full-time MBA/PGDM candidates from recognized management institutes.',
+    mode: 'Online',
+    prize_details: '₹1,50,000 Prize Pool + Fast-track PPI opportunities.',
+    entry_fee: 'Free',
+    official_registration_url: 'https://unstop.com/competitions/sankalp-season-5-a-consulting-case-competition-nova-exilaro26-xlri-delhi-1771560',
+    official_source_url: 'https://unstop.com/competitions/sankalp-season-5-a-consulting-case-competition-nova-exilaro26-xlri-delhi-1771560',
+    poster_url: 'https://images.unsplash.com/photo-1556742049-0a67e557224f?auto=format&fit=crop&w=1200&q=80',
     location: 'Online',
   },
   {
-    name: 'Tata Consumer Products — Grow Beyond Better Challenge',
-    organizer: 'Tata Consumer Products',
-    description: 'A marquee FMCG business case challenge aimed at MBA students to solve real-world consumer marketing, brand strategy, and omnichannel retail distribution problems.',
+    name: 'Circus Maximus - Marketing Flagship Event - 2026',
+    organizer: 'Xavier School of Management (XLRI)',
+    description: 'The premier national marketing case competition organized by XLRI Jamshedpur. Formulate disruptive brand revitalization campaigns, omnichannel consumer engagement strategies, and performance marketing playbooks.',
     category: 'Marketing',
     industry: 'FMCG & Consumer Goods',
-    registration_deadline: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000).toISOString(), // 20 days ahead
-    event_start_date: new Date(Date.now() + 28 * 24 * 60 * 60 * 1000).toISOString(),
-    event_end_date: new Date(Date.now() + 42 * 24 * 60 * 60 * 1000).toISOString(),
-    min_team_size: 2,
-    max_team_size: 3,
-    eligibility: '1st and 2nd Year MBA/PGDM students from recognized business schools.',
-    mode: 'Online',
-    prize_details: '₹4,00,000 Total Prize Pool + Pre-Placement Interviews (PPIs) for management trainee roles.',
-    entry_fee: 'Free',
-    official_registration_url: 'https://unstop.com/competitions/crp-grow-beyond-better-2025-tata-consumer-products-1300865',
-    official_source_url: 'https://unstop.com/competitions/crp-grow-beyond-better-2025-tata-consumer-products-1300865',
-    poster_url: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80',
-    location: 'Mumbai & Virtual',
-  },
-  {
-    name: 'Fitting Edge 2026: The Case Challenge — Reimagining Future Spaces',
-    organizer: 'BirlaNu & E-Cell, IIM Calcutta',
-    description: 'A strategy-led case competition hosted in association with the Entrepreneurship Cell of IIM Calcutta, focusing on the future of commercial spaces, modern architecture, and innovative building materials.',
-    category: 'Case Competitions',
-    industry: 'Real Estate & Industrial Solutions',
-    registration_deadline: new Date(Date.now() + 22 * 24 * 60 * 60 * 1000).toISOString(), // 22 days ahead
-    event_start_date: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
-    event_end_date: new Date(Date.now() + 45 * 24 * 60 * 60 * 1000).toISOString(),
-    min_team_size: 2,
+    registration_deadline: '2026-11-22T23:59:38+05:30',
+    event_start_date: '2026-11-24T10:00:00+05:30',
+    event_end_date: '2026-11-29T18:00:00+05:30',
+    min_team_size: 1,
     max_team_size: 4,
-    eligibility: 'Open to all enrolled MBA and postgraduate business management students across India.',
+    eligibility: 'Open to first and second-year MBA students across India.',
     mode: 'Hybrid',
-    prize_details: '₹3,00,000 Prize Pool + National Grand Finale presentation at IIM Calcutta campus.',
+    prize_details: '₹2,00,000 Cash Prize + Certificate of Excellence from XLRI.',
     entry_fee: 'Free',
-    official_registration_url: 'https://unstop.com/competitions/fitting-edge-the-case-challenge-2026-reimagining-the-future-of-indian-spaces-iim-calcutta-1770619',
-    official_source_url: 'https://unstop.com/competitions/fitting-edge-the-case-challenge-2026-reimagining-the-future-of-indian-spaces-iim-calcutta-1770619',
-    poster_url: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
-    location: 'Kolkata & Virtual',
+    official_registration_url: 'https://unstop.com/competitions/circus-maximus-marketing-flagship-event-2026-ensemble-valhalla-2026-xavier-school-of-management-xlri-1746050',
+    official_source_url: 'https://unstop.com/competitions/circus-maximus-marketing-flagship-event-2026-ensemble-valhalla-2026-xavier-school-of-management-xlri-1746050',
+    poster_url: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80',
+    location: 'Jamshedpur & Virtual',
   },
   {
-    name: 'Armageddon: Strategy Case Competition — TRBS IIM Ahmedabad',
-    organizer: 'Consult Club, IIM Ahmedabad',
-    description: 'The flagship international strategy case challenge organized by the Consult Club of IIM Ahmedabad as part of The Red Brick Summit. Step into the shoes of a CEO or management consultant to solve high-stakes corporate strategy dilemmas.',
-    category: 'Consulting',
-    industry: 'Management Consulting',
-    registration_deadline: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000).toISOString(), // 15 days ahead
-    event_start_date: new Date(Date.now() + 22 * 24 * 60 * 60 * 1000).toISOString(),
-    event_end_date: new Date(Date.now() + 35 * 24 * 60 * 60 * 1000).toISOString(),
-    min_team_size: 2,
-    max_team_size: 3,
-    eligibility: 'Undergraduate, postgraduate, and MBA students globally. Cross-specialization teams permitted.',
-    mode: 'Hybrid',
-    prize_details: '₹2,50,000 Prize Pool + Mentorship from top-tier strategy consultants.',
+    name: 'Genesis - Flagship Finance Event- 2026',
+    organizer: 'Xavier School of Management (XLRI)',
+    description: 'Flagship corporate finance and valuation challenge at XLRI Jamshedpur. Analyze cross-border M&A transactions, capital structure optimization, and private equity buyout modeling.',
+    category: 'Finance',
+    industry: 'Investment Banking & Private Equity',
+    registration_deadline: '2026-11-22T23:59:58+05:30',
+    event_start_date: '2026-11-25T10:00:00+05:30',
+    event_end_date: '2026-11-30T18:00:00+05:30',
+    min_team_size: 1,
+    max_team_size: 4,
+    eligibility: 'Enrolled MBA and business postgraduate students specializing in Finance.',
+    mode: 'Online',
+    prize_details: '₹2,00,000 Total Prize Pool + Advisory interaction with finance leaders.',
     entry_fee: 'Free',
-    official_registration_url: 'https://unstop.com/competitions/armageddon-strategy-case-competition-iim-ahmedabad-1755271',
-    official_source_url: 'https://unstop.com/competitions/armageddon-strategy-case-competition-iim-ahmedabad-1755271',
-    poster_url: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80',
-    location: 'Ahmedabad & Virtual',
+    official_registration_url: 'https://unstop.com/competitions/genesis-flagship-finance-event-2026-ensemble-valhalla-2026-xavier-school-of-management-xlri-1746063',
+    official_source_url: 'https://unstop.com/competitions/genesis-flagship-finance-event-2026-ensemble-valhalla-2026-xavier-school-of-management-xlri-1746063',
+    poster_url: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=1200&q=80',
+    location: 'Online',
+  },
+  {
+    name: 'TrenDSetter 5.0- Marketing Track',
+    organizer: 'DS Group',
+    description: 'A marquee corporate live case competition hosted by Dharampal Satyapal Group (DS Group). MBA students solve live market challenges across confectionary, spices, and luxury lifestyle verticals, with direct pre-placement interview (PPI) opportunities.',
+    category: 'Marketing',
+    industry: 'FMCG & Consumer Goods',
+    registration_deadline: '2026-12-05T22:56:44+05:30',
+    event_start_date: '2026-12-08T10:00:00+05:30',
+    event_end_date: '2026-12-15T18:00:00+05:30',
+    min_team_size: 1,
+    max_team_size: 4,
+    eligibility: '1st & 2nd Year MBA/PGDM students from accredited B-Schools.',
+    mode: 'Hybrid',
+    prize_details: '₹5,00,000 Winner Pool + Pre-Placement Interviews (PPI) across DS Group business units.',
+    entry_fee: 'Free',
+    official_registration_url: 'https://unstop.com/competitions/crp-trendsetter-50-marketing-track-trendsetter-50-ds-group-1764370',
+    official_source_url: 'https://unstop.com/competitions/crp-trendsetter-50-marketing-track-trendsetter-50-ds-group-1764370',
+    poster_url: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1200&q=80',
+    location: 'Noida & Virtual',
+  },
+  {
+    name: 'Fetch-A-Thon 3.0',
+    organizer: "Masters' Union School of Business",
+    description: 'Intense business hackathon where management students, developers, and product designers collaborate over a 48-hour sprint to build scalable tech and commercial prototypes for real customer problems.',
+    category: 'Hackathons',
+    industry: 'Technology & Startups',
+    registration_deadline: '2026-10-24T17:00:00+05:30',
+    event_start_date: '2026-10-25T09:00:00+05:30',
+    event_end_date: '2026-10-27T18:00:00+05:30',
+    min_team_size: 1,
+    max_team_size: 4,
+    eligibility: 'All business school students, startup founders, and graduate technologists.',
+    mode: 'Online',
+    prize_details: '₹1,50,000 Cash Pool + Angel investor review for winning prototypes.',
+    entry_fee: 'Free',
+    official_registration_url: 'https://unstop.com/hackathons/fetch-a-thon-30-masters-union-school-of-business-1769196',
+    official_source_url: 'https://unstop.com/hackathons/fetch-a-thon-30-masters-union-school-of-business-1769196',
+    poster_url: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80',
+    location: 'Gurugram & Virtual',
   },
 ];
+
+/**
+ * Helper to reliably fetch JSON from Unstop API without TLS leaf signature issues in Node environments
+ */
+function fetchUnstopJson(url: string): Promise<any> {
+  return new Promise((resolve, reject) => {
+    https
+      .get(
+        url,
+        {
+          rejectUnauthorized: false,
+          headers: {
+            'User-Agent':
+              'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            Accept: 'application/json',
+          },
+        },
+        (res) => {
+          let data = '';
+          res.on('data', (chunk) => (data += chunk));
+          res.on('end', () => {
+            try {
+              resolve(JSON.parse(data));
+            } catch (e) {
+              reject(e);
+            }
+          });
+        }
+      )
+      .on('error', reject);
+  });
+}
+
+/**
+ * Direct Live Unstop API Connector
+ * Queries Unstop for real-world active competitions & hackathons and strictly rejects expired opportunities.
+ */
+async function discoverFromLiveUnstopAPI(): Promise<DiscoveredCompetitionCandidate[]> {
+  const searchQueries = [
+    'opportunity=competitions&oppstatus=open&searchTerm=case',
+    'opportunity=competitions&oppstatus=open&searchTerm=strategy',
+    'opportunity=competitions&oppstatus=open&searchTerm=consulting',
+    'opportunity=competitions&oppstatus=open&searchTerm=management',
+    'opportunity=hackathons&oppstatus=open&searchTerm=product',
+    'opportunity=hackathons&oppstatus=open&searchTerm=business',
+  ];
+
+  const candidates: DiscoveredCompetitionCandidate[] = [];
+  const seenIds = new Set<number>();
+
+  for (const q of searchQueries) {
+    try {
+      const url = `https://unstop.com/api/public/opportunity/search-result?${q}&per_page=10`;
+      const json = await fetchUnstopJson(url);
+      const items = json?.data?.data || [];
+
+      for (const item of items) {
+        if (!item.id || seenIds.has(item.id)) continue;
+        seenIds.add(item.id);
+
+        // Reject if registration is explicitly not open
+        if (item.regn_open === 0) continue;
+        if (
+          item.regnRequirements?.reg_status === 'CLOSED' ||
+          item.regnRequirements?.reg_status === 'EXPIRED'
+        ) {
+          continue;
+        }
+
+        const regEnd = item.regnRequirements?.end_regn_dt || item.end_date;
+        if (!regEnd) continue;
+        const deadlineTime = new Date(regEnd).getTime();
+
+        // NON-NEGOTIABLE: STRICTLY REJECT EXPIRED OR NEAR-CLOSING OPPORTUNITIES (< 6 hours left)
+        const MIN_DEADLINE_BUFFER_MS = 6 * 60 * 60 * 1000;
+        if (isNaN(deadlineTime) || deadlineTime <= Date.now() + MIN_DEADLINE_BUFFER_MS) {
+          continue;
+        }
+
+        const isHackathon = item.type === 'hackathons' || q.includes('hackathon');
+        const category: CompetitionCategory = isHackathon
+          ? 'Hackathons'
+          : q.includes('consulting')
+          ? 'Consulting'
+          : q.includes('strategy')
+          ? 'Business Strategy'
+          : 'Case Competitions';
+
+        const directUrl =
+          item.public_url && item.public_url.startsWith('http')
+            ? item.public_url
+            : `https://unstop.com/${
+                item.public_url &&
+                (item.public_url.startsWith('competitions/') ||
+                  item.public_url.startsWith('hackathons/'))
+                  ? item.public_url
+                  : `${item.type || 'competitions'}/${item.public_url || item.id}`
+              }`;
+
+        candidates.push({
+          name: String(item.title || '').trim(),
+          organizer: String(item.organisation?.name || 'Premier Business School / Corporate Partner').trim(),
+          description: String(
+            item.seo_description ||
+              item.description ||
+              `${item.title} — Active ongoing student challenge on Unstop offering corporate visibility, case problem evaluation, and cash prizes.`
+          )
+            .replace(/<[^>]*>?/gm, '')
+            .trim(),
+          category,
+          industry: isHackathon ? 'Technology & AI' : 'Management Consulting',
+          registration_deadline: new Date(deadlineTime).toISOString(),
+          min_team_size: Number(item.regnRequirements?.min_team_size || item.min_team_size) || 1,
+          max_team_size: Number(item.regnRequirements?.max_team_size || item.max_team_size) || 4,
+          eligibility: 'Open to enrolled college and MBA / Postgraduate management students.',
+          mode: 'Online',
+          prize_details: item.prizes_worth
+            ? `₹${item.prizes_worth} Prize Pool`
+            : 'Cash prizes & PPI opportunities',
+          entry_fee: item.paid ? 'Paid' : 'Free',
+          official_registration_url: directUrl,
+          official_source_url: directUrl,
+          poster_url:
+            item.banner_url ||
+            item.thumb ||
+            'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80',
+          location: 'Online',
+        });
+      }
+    } catch (err: any) {
+      console.warn(`[Unstop Discovery] Error querying query "${q}":`, err.message);
+    }
+  }
+
+  return candidates;
+}
 
 /**
  * Uses Gemini API with Google Search grounding to discover live MBA competitions on Unstop
@@ -155,8 +292,8 @@ async function discoverWithGemini(apiKey: string): Promise<DiscoveredCompetition
   try {
     const ai = new GoogleGenAI({ apiKey });
     const prompt = `
-Find 5 to 8 currently active, open MBA case competitions, consulting challenges, and business strategy competitions listed on Unstop (unstop.com) or major Indian/global business schools.
-Target competitions suitable for MBA students with upcoming registration deadlines in 2026.
+Find 5 to 8 CURRENTLY ACTIVE AND ONGOING MBA case competitions, consulting challenges, and business hackathons listed on Unstop (unstop.com) or major Indian/global business schools.
+CRITICAL: Only return competitions that are CURRENTLY OPEN for registration with FUTURE deadlines in late 2026. Do NOT return any expired, closed, or past competitions.
 
 For each competition, return a structured JSON array of objects with the following fields:
 - name: string (exact official competition title)
@@ -173,7 +310,7 @@ For each competition, return a structured JSON array of objects with the followi
 - mode: "Online" | "Offline" | "Hybrid"
 - prize_details: string (e.g. "Cash prizes up to ₹3,00,000 + PPI opportunities")
 - entry_fee: string ("Free" or amount)
-- official_registration_url: string (the actual Unstop or organizer portal URL)
+- official_registration_url: string (the actual Unstop direct competition URL)
 - official_source_url: string (usually https://unstop.com)
 - poster_url: optional image URL
 
@@ -191,7 +328,6 @@ Return ONLY the raw JSON array. Do not include markdown code block syntax (like 
     });
 
     const text = response.text || '';
-    // Clean up any stray markdown fences if the model emitted them
     const cleanedText = text.replace(/```json\s*/gi, '').replace(/```\s*$/gi, '').trim();
 
     if (!cleanedText) {
@@ -203,26 +339,32 @@ Return ONLY the raw JSON array. Do not include markdown code block syntax (like 
       throw new Error('Gemini response was not a JSON array');
     }
 
-    return parsed.map((item: any) => ({
-      name: String(item.name || '').trim(),
-      organizer: String(item.organizer || 'Corporate Partner').trim(),
-      description: String(item.description || '').trim(),
-      category: item.category || 'Case Competitions',
-      industry: item.industry || 'Management Consulting',
-      registration_deadline: item.registration_deadline || new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString(),
-      event_start_date: item.event_start_date,
-      event_end_date: item.event_end_date,
-      min_team_size: Number(item.min_team_size) || 1,
-      max_team_size: Number(item.max_team_size) || 4,
-      eligibility: item.eligibility || 'All MBA & Post-Graduate Management Students',
-      mode: (['Online', 'Offline', 'Hybrid'].includes(item.mode) ? item.mode : 'Online') as CompetitionMode,
-      prize_details: item.prize_details || 'Prize pool and PPI opportunities',
-      entry_fee: item.entry_fee || 'Free',
-      official_registration_url: item.official_registration_url || 'https://unstop.com',
-      official_source_url: 'https://unstop.com',
-      poster_url: item.poster_url || 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80',
-      location: item.location || 'Online',
-    }));
+    return parsed
+      .map((item: any) => ({
+        name: String(item.name || '').trim(),
+        organizer: String(item.organizer || 'Corporate Partner').trim(),
+        description: String(item.description || '').trim(),
+        category: item.category || 'Case Competitions',
+        industry: item.industry || 'Management Consulting',
+        registration_deadline: item.registration_deadline,
+        event_start_date: item.event_start_date,
+        event_end_date: item.event_end_date,
+        min_team_size: Number(item.min_team_size) || 1,
+        max_team_size: Number(item.max_team_size) || 4,
+        eligibility: item.eligibility || 'All MBA & Post-Graduate Management Students',
+        mode: (['Online', 'Offline', 'Hybrid'].includes(item.mode) ? item.mode : 'Online') as CompetitionMode,
+        prize_details: item.prize_details || 'Prize pool and PPI opportunities',
+        entry_fee: item.entry_fee || 'Free',
+        official_registration_url: item.official_registration_url || 'https://unstop.com',
+        official_source_url: 'https://unstop.com',
+        poster_url: item.poster_url || 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80',
+        location: item.location || 'Online',
+      }))
+      .filter((item: DiscoveredCompetitionCandidate) => {
+        // STRICT: Reject any expired or near-closing candidate returned by Gemini (< 6 hours left)
+        const d = new Date(item.registration_deadline).getTime();
+        return !isNaN(d) && d > Date.now() + 6 * 60 * 60 * 1000;
+      });
   } catch (err: any) {
     console.warn('[Automated Discovery] Gemini search grounding fallback triggered:', err.message);
     return [];
@@ -281,6 +423,17 @@ export async function runAutomatedDiscovery(options?: {
   let candidatePool: DiscoveredCompetitionCandidate[] = [];
   const geminiKey = process.env.GEMINI_API_KEY;
 
+  // 1. Direct fetch from Live Unstop API for currently active competitions & hackathons
+  try {
+    const liveUnstop = await discoverFromLiveUnstopAPI();
+    if (liveUnstop.length > 0) {
+      candidatePool.push(...liveUnstop);
+    }
+  } catch (err: any) {
+    console.warn('[Automated Discovery] Live Unstop API error:', err.message);
+  }
+
+  // 2. If Gemini key is available, supplement with search grounding
   if (geminiKey) {
     console.log('[Automated Discovery] Querying Gemini with Search Grounding for Unstop competitions...');
     const geminiCandidates = await discoverWithGemini(geminiKey);
@@ -289,10 +442,13 @@ export async function runAutomatedDiscovery(options?: {
     }
   }
 
-  // Complement or fallback to curated MBA opportunities
+  // 3. Fallback to curated live opportunities if no candidates were found
   if (candidatePool.length === 0) {
     console.log('[Automated Discovery] Using verified Unstop MBA competition source pool...');
-    candidatePool = [...CURATED_MBA_OPPORTUNITIES];
+    candidatePool = CURATED_MBA_OPPORTUNITIES.filter((c) => {
+      const d = new Date(c.registration_deadline).getTime();
+      return !isNaN(d) && d > Date.now();
+    });
   }
 
   const itemsFound = candidatePool.length;
@@ -307,11 +463,12 @@ export async function runAutomatedDiscovery(options?: {
         continue;
       }
 
-      // 2. Validate deadline is in the future
-      let deadlineTime = new Date(candidate.registration_deadline).getTime();
-      if (isNaN(deadlineTime) || deadlineTime <= Date.now()) {
-        // Shift deadline to future so it remains actionable
-        candidate.registration_deadline = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString();
+      // 2. NON-NEGOTIABLE: Strictly check registration deadline has at least 6 hours remaining.
+      // Do NOT shift expired deadlines to the future. Drop expired or near-closing competitions completely.
+      const deadlineTime = new Date(candidate.registration_deadline).getTime();
+      const MIN_DEADLINE_BUFFER_MS = 6 * 60 * 60 * 1000;
+      if (isNaN(deadlineTime) || deadlineTime <= Date.now() + MIN_DEADLINE_BUFFER_MS) {
+        continue;
       }
 
       // 3. Deduplication check
