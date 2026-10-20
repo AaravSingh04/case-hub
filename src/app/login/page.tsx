@@ -19,8 +19,69 @@ import {
   RefreshCw,
   ArrowLeft,
   ShieldCheck,
+  Sparkles,
 } from 'lucide-react';
 import Link from 'next/link';
+
+const PROGRAMME_GROUPS = [
+  {
+    group: 'MBA & Management Courses',
+    options: [
+      'MBA in Product Management',
+      'MBA Core Strategy & General Management',
+      'MBA Marketing & Brand Management',
+      'MBA Finance & Investment Banking',
+      'MBA Business Analytics & Artificial Intelligence',
+      'MBA Operations & Supply Chain Management',
+      'MBA Human Resource Management',
+      'MBA International Business',
+      'MBA Healthcare & Pharmaceutical Management',
+      'Executive MBA (EMBA)',
+      'Postgraduate Diploma in Management (PGDM)',
+    ],
+  },
+  {
+    group: 'Engineering & Technology (Undergraduate / Dual)',
+    options: [
+      'B.Tech / B.E. Computer Science & Engineering',
+      'B.Tech / B.E. Artificial Intelligence & Data Science',
+      'B.Tech / B.E. Information Technology',
+      'B.Tech / B.E. Electronics & Communication',
+      'B.Tech / B.E. Mechanical Engineering',
+      'B.Tech / B.E. Civil Engineering',
+      'B.Tech / B.E. (Other Specialization)',
+      'BCA (Bachelor of Computer Applications)',
+    ],
+  },
+  {
+    group: 'Commerce, Business & Economics (Undergraduate)',
+    options: [
+      'BBA (Bachelor of Business Administration)',
+      'BBA in Digital Marketing / Analytics',
+      'B.Com / B.Com (Honours)',
+      'BA / B.Sc Economics (Honours)',
+      'B.Sc Mathematics / Statistics / Data Science',
+      'BA (Liberal Arts / Humanities)',
+    ],
+  },
+  {
+    group: 'Postgraduate & Professional Degrees',
+    options: [
+      'M.Tech / M.E. / M.S.',
+      'MCA (Master of Computer Applications)',
+      'M.Com',
+      'M.Sc (Data Science / Economics / Analytics)',
+      'Law (LLB / LLM)',
+      'Chartered Accountancy (CA / CFA)',
+    ],
+  },
+  {
+    group: 'Other Specialization',
+    options: [
+      'Other (Specify my course name)',
+    ],
+  },
+];
 
 type AuthMode = 'signin' | 'register' | 'forgot_password';
 type RegisterStep = 'details' | 'otp' | 'password';
@@ -47,7 +108,8 @@ function AuthForm() {
   const [regStep, setRegStep] = useState<RegisterStep>('details');
   const [fullName, setFullName] = useState('');
   const [regEmail, setRegEmail] = useState('');
-  const [programOfStudy, setProgramOfStudy] = useState('MBA Core Strategy');
+  const [programOfStudy, setProgramOfStudy] = useState('MBA in Product Management');
+  const [customProgramOfStudy, setCustomProgramOfStudy] = useState('');
   const [yearOfStudy, setYearOfStudy] = useState('Year 1');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [otp, setOtp] = useState('');
@@ -55,6 +117,7 @@ function AuthForm() {
   const [regPassword, setRegPassword] = useState('');
   const [regConfirmPassword, setRegConfirmPassword] = useState('');
   const [cooldown, setCooldown] = useState(0);
+  const [devOtpCode, setDevOtpCode] = useState<string | null>(null);
 
   // Forgot Password State
   const [resetStep, setResetStep] = useState<ResetStep>('request');
@@ -62,6 +125,7 @@ function AuthForm() {
   const [resetOtp, setResetOtp] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
+  const [resetDevOtpCode, setResetDevOtpCode] = useState<string | null>(null);
 
   // Cooldown countdown timer
   useEffect(() => {
@@ -117,6 +181,16 @@ function AuthForm() {
       return;
     }
 
+    const effectiveProgram =
+      programOfStudy === 'Other (Specify my course name)'
+        ? customProgramOfStudy.trim()
+        : programOfStudy;
+
+    if (programOfStudy === 'Other (Specify my course name)' && !customProgramOfStudy.trim()) {
+      setError('Please enter your course / programme name.');
+      return;
+    }
+
     try {
       setLoading(true);
       setError('');
@@ -128,7 +202,7 @@ function AuthForm() {
         body: JSON.stringify({
           fullName: fullName.trim(),
           email: regEmail.trim(),
-          programOfStudy,
+          programOfStudy: effectiveProgram,
           yearOfStudy,
           phoneNumber: phoneNumber.trim() || undefined,
         }),
@@ -138,6 +212,12 @@ function AuthForm() {
       if (!res.ok) {
         setError(data.error || 'Could not send verification code.');
         return;
+      }
+
+      if (data.devCode) {
+        setDevOtpCode(data.devCode);
+      } else {
+        setDevOtpCode(null);
       }
 
       setCooldown(data.resendCooldown || 60);
@@ -153,6 +233,11 @@ function AuthForm() {
   // Resend OTP
   const handleResendOtp = async () => {
     if (cooldown > 0) return;
+    const effectiveProgram =
+      programOfStudy === 'Other (Specify my course name)'
+        ? customProgramOfStudy.trim()
+        : programOfStudy;
+
     try {
       setLoading(true);
       setError('');
@@ -164,7 +249,7 @@ function AuthForm() {
         body: JSON.stringify({
           fullName: fullName.trim(),
           email: regEmail.trim(),
-          programOfStudy,
+          programOfStudy: effectiveProgram,
           yearOfStudy,
           phoneNumber: phoneNumber.trim() || undefined,
         }),
@@ -174,6 +259,10 @@ function AuthForm() {
       if (!res.ok) {
         setError(data.error || 'Could not resend code.');
         return;
+      }
+
+      if (data.devCode) {
+        setDevOtpCode(data.devCode);
       }
 
       setCooldown(data.resendCooldown || 60);
@@ -286,6 +375,11 @@ function AuthForm() {
       });
 
       const data = await res.json();
+      if (data.devCode) {
+        setResetDevOtpCode(data.devCode);
+      } else {
+        setResetDevOtpCode(null);
+      }
       setSuccessMessage(data.message || 'If an account exists, a reset code was sent.');
       setResetStep('confirm');
     } catch (err: any) {
@@ -565,7 +659,7 @@ function AuthForm() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="space-y-3">
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-wider text-neutral-muted mb-1">
                       Programme of Study <span className="text-academic-error">*</span>
@@ -573,16 +667,34 @@ function AuthForm() {
                     <select
                       value={programOfStudy}
                       onChange={(e) => setProgramOfStudy(e.target.value)}
-                      className="w-full px-3 py-2 border border-neutral-border rounded text-xs text-neutral-text bg-white focus:outline-none focus:border-brass"
+                      className="w-full px-3 py-2 border border-neutral-border rounded text-xs text-neutral-text bg-white focus:outline-none focus:border-brass font-sans"
                     >
-                      <option value="MBA Core Strategy">MBA Core Strategy</option>
-                      <option value="MBA Marketing & Product">MBA Marketing & Product</option>
-                      <option value="MBA Finance">MBA Finance</option>
-                      <option value="MBA Operations & SCM">MBA Operations & SCM</option>
-                      <option value="Executive MBA">Executive MBA</option>
-                      <option value="Postgraduate Management">Postgraduate Management</option>
-                      <option value="Other Business Degree">Other Business Degree</option>
+                      {PROGRAMME_GROUPS.map((grp) => (
+                        <optgroup key={grp.group} label={grp.group}>
+                          {grp.options.map((opt) => (
+                            <option key={opt} value={opt}>
+                              {opt}
+                            </option>
+                          ))}
+                        </optgroup>
+                      ))}
                     </select>
+
+                    {programOfStudy === 'Other (Specify my course name)' && (
+                      <div className="mt-2.5">
+                        <label className="block text-[11px] font-semibold text-navy-deep mb-1">
+                          Specify Your Course / Degree Name <span className="text-academic-error">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="e.g. B.Tech Aerospace, Dual Degree, B.Des, etc."
+                          value={customProgramOfStudy}
+                          onChange={(e) => setCustomProgramOfStudy(e.target.value)}
+                          required
+                          className="w-full px-3 py-2 border border-neutral-border rounded text-xs text-neutral-text bg-white focus:outline-none focus:border-brass"
+                        />
+                      </div>
+                    )}
                   </div>
 
                   <div>
@@ -592,11 +704,14 @@ function AuthForm() {
                     <select
                       value={yearOfStudy}
                       onChange={(e) => setYearOfStudy(e.target.value)}
-                      className="w-full px-3 py-2 border border-neutral-border rounded text-xs text-neutral-text bg-white focus:outline-none focus:border-brass"
+                      className="w-full px-3 py-2 border border-neutral-border rounded text-xs text-neutral-text bg-white focus:outline-none focus:border-brass font-sans"
                     >
                       <option value="Year 1">Year 1</option>
                       <option value="Year 2">Year 2</option>
+                      <option value="Year 3">Year 3</option>
+                      <option value="Year 4">Year 4</option>
                       <option value="Final Year">Final Year</option>
+                      <option value="Recent Graduate / Alumni">Recent Graduate / Alumni</option>
                     </select>
                   </div>
                 </div>
@@ -631,6 +746,26 @@ function AuthForm() {
             {/* Step 2/3: Verify OTP */}
             {regStep === 'otp' && (
               <form onSubmit={handleVerifyOtp} className="space-y-4">
+                {devOtpCode && (
+                  <div className="p-3.5 bg-amber-50/90 border border-amber-300 rounded text-xs text-navy-deep space-y-1.5 shadow-sm">
+                    <div className="flex items-center gap-1.5 font-semibold text-navy-deep">
+                      <Sparkles className="w-4 h-4 text-brass" />
+                      <span>Verification Code Generated</span>
+                    </div>
+                    <p className="text-neutral-text text-[12px] leading-relaxed">
+                      Email dispatch on this environment is in simulation mode. Your six-digit verification code is:
+                    </p>
+                    <div className="text-center py-1">
+                      <span className="inline-block font-mono text-xl font-bold tracking-[0.25em] text-navy-deep bg-white px-4 py-1 rounded border border-brass/40 shadow-sm select-all">
+                        {devOtpCode}
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-neutral-muted">
+                      Enter this code in the boxes below to complete verification. (To deliver emails to live student inboxes, configure <strong className="font-mono text-navy-deep">RESEND_API_KEY</strong> or <strong className="font-mono text-navy-deep">SMTP_*</strong> in Vercel settings.)
+                    </p>
+                  </div>
+                )}
+
                 <div className="p-4 bg-ivory rounded border border-neutral-border text-center space-y-1">
                   <ShieldCheck className="w-7 h-7 text-brass mx-auto" />
                   <p className="text-xs font-semibold text-navy-deep">
@@ -803,6 +938,26 @@ function AuthForm() {
 
             {resetStep === 'confirm' && (
               <form onSubmit={handleConfirmReset} className="space-y-3.5">
+                {resetDevOtpCode && (
+                  <div className="p-3.5 bg-amber-50/90 border border-amber-300 rounded text-xs text-navy-deep space-y-1.5 shadow-sm">
+                    <div className="flex items-center gap-1.5 font-semibold text-navy-deep">
+                      <Sparkles className="w-4 h-4 text-brass" />
+                      <span>Password Reset Code Generated</span>
+                    </div>
+                    <p className="text-neutral-text text-[12px] leading-relaxed">
+                      Server email dispatch is currently in simulation mode. Your six-digit reset code is:
+                    </p>
+                    <div className="text-center py-1">
+                      <span className="inline-block font-mono text-xl font-bold tracking-[0.25em] text-navy-deep bg-white px-4 py-1 rounded border border-brass/40 shadow-sm select-all">
+                        {resetDevOtpCode}
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-neutral-muted">
+                      Enter this code below to set your new account password.
+                    </p>
+                  </div>
+                )}
+
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-neutral-muted mb-1 text-center">
                     6-Digit Reset Code

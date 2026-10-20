@@ -98,8 +98,11 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      message: `A 6-digit verification code has been sent to ${cleanEmail}.`,
+      message: sendResult.simulated
+        ? `Verification code generated. (Email provider not configured; your code is ${otp})`
+        : `A 6-digit verification code has been dispatched to ${cleanEmail}.`,
       resendCooldown: 60,
+      devCode: sendResult.simulated ? otp : undefined,
     });
   } catch (err: any) {
     console.error('Error sending registration OTP:', err);

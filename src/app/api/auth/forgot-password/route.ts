@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
       verified: false,
     });
 
-    await sendOtpEmail({
+    const sendResult = await sendOtpEmail({
       to: cleanEmail,
       recipientName: user.display_name,
       otp,
@@ -79,6 +79,7 @@ export async function POST(req: NextRequest) {
       success: true,
       message: 'If an account exists with this email, a verification code has been sent.',
       resendCooldown: 60,
+      devCode: sendResult.simulated ? otp : undefined,
     });
   } catch (err: any) {
     console.error('Forgot password error:', err);

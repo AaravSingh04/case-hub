@@ -14,6 +14,7 @@ export interface SendEmailResult {
   success: boolean;
   messageId?: string;
   error?: string;
+  simulated?: boolean;
 }
 
 export async function sendRawEmail(params: {
@@ -23,10 +24,16 @@ export async function sendRawEmail(params: {
 }): Promise<SendEmailResult> {
   const { to, subject, html } = params;
   const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.EMAIL_FROM || 'Case Hub <notifications@casehub.internal>';
 
+  // 1. Resend Provider Dispatch
   if (apiKey) {
     try {
+      let from = process.env.EMAIL_FROM || 'Case Hub <onboarding@resend.dev>';
+      // Resend free tier strictly requires onboarding@resend.dev unless a custom domain is verified
+      if (from.includes('.internal') || !from.includes('@')) {
+        from = 'Case Hub <onboarding@resend.dev>';
+      }
+
       const response = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
@@ -45,26 +52,60 @@ export async function sendRawEmail(params: {
         const errJson = await response.json().catch(() => ({}));
         const errMsg = errJson.message || `Resend API failed with status ${response.status}`;
         console.error('Failed to send email via Resend:', errMsg);
-        return { success: false, error: errMsg };
+      } else {
+        const data = await response.json();
+        console.log(`[CASE HUB EMAIL DISPATCH] Successfully delivered via Resend to ${to} (Message ID: ${data.id})`);
+        return { success: true, messageId: data.id, simulated: false };
       }
-
-      const data = await response.json();
-      return { success: true, messageId: data.id };
     } catch (err: any) {
-      console.error('Network exception in sendRawEmail:', err);
-      return { success: false, error: err.message || 'Network error' };
+      console.error('Network exception in Resend sendRawEmail:', err);
     }
   }
 
-  // Local development / fallback simulation:
+  // 2. SMTP / Nodemailer Dispatch (e.g. Gmail / Outlook / Custom SMTP)
+  const smtpHost = process.env.SMTP_HOST;
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPass = process.env.SMTP_PASS || process.env.GMAIL_APP_PASSWORD;
+
+  if (smtpHost && smtpUser && smtpPass) {
+    try {
+      const nodemailer = await import('nodemailer');
+      const port = Number(process.env.SMTP_PORT) || 587;
+      const transporter = nodemailer.createTransport({
+        host: smtpHost,
+        port,
+        secure: port === 465,
+        auth: {
+          user: smtpUser,
+          pass: smtpPass,
+        },
+      });
+
+      const from = process.env.EMAIL_FROM || `"Case Hub" <${smtpUser}>`;
+      const info = await transporter.sendMail({
+        from,
+        to,
+        subject,
+        html,
+      });
+
+      console.log(`[CASE HUB EMAIL DISPATCH] Successfully delivered via SMTP to ${to} (Message ID: ${info.messageId})`);
+      return { success: true, messageId: info.messageId, simulated: false };
+    } catch (smtpErr: any) {
+      console.error('SMTP sending exception:', smtpErr);
+    }
+  }
+
+  // 3. Fallback / Unconfigured Email Provider Mode:
   console.log(`\n======================================================`);
   console.log(`[CASE HUB EMAIL DISPATCH] (Simulated Outbox)`);
   console.log(`To: ${to}`);
   console.log(`Subject: ${subject}`);
   console.log(`Timestamp: ${new Date().toISOString()}`);
+  console.log(`Note: Configure RESEND_API_KEY or SMTP_HOST to send to live inboxes.`);
   console.log(`======================================================\n`);
 
-  return { success: true, messageId: `sim_${Date.now()}` };
+  return { success: true, messageId: `sim_${Date.now()}`, simulated: true };
 }
 
 /**
