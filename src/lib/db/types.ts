@@ -255,3 +255,31 @@ export interface CompetitionFilterParams {
   page?: number;
   limit?: number;
 }
+
+export interface AuthCredential {
+  user_id: string;
+  email: string;
+  password_hash: string;
+  salt: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface EmailVerificationOtp {
+  id: string;
+  email: string;
+  otp_hash: string;
+  salt: string;
+  verification_token?: string;
+  attempts: number;
+  max_attempts: number;
+  resend_available_at: string;
+  expires_at: string;
+  created_at: string;
+  full_name: string;
+  program_of_study: string;
+  year_of_study: string;
+  phone_number?: string;
+  verified: boolean;
+}
+

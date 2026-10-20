@@ -44,11 +44,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/resources" className="hover:text-brass transition-colors">
-                  Case Resources
-                </Link>
-              </li>
-              <li>
                 <Link href="/competitions/submit" className="hover:text-brass transition-colors">
                   Submit a Competition
                 </Link>
@@ -70,11 +65,6 @@ export default function Footer() {
               <li>
                 <Link href="/saved" className="hover:text-brass transition-colors">
                   Saved Opportunities
-                </Link>
-              </li>
-              <li>
-                <Link href="/resources" className="hover:text-brass transition-colors">
-                  Case Prep Guides
                 </Link>
               </li>
               <li>

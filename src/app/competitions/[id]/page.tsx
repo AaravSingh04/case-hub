@@ -5,6 +5,7 @@ import { getCurrentUserServer } from '@/lib/auth/server';
 import { formatDate, formatDateTime, getDeadlineStatus, getDaysRemainingText } from '@/lib/utils';
 import TeamFinderSection from '@/components/TeamFinderSection';
 import DetailsActionButtons from './DetailsActionButtons';
+import CompetitionPlaceholder from '@/components/CompetitionPlaceholder';
 import {
   Calendar,
   Users,
@@ -59,8 +60,8 @@ export default async function CompetitionDetailPage({ params }: Props) {
 
       {/* Main Editorial Header Card */}
       <div className="bg-white border border-neutral-border rounded shadow-subtle overflow-hidden">
-        {/* Poster Presentation */}
-        {competition.poster_url && (
+        {/* Poster Presentation or Professional Case Hub Category Banner */}
+        {competition.poster_url ? (
           <div className="relative h-72 sm:h-96 w-full bg-navy-deep border-b border-neutral-border">
             <img
               src={competition.poster_url}
@@ -79,6 +80,13 @@ export default async function CompetitionDetailPage({ params }: Props) {
               )}
             </div>
           </div>
+        ) : (
+          <CompetitionPlaceholder
+            category={competition.category}
+            name={competition.name}
+            organizer={competition.organizer}
+            variant="detail"
+          />
         )}
 
         <div className="p-6 sm:p-10 space-y-6">

@@ -212,7 +212,7 @@ export default function SubmitCompetitionPage() {
         <ShieldAlert className="w-12 h-12 text-brass mx-auto" />
         <h1 className="font-serif text-2xl font-bold text-navy-deep">Authentication Required</h1>
         <p className="text-sm text-neutral-muted">
-          Only verified HSB Jaipur students and faculty may upload new case competitions.
+          Only verified students and registered users may upload new case competitions.
         </p>
         <Link href="/login?redirect=/competitions/submit" className="btn-primary inline-flex text-sm px-6 py-2.5">
           Sign In to Continue
@@ -246,7 +246,7 @@ export default function SubmitCompetitionPage() {
                 Competition Published Instantly!
               </h3>
               <p className="text-xs text-neutral-text">
-                "{success.name}" is now live on the platform for all HSB Jaipur students to discover.
+                "{success.name}" is now live on the platform for all students to discover.
               </p>
             </div>
           </div>

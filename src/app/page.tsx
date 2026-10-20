@@ -24,7 +24,6 @@ export const dynamic = 'force-dynamic';
 export default function HomePage() {
   const allActive = db.getCompetitions({ limit: 50 }).competitions;
   const teamListings = db.getTeamListings('comp_mck_strat_2026').concat(db.getTeamListings('comp_hul_lime_2026'));
-  const resources = db.getCaseResources().slice(0, 3);
 
   // Group by status
   const upcoming = allActive.filter(
@@ -286,59 +285,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. CASE RESOURCES SPOTLIGHT */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4 pb-3 border-b border-neutral-border">
-          <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-brass block mb-1">
-              Academic Excellence
-            </span>
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-navy-deep">
-              Case Preparation Library
-            </h2>
-          </div>
-          <Link
-            href="/resources"
-            className="text-xs sm:text-sm font-semibold text-navy-primary hover:text-brass flex items-center gap-1 group"
-          >
-            <span>View all resources</span>
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {resources.map((res) => (
-            <div
-              key={res.id}
-              className="academic-card p-6 flex flex-col justify-between"
-            >
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-brass bg-ivory-dark/60 px-2 py-0.5 rounded border border-neutral-border">
-                  {res.category}
-                </span>
-                <h3 className="font-serif text-base font-bold text-navy-deep mt-3 mb-2 leading-snug">
-                  {res.title}
-                </h3>
-                <p className="text-xs text-neutral-muted leading-relaxed line-clamp-3">
-                  {res.description}
-                </p>
-              </div>
-
-              <div className="mt-6 pt-3 border-t border-neutral-border/60">
-                <a
-                  href={res.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-semibold text-navy-primary hover:text-brass flex items-center gap-1.5"
-                >
-                  <BookOpen className="w-3.5 h-3.5 text-brass" />
-                  <span>Access Resource</span>
-                </a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* 8. HOW IT WORKS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

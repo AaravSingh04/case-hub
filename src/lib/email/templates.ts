@@ -371,3 +371,67 @@ export function getAdminDiscoveryEmailHtml(params: {
 </html>
   `.trim();
 }
+
+export function getOtpEmailHtml(params: {
+  recipientName: string;
+  otp: string;
+}): string {
+  const { recipientName, otp } = params;
+
+  return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Your Case Hub Verification Code</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #F7F4EC; margin: 0; padding: 24px; color: #202C3B; }
+    .container { max-width: 540px; margin: 0 auto; background: #FFFFFF; border: 1px solid #DCD6CA; border-radius: 4px; overflow: hidden; }
+    .header { background: #102747; padding: 32px; text-align: center; }
+    .wordmark { color: #FFFFFF; font-family: 'Playfair Display', Georgia, serif; font-size: 26px; font-weight: 700; margin: 0; }
+    .tagline { color: #AC925B; font-size: 13px; text-transform: uppercase; letter-spacing: 2px; margin-top: 6px; font-weight: 600; }
+    .body { padding: 36px 32px; text-align: center; }
+    .title { font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: #0A1930; margin: 0 0 12px 0; }
+    .greeting { font-size: 15px; color: #202C3B; margin-bottom: 20px; }
+    .code-box { background: #F7F4EC; border: 1px solid #DCD6CA; border-radius: 6px; padding: 20px; margin: 28px 0; display: inline-block; min-width: 240px; }
+    .otp-code { font-family: 'Courier New', Courier, monospace; font-size: 36px; font-weight: 700; color: #102747; letter-spacing: 8px; margin: 0; }
+    .expiry { font-size: 13px; color: #737985; margin-top: 16px; }
+    .security-note { font-size: 12px; color: #737985; line-height: 1.5; margin-top: 24px; padding-top: 20px; border-top: 1px solid #EEE9DE; }
+    .footer { background: #EEE9DE; padding: 20px; text-align: center; font-size: 12px; color: #737985; border-top: 1px solid #DCD6CA; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="wordmark">Case Hub</h1>
+      <div class="tagline">Discover. Share. Compete.</div>
+    </div>
+    <div class="body">
+      <h2 class="title">Verify Your Email Address</h2>
+      <p class="greeting">Hello ${recipientName || 'Student'},</p>
+      <p style="font-size: 14px; color: #737985; max-width: 420px; margin: 0 auto;">
+        Please use the following six-digit verification code to complete your registration on Case Hub:
+      </p>
+
+      <div class="code-box">
+        <div class="otp-code">${otp}</div>
+      </div>
+
+      <div class="expiry">
+        This code is valid for <strong>10 minutes</strong>. Do not share this code with anyone.
+      </div>
+
+      <div class="security-note">
+        If you did not request this verification code, please ignore this email or contact support.
+      </div>
+    </div>
+    <div class="footer">
+      <div>Case Hub — Discover. Share. Compete.</div>
+      <div style="margin-top: 4px;">Academic competition and case preparation platform for MBA students.</div>
+    </div>
+  </div>
+</body>
+</html>
+  `.trim();
+}
+

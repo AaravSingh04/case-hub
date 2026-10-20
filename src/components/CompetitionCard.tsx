@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Competition } from '@/lib/db/types';
 import { formatDate, getDaysRemainingText, getDeadlineStatus } from '@/lib/utils';
 import { useAuth } from '@/lib/auth/context';
+import CompetitionPlaceholder from './CompetitionPlaceholder';
 import {
   Bookmark,
   Users,
@@ -30,6 +31,7 @@ export default function CompetitionCard({
   const { isAuthenticated } = useAuth();
   const [isSaved, setIsSaved] = useState(initialSaved);
   const [saving, setSaving] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   const deadlineStatus = getDeadlineStatus(c.registration_deadline);
   const daysInfo = getDaysRemainingText(c.registration_deadline);
@@ -62,26 +64,25 @@ export default function CompetitionCard({
     <article className="academic-card flex flex-col h-full overflow-hidden group">
       {/* Card Header Poster / Visual */}
       <div className="relative h-48 w-full bg-navy-deep overflow-hidden border-b border-neutral-border">
-        {c.poster_url ? (
-          <img
-            src={c.poster_url}
-            alt={`${c.name} poster`}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            loading="lazy"
-          />
+        {c.poster_url && !imageError ? (
+          <>
+            <img
+              src={c.poster_url}
+              alt={`${c.name} poster`}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+              onError={() => setImageError(true)}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
+          </>
         ) : (
-          <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-gradient-to-br from-navy-primary to-navy-deep text-white">
-            <span className="font-serif text-xl font-bold tracking-tight text-white/90 line-clamp-2">
-              {c.name}
-            </span>
-            <span className="text-xs uppercase tracking-widest text-brass mt-2 font-semibold">
-              {c.category}
-            </span>
-          </div>
+          <CompetitionPlaceholder
+            category={c.category}
+            name={c.name}
+            organizer={c.organizer}
+            variant="card"
+          />
         )}
-
-        {/* Subtle overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
 
         {/* Category Badge & Verification */}
         <div className="absolute top-3 left-3 flex flex-wrap gap-1.5 z-10">

@@ -33,7 +33,6 @@ export default function Navbar() {
 
   const navLinks = [
     { label: 'Discover', href: '/competitions', icon: Compass },
-    { label: 'Resources', href: '/resources', icon: FileText },
   ];
 
   const studentLinks = [
@@ -205,34 +204,7 @@ export default function Navbar() {
                       </Link>
                     </div>
 
-                    {/* Quick Demo Switcher */}
-                    <div className="border-t border-neutral-border pt-2 pb-1 px-4">
-                      <p className="text-[10px] uppercase tracking-wider text-neutral-muted font-bold mb-1.5 flex items-center gap-1">
-                        <Sparkles className="w-3 h-3 text-brass" /> Switch Test Account:
-                      </p>
-                      <div className="space-y-1">
-                        <button
-                          onClick={() => {
-                            login('usr_student_001');
-                            setUserDropdownOpen(false);
-                          }}
-                          className="w-full text-left text-xs px-2 py-1 rounded hover:bg-ivory flex items-center justify-between text-neutral-text"
-                        >
-                          <span>Aarav Mehta</span>
-                          <span className="text-[10px] text-neutral-muted">Student</span>
-                        </button>
-                        <button
-                          onClick={() => {
-                            login('usr_admin_001');
-                            setUserDropdownOpen(false);
-                          }}
-                          className="w-full text-left text-xs px-2 py-1 rounded hover:bg-ivory flex items-center justify-between text-navy-primary font-medium"
-                        >
-                          <span>Prof. Sharma</span>
-                          <span className="text-[10px] text-brass uppercase font-bold">Admin</span>
-                        </button>
-                      </div>
-                    </div>
+
 
                     <div className="border-t border-neutral-border pt-1">
                       <button
@@ -299,13 +271,7 @@ export default function Navbar() {
             >
               Discover Competitions
             </Link>
-            <Link
-              href="/resources"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block px-3 py-2 rounded text-base font-medium text-neutral-text hover:bg-ivory"
-            >
-              Case Resources
-            </Link>
+
 
             {isAuthenticated ? (
               <>

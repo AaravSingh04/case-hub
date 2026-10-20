@@ -270,10 +270,7 @@ async function discoverFromLiveUnstopAPI(): Promise<DiscoveredCompetitionCandida
           entry_fee: item.paid ? 'Paid' : 'Free',
           official_registration_url: directUrl,
           official_source_url: directUrl,
-          poster_url:
-            item.banner_url ||
-            item.thumb ||
-            'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80',
+          poster_url: item.banner_url || item.banner_mobile || undefined,
           location: 'Online',
         });
       }
@@ -357,7 +354,7 @@ Return ONLY the raw JSON array. Do not include markdown code block syntax (like 
         entry_fee: item.entry_fee || 'Free',
         official_registration_url: item.official_registration_url || 'https://unstop.com',
         official_source_url: 'https://unstop.com',
-        poster_url: item.poster_url || 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80',
+        poster_url: item.poster_url || undefined,
         location: item.location || 'Online',
       }))
       .filter((item: DiscoveredCompetitionCandidate) => {

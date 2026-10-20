@@ -337,55 +337,5 @@ export const SEED_TEAM_MEMBERS: TeamMember[] = [
   },
 ];
 
-export const SEED_CASE_RESOURCES: CaseResource[] = [
-  {
-    id: "res_001",
-    title: "Mastering the Strategic 3Cs & 4Ps in Case Competitions",
-    description: "An actionable framework guide synthesized from Harvard Business Publishing and McKinsey problem-solving playbooks.",
-    category: "Case-solving frameworks",
-    resource_type: "framework",
-    url: "https://hbr.org/topic/strategy",
-    created_at: "2026-09-05T08:00:00Z",
-    created_by: "Prof. Raghavendra Sharma",
-  },
-  {
-    id: "res_002",
-    title: "Consulting Case Math & Market Sizing Workbook",
-    description: "Quick mental math techniques, population benchmarks, and sanity checks for speed-round market sizing questions.",
-    category: "Market sizing",
-    resource_type: "document",
-    url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-    created_at: "2026-09-08T09:00:00Z",
-    created_by: "Prof. Raghavendra Sharma",
-  },
-  {
-    id: "res_003",
-    title: "Executive Slide Architecture & Pyramid Principle",
-    description: "How top management consultancies structure persuasive decks: action titles, horizontal flow, and data exhibits.",
-    category: "Presentation design",
-    resource_type: "framework",
-    url: "https://medium.com/@strategy/the-pyramid-principle",
-    created_at: "2026-09-12T10:00:00Z",
-    created_by: "Prof. Raghavendra Sharma",
-  },
-  {
-    id: "res_004",
-    title: "LBO & DCF Valuation Model Template for Student Challenges",
-    description: "A plug-and-play Excel workbook featuring sensitivity tables, debt tranches, and valuation football fields.",
-    category: "Financial analysis",
-    resource_type: "document",
-    url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-    created_at: "2026-09-15T11:00:00Z",
-    created_by: "Prof. Raghavendra Sharma",
-  },
-  {
-    id: "res_005",
-    title: "Product Teardown & North Star Metric Playbook",
-    description: "Step-by-step methodologies to decompose digital consumer products, identify user friction, and pitch viable feature roadmaps.",
-    category: "Product management",
-    resource_type: "link",
-    url: "https://www.reforge.com/blog/north-star-metric",
-    created_at: "2026-09-18T12:00:00Z",
-    created_by: "Prof. Raghavendra Sharma",
-  },
-];
+export const SEED_CASE_RESOURCES: CaseResource[] = [];
+

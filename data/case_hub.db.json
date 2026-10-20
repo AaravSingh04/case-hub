@@ -11,7 +11,8 @@
       "bio": "Faculty lead for Case Competitions and Strategic Initiatives .",
       "role": "admin",
       "created_at": "2026-09-01T08:00:00Z",
-      "updated_at": "2026-09-01T08:00:00Z"
+      "updated_at": "2026-09-01T08:00:00Z",
+      "email_verified": true
     },
     {
       "id": "usr_student_001",
@@ -22,8 +23,9 @@
       "year_of_study": "Year 2",
       "role": "student",
       "created_at": "2026-09-10T10:00:00Z",
-      "updated_at": "2026-10-20T11:00:04.912Z",
-      "phone_number": "+91 98765 43210"
+      "updated_at": "2026-10-20T14:46:20.446Z",
+      "phone_number": "+91 98765 43210",
+      "email_verified": true
     },
     {
       "id": "usr_student_002",
@@ -36,10 +38,190 @@
       "bio": "Ex-strategy analyst eager to compete in FMCG brand challenges and product management hackathons.",
       "role": "student",
       "created_at": "2026-09-15T12:00:00Z",
-      "updated_at": "2026-09-15T12:00:00Z"
+      "updated_at": "2026-09-15T12:00:00Z",
+      "email_verified": true
+    },
+    {
+      "id": "usr_student_1792507472284",
+      "email": "newstudent@hsb.internal",
+      "display_name": "newstudent",
+      "program_of_study": "MBA",
+      "year_of_study": "Class of 2026",
+      "email_verified": true,
+      "role": "student",
+      "created_at": "2026-10-20T14:44:32.284Z",
+      "updated_at": "2026-10-20T14:44:32.284Z"
+    },
+    {
+      "id": "usr_student_1792507626200",
+      "email": "student_1792507624704@casehub.internal",
+      "display_name": "Vikramaditya Singhania",
+      "phone_number": "+91 98765 43210",
+      "program_of_study": "MBA Strategy & Finance",
+      "year_of_study": "Class of 2026",
+      "email_verified": true,
+      "role": "student",
+      "created_at": "2026-10-20T14:47:06.200Z",
+      "updated_at": "2026-10-20T14:47:06.200Z"
+    },
+    {
+      "id": "usr_student_1792507643145",
+      "email": "student_1792507642131@casehub.internal",
+      "display_name": "Vikramaditya Singhania",
+      "phone_number": "+91 98765 43210",
+      "program_of_study": "MBA Strategy & Finance",
+      "year_of_study": "Class of 2026",
+      "email_verified": true,
+      "role": "student",
+      "created_at": "2026-10-20T14:47:23.145Z",
+      "updated_at": "2026-10-20T14:47:23.145Z"
+    }
+  ],
+  "auth_credentials": [
+    {
+      "user_id": "usr_admin_001",
+      "email": "admin@casehub.internal",
+      "password_hash": "6bfeb95f8c79d49fd961c491f93a79cdf7776c3283507a8bf428ba990fd3c1db1d10554ab754f5b0f544bdbefc81ca85db4fdfdaafe78c15b9da77e075221739",
+      "salt": "e29790475ef3a4594dd138d77475e356",
+      "created_at": "2026-10-20T14:36:47.209Z",
+      "updated_at": "2026-10-20T14:36:47.210Z"
+    },
+    {
+      "user_id": "usr_student_001",
+      "email": "aarav.mehta@mba.internal",
+      "password_hash": "fdb77214a76c386b6f5431f00ffb38716bd2daea6d0b41efb2fd0cefc388e562cec62b24dc6cee9372cb181528da6db710d7039093b69cfb883b1dfaddfdf730",
+      "salt": "e1857f8f9edb4326fa4ea1276784ce71",
+      "created_at": "2026-10-20T14:36:47.214Z",
+      "updated_at": "2026-10-20T14:36:47.214Z"
+    },
+    {
+      "user_id": "usr_student_002",
+      "email": "ananya.sen@mba.internal",
+      "password_hash": "bf3af6f9e8a002fe44a5e77e15e8ac9b15c55fdf37b096aa28f0a676e3e50c9fbdc514cd83d3ed86787cacaec3cf7bf9baa1e0378e7478116d0260c8e35d68f2",
+      "salt": "614682b5d07823fc5cbe137f2d488134",
+      "created_at": "2026-10-20T14:36:47.218Z",
+      "updated_at": "2026-10-20T14:36:47.218Z"
+    },
+    {
+      "user_id": "usr_student_1792507626200",
+      "email": "student_1792507624704@casehub.internal",
+      "password_hash": "114951709ca237690ffa045f3a6b92e7a04b29a10724952ef2db9e31afc90c250666956399f7c98b909f6cd9257c452b6d5601404ebfd22ca7af76c90fdd9aa8",
+      "salt": "2842b588813d44c8dc7d6e409db1c78c",
+      "created_at": "2026-10-20T14:47:06.204Z",
+      "updated_at": "2026-10-20T14:47:06.204Z"
+    },
+    {
+      "user_id": "usr_student_1792507643145",
+      "email": "student_1792507642131@casehub.internal",
+      "password_hash": "f8369702c87e3f14d49fa9002d919fde9df95baef0d2a6e3b6d0e824a1c25aedd7d2707b8ec18bc5ea3cac4e2886d39f2389b90ac1713703383a036aa1271263",
+      "salt": "ce4be1b50bc7cab53b44de263c5b0b81",
+      "created_at": "2026-10-20T14:47:23.148Z",
+      "updated_at": "2026-10-20T14:47:23.148Z"
+    }
+  ],
+  "email_verifications": [
+    {
+      "id": "verif_1792507602008_9w2i",
+      "email": "student_1792507601948@casehub.internal",
+      "otp_hash": "d8150db036f7daaaa8bc9c89ff63faa80914133108a41cea9c8c8421ac5da0d7",
+      "salt": "dc45dbb07cfe247aad8cedd634c17c65",
+      "attempts": 1,
+      "max_attempts": 5,
+      "resend_available_at": "2026-10-20T14:47:42.008Z",
+      "expires_at": "2026-10-20T14:56:42.008Z",
+      "created_at": "2026-10-20T14:46:42.008Z",
+      "full_name": "Vikramaditya Singhania",
+      "program_of_study": "MBA Strategy & Finance",
+      "year_of_study": "Class of 2026",
+      "phone_number": "+91 98765 43210",
+      "verified": false
     }
   ],
   "competitions": [
+    {
+      "name": "Managenius Got Latent",
+      "organizer": "Institute of Information Technology & Management",
+      "description": "Managenius Got Latent — Active ongoing student challenge on Unstop offering corporate visibility, case problem evaluation, and cash prizes.",
+      "category": "Case Competitions",
+      "industry": "Management Consulting",
+      "registration_deadline": "2026-10-23T18:30:00.000Z",
+      "min_team_size": 1,
+      "max_team_size": 1,
+      "eligibility": "Open to enrolled college and MBA / Postgraduate management students.",
+      "mode": "Online",
+      "prize_details": "Cash prizes & PPI opportunities",
+      "entry_fee": "Free",
+      "official_registration_url": "https://unstop.com/competitions/managenius-got-latent-institute-of-information-technology-management-1770459",
+      "official_source_url": "https://unstop.com/competitions/managenius-got-latent-institute-of-information-technology-management-1770459",
+      "location": "Online",
+      "id": "comp_disc_1792507355788_0zdem",
+      "uploader_id": "system_discovery",
+      "uploader_display_name": "Discovered by Case Hub",
+      "discovery_source": "Unstop",
+      "discovery_timestamp": "2026-10-20T14:42:35.788Z",
+      "created_at": "2026-10-20T14:42:35.788Z",
+      "updated_at": "2026-10-20T14:42:35.788Z",
+      "verification_status": "verified",
+      "verified_at": "2026-10-20T14:42:35.788Z",
+      "verified_by": "Case Hub Automated Discovery",
+      "is_archived": false
+    },
+    {
+      "name": "Trial By Fire - Season 13",
+      "organizer": "Xavier School of Management (XLRI)",
+      "description": "Trial By Fire - Season 13 — Active ongoing student challenge on Unstop offering corporate visibility, case problem evaluation, and cash prizes.",
+      "category": "Case Competitions",
+      "industry": "Management Consulting",
+      "registration_deadline": "2026-10-27T18:30:15.000Z",
+      "min_team_size": 2,
+      "max_team_size": 4,
+      "eligibility": "Open to enrolled college and MBA / Postgraduate management students.",
+      "mode": "Online",
+      "prize_details": "Cash prizes & PPI opportunities",
+      "entry_fee": "Free",
+      "official_registration_url": "https://unstop.com/competitions/trial-by-fire-season-13-xavier-school-of-management-xlri-1772410",
+      "official_source_url": "https://unstop.com/competitions/trial-by-fire-season-13-xavier-school-of-management-xlri-1772410",
+      "location": "Online",
+      "id": "comp_disc_1792507355785_0bznf",
+      "uploader_id": "system_discovery",
+      "uploader_display_name": "Discovered by Case Hub",
+      "discovery_source": "Unstop",
+      "discovery_timestamp": "2026-10-20T14:42:35.785Z",
+      "created_at": "2026-10-20T14:42:35.785Z",
+      "updated_at": "2026-10-20T14:42:35.785Z",
+      "verification_status": "verified",
+      "verified_at": "2026-10-20T14:42:35.785Z",
+      "verified_by": "Case Hub Automated Discovery",
+      "is_archived": false
+    },
+    {
+      "name": "Polygenesis: VOLTEDGE - The Business Strategy Showdown",
+      "organizer": "Delhi Technological University (DTU), New Delhi",
+      "description": "Polygenesis: VOLTEDGE - The Business Strategy Showdown — Active ongoing student challenge on Unstop offering corporate visibility, case problem evaluation, and cash prizes.",
+      "category": "Business Strategy",
+      "industry": "Management Consulting",
+      "registration_deadline": "2026-10-23T18:29:00.000Z",
+      "min_team_size": 1,
+      "max_team_size": 4,
+      "eligibility": "Open to enrolled college and MBA / Postgraduate management students.",
+      "mode": "Online",
+      "prize_details": "Cash prizes & PPI opportunities",
+      "entry_fee": "Free",
+      "official_registration_url": "https://unstop.com/competitions/polygenesis-voltedge-dtu-new-delhi-1769414",
+      "official_source_url": "https://unstop.com/competitions/polygenesis-voltedge-dtu-new-delhi-1769414",
+      "location": "Online",
+      "id": "comp_disc_1792507355770_lqanb",
+      "uploader_id": "system_discovery",
+      "uploader_display_name": "Discovered by Case Hub",
+      "discovery_source": "Unstop",
+      "discovery_timestamp": "2026-10-20T14:42:35.770Z",
+      "created_at": "2026-10-20T14:42:35.770Z",
+      "updated_at": "2026-10-20T14:42:35.770Z",
+      "verification_status": "verified",
+      "verified_at": "2026-10-20T14:42:35.770Z",
+      "verified_by": "Case Hub Automated Discovery",
+      "is_archived": false
+    },
     {
       "name": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
       "organizer": "KIET Group of Institutions (KIET)  Ghaziabad",
@@ -55,7 +237,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/hackathons/innotech26-annual-technical-fest-project-innovation-poster-competition-innotech26-kiet-group-of-institutions--1769254",
       "official_source_url": "https://unstop.com/hackathons/innotech26-annual-technical-fest-project-innovation-poster-competition-innotech26-kiet-group-of-institutions--1769254",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821526_wxg20",
       "uploader_id": "system_discovery",
@@ -84,7 +265,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/hackathons/national-machine-coding-lld-and-production-debugging-contest-gronex-1765656",
       "official_source_url": "https://unstop.com/hackathons/national-machine-coding-lld-and-production-debugging-contest-gronex-1765656",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821523_jpjsp",
       "uploader_id": "system_discovery",
@@ -113,7 +293,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/hackathons/agentic-ai-hackathon-product-space-1771078",
       "official_source_url": "https://unstop.com/hackathons/agentic-ai-hackathon-product-space-1771078",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821519_hl96t",
       "uploader_id": "system_discovery",
@@ -142,7 +321,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/hackathons/product-challenge-techkriti27-techkriti-1764167",
       "official_source_url": "https://unstop.com/hackathons/product-challenge-techkriti27-techkriti-1764167",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821516_9aunc",
       "uploader_id": "system_discovery",
@@ -171,7 +349,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/hackathons/prompt-to-product-acharya-institute-of-technology-1771961",
       "official_source_url": "https://unstop.com/hackathons/prompt-to-product-acharya-institute-of-technology-1771961",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821514_w5z1b",
       "uploader_id": "system_discovery",
@@ -200,7 +377,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/bio-economy-hackathon-2026-kolkata-indian-institute-of-forest-management-1767643",
       "official_source_url": "https://unstop.com/competitions/bio-economy-hackathon-2026-kolkata-indian-institute-of-forest-management-1767643",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821511_uge1g",
       "uploader_id": "system_discovery",
@@ -229,7 +405,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/bio-economy-hackathon-delhi-indian-institute-of-forest-management-1763470",
       "official_source_url": "https://unstop.com/competitions/bio-economy-hackathon-delhi-indian-institute-of-forest-management-1763470",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821508_cutx1",
       "uploader_id": "system_discovery",
@@ -258,7 +433,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/hackathons/orbion-8-hour-hackathon-institute-of-engineering-and-managemet-1756946",
       "official_source_url": "https://unstop.com/hackathons/orbion-8-hour-hackathon-institute-of-engineering-and-managemet-1756946",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821499_5ubgl",
       "uploader_id": "system_discovery",
@@ -287,7 +461,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/praxis-product-management-case-study-competition-indian-institute-of-technology-iit-patna-1770048",
       "official_source_url": "https://unstop.com/competitions/praxis-product-management-case-study-competition-indian-institute-of-technology-iit-patna-1770048",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821496_ut855",
       "uploader_id": "system_discovery",
@@ -316,7 +489,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/scopecreep-the-product-management-challenge-caseunion-40-masters-union-school-of-business-1769331",
       "official_source_url": "https://unstop.com/competitions/scopecreep-the-product-management-challenge-caseunion-40-masters-union-school-of-business-1769331",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821494_2i3wk",
       "uploader_id": "system_discovery",
@@ -345,7 +517,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/the-management-auction-decide-bid-build-nisadya-national-institute-of-technology-nit-tiruchirappalli-1765652",
       "official_source_url": "https://unstop.com/competitions/the-management-auction-decide-bid-build-nisadya-national-institute-of-technology-nit-tiruchirappalli-1765652",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821492_60ygn",
       "uploader_id": "system_discovery",
@@ -374,7 +545,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/tech-tack-product-management-case-competition-2026-ensemble-valhalla-2026-xavier-school-of-management-xlri-1746033",
       "official_source_url": "https://unstop.com/competitions/tech-tack-product-management-case-competition-2026-ensemble-valhalla-2026-xavier-school-of-management-xlri-1746033",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821489_h1nwk",
       "uploader_id": "system_discovery",
@@ -403,7 +573,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/prodyssey-the-product-management-challenge-book-my-mentor-1771515",
       "official_source_url": "https://unstop.com/competitions/prodyssey-the-product-management-challenge-book-my-mentor-1771515",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821486_uqi61",
       "uploader_id": "system_discovery",
@@ -432,7 +601,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/adventure-strategia27-the-annual-business-strategy-fest-of-loyola-college-loyola-college-lc-chennai-1769145",
       "official_source_url": "https://unstop.com/competitions/adventure-strategia27-the-annual-business-strategy-fest-of-loyola-college-loyola-college-lc-chennai-1769145",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821483_ecxen",
       "uploader_id": "system_discovery",
@@ -461,7 +629,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/casequest-strategia27-the-annual-business-strategy-fest-of-loyola-college-loyola-college-lc-chennai-1763017",
       "official_source_url": "https://unstop.com/competitions/casequest-strategia27-the-annual-business-strategy-fest-of-loyola-college-loyola-college-lc-chennai-1763017",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821480_mx2bn",
       "uploader_id": "system_discovery",
@@ -490,7 +657,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/monopoly-joint-strategic-ventures-shatranj-30-the-entrepreneurship-weekender-ashoka-university-1757053",
       "official_source_url": "https://unstop.com/competitions/monopoly-joint-strategic-ventures-shatranj-30-the-entrepreneurship-weekender-ashoka-university-1757053",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821478_zlzde",
       "uploader_id": "system_discovery",
@@ -519,7 +685,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/cut-to-the-case-where-cinema-meets-strategy-fitoor-plaksha-university-1762200",
       "official_source_url": "https://unstop.com/competitions/cut-to-the-case-where-cinema-meets-strategy-fitoor-plaksha-university-1762200",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821475_9xl5d",
       "uploader_id": "system_discovery",
@@ -548,7 +713,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/hackathons/strategy-sprint-techkriti27-techkriti-1764188",
       "official_source_url": "https://unstop.com/hackathons/strategy-sprint-techkriti27-techkriti-1764188",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821473_t93mj",
       "uploader_id": "system_discovery",
@@ -577,7 +741,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/finance-traitors-finance-strategy-competition-bharati-vidyapeeth-university-institute-of-management-and-res-1767431",
       "official_source_url": "https://unstop.com/competitions/finance-traitors-finance-strategy-competition-bharati-vidyapeeth-university-institute-of-management-and-res-1767431",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821470_w5rn2",
       "uploader_id": "system_discovery",
@@ -606,7 +769,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/econ-arena-the-strategy-case-competition-blisspoint-2026-27-sri-venkateswara-college-svc-du-delhi-1768914",
       "official_source_url": "https://unstop.com/competitions/econ-arena-the-strategy-case-competition-blisspoint-2026-27-sri-venkateswara-college-svc-du-delhi-1768914",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821468_v7dg1",
       "uploader_id": "system_discovery",
@@ -635,7 +797,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/strategy-sprint-national-institute-of-technology-nit-tiruchirappalli-1765492",
       "official_source_url": "https://unstop.com/competitions/strategy-sprint-national-institute-of-technology-nit-tiruchirappalli-1765492",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821465_jn8an",
       "uploader_id": "system_discovery",
@@ -664,7 +825,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/lemma-dilemma-case-competition-lady-shri-ram-college-for-women-lsr-du-new-delhi-1772378",
       "official_source_url": "https://unstop.com/competitions/lemma-dilemma-case-competition-lady-shri-ram-college-for-women-lsr-du-new-delhi-1772378",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821463_p8oec",
       "uploader_id": "system_discovery",
@@ -693,7 +853,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/crack-the-product-case-with-case-master-ai-31-october-edition-languify-1761839",
       "official_source_url": "https://unstop.com/competitions/crack-the-product-case-with-case-master-ai-31-october-edition-languify-1761839",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821461_c8fn1",
       "uploader_id": "system_discovery",
@@ -722,7 +881,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/quizzes/quiz/general-case-study-competition-rising-scholars-1770876",
       "official_source_url": "https://unstop.com/quizzes/quiz/general-case-study-competition-rising-scholars-1770876",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821459_lm47b",
       "uploader_id": "system_discovery",
@@ -751,7 +909,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/crack-the-product-case-with-case-master-ai-24-october-edition-languify-1761164",
       "official_source_url": "https://unstop.com/competitions/crack-the-product-case-with-case-master-ai-24-october-edition-languify-1761164",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821457_ixntv",
       "uploader_id": "system_discovery",
@@ -780,7 +937,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/parivartan26-case-competition-tata-institute-of-social-sciences-tiss-mumbai-1764693",
       "official_source_url": "https://unstop.com/competitions/parivartan26-case-competition-tata-institute-of-social-sciences-tiss-mumbai-1764693",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821454_plrx0",
       "uploader_id": "system_discovery",
@@ -809,7 +965,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/casequest-2026-a-policy-case-competition-conspectus-2026-university-school-of-management-and-entrepreneursh-1769091",
       "official_source_url": "https://unstop.com/competitions/casequest-2026-a-policy-case-competition-conspectus-2026-university-school-of-management-and-entrepreneursh-1769091",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821452_eras1",
       "uploader_id": "system_discovery",
@@ -838,7 +993,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/casescend26-the-ultimate-case-competition-hansraj-college-1772545",
       "official_source_url": "https://unstop.com/competitions/casescend26-the-ultimate-case-competition-hansraj-college-1772545",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821450_zi3gm",
       "uploader_id": "system_discovery",
@@ -867,7 +1021,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/case-catalyst-nims-university-nu-jaipur-1772319",
       "official_source_url": "https://unstop.com/competitions/case-catalyst-nims-university-nu-jaipur-1772319",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Online",
       "id": "comp_disc_1792493821447_otxft",
       "uploader_id": "system_discovery",
@@ -1192,7 +1345,6 @@
       "entry_fee": "Free",
       "official_registration_url": "https://unstop.com/competitions/the-good-the-bad-and-the-business-marketing-track-the-good-the-bad-and-the-business-imt-ghaziabad-1771057",
       "official_source_url": "https://unstop.com/competitions/the-good-the-bad-and-the-business-marketing-track-the-good-the-bad-and-the-business-imt-ghaziabad-1771057",
-      "poster_url": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
       "location": "Ghaziabad & Virtual",
       "uploader_id": "system_discovery",
       "uploader_display_name": "Discovered by Case Hub",
@@ -1509,6 +1661,24 @@
       "uploader_id": "system_discovery",
       "uploader_email": "discovery@casehub.internal",
       "created_at": "2026-10-20T10:57:01.526Z"
+    },
+    {
+      "competition_id": "comp_disc_1792507355770_lqanb",
+      "uploader_id": "system_discovery",
+      "uploader_email": "discovery@casehub.internal",
+      "created_at": "2026-10-20T14:42:35.770Z"
+    },
+    {
+      "competition_id": "comp_disc_1792507355785_0bznf",
+      "uploader_id": "system_discovery",
+      "uploader_email": "discovery@casehub.internal",
+      "created_at": "2026-10-20T14:42:35.785Z"
+    },
+    {
+      "competition_id": "comp_disc_1792507355788_0zdem",
+      "uploader_id": "system_discovery",
+      "uploader_email": "discovery@casehub.internal",
+      "created_at": "2026-10-20T14:42:35.788Z"
     }
   ],
   "saved_competitions": [
@@ -1572,59 +1742,776 @@
     }
   ],
   "reports": [],
-  "case_resources": [
-    {
-      "id": "res_001",
-      "title": "Mastering the Strategic 3Cs & 4Ps in Case Competitions",
-      "description": "An actionable framework guide synthesized from Harvard Business Publishing and McKinsey problem-solving playbooks.",
-      "category": "Case-solving frameworks",
-      "resource_type": "framework",
-      "url": "https://hbr.org/topic/strategy",
-      "created_at": "2026-09-05T08:00:00Z",
-      "created_by": "Prof. Raghavendra Sharma"
-    },
-    {
-      "id": "res_002",
-      "title": "Consulting Case Math & Market Sizing Workbook",
-      "description": "Quick mental math techniques, population benchmarks, and sanity checks for speed-round market sizing questions.",
-      "category": "Market sizing",
-      "resource_type": "document",
-      "url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-09-08T09:00:00Z",
-      "created_by": "Prof. Raghavendra Sharma"
-    },
-    {
-      "id": "res_003",
-      "title": "Executive Slide Architecture & Pyramid Principle",
-      "description": "How top management consultancies structure persuasive decks: action titles, horizontal flow, and data exhibits.",
-      "category": "Presentation design",
-      "resource_type": "framework",
-      "url": "https://medium.com/@strategy/the-pyramid-principle",
-      "created_at": "2026-09-12T10:00:00Z",
-      "created_by": "Prof. Raghavendra Sharma"
-    },
-    {
-      "id": "res_004",
-      "title": "LBO & DCF Valuation Model Template for Student Challenges",
-      "description": "A plug-and-play Excel workbook featuring sensitivity tables, debt tranches, and valuation football fields.",
-      "category": "Financial analysis",
-      "resource_type": "document",
-      "url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-09-15T11:00:00Z",
-      "created_by": "Prof. Raghavendra Sharma"
-    },
-    {
-      "id": "res_005",
-      "title": "Product Teardown & North Star Metric Playbook",
-      "description": "Step-by-step methodologies to decompose digital consumer products, identify user friction, and pitch viable feature roadmaps.",
-      "category": "Product management",
-      "resource_type": "link",
-      "url": "https://www.reforge.com/blog/north-star-metric",
-      "created_at": "2026-09-18T12:00:00Z",
-      "created_by": "Prof. Raghavendra Sharma"
-    }
-  ],
+  "case_resources": [],
   "notification_logs": [
+    {
+      "recipient_email": "aarav.mehta@mba.internal",
+      "recipient_name": "Aarav Mehta",
+      "user_id": "usr_student_001",
+      "subject": "Schedule Update: National Valuation Strategy Challenge 2026 | Case Hub",
+      "template_type": "saved_update",
+      "competition_id": "comp_1792507579092_6ri89",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_1792507579092_6ri89",
+        "competitionName": "National Valuation Strategy Challenge 2026",
+        "changedFields": [
+          "registration_deadline"
+        ],
+        "previousValues": {
+          "registration_deadline": "2026-10-30T14:46:19.072Z"
+        },
+        "detailUrl": "http://localhost:3000/competitions/comp_1792507579092_6ri89"
+      },
+      "id": "notif_1792507579403_zq4h",
+      "created_at": "2026-10-20T14:46:19.403Z",
+      "sent_at": "2026-10-20T14:46:19.407Z"
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792507579358_wjp7",
+      "created_at": "2026-10-20T14:46:19.358Z",
+      "sent_at": "2026-10-20T14:46:19.362Z"
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792507579350_zcef",
+      "created_at": "2026-10-20T14:46:19.350Z",
+      "sent_at": "2026-10-20T14:46:19.354Z"
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792507579333_e17z",
+      "created_at": "2026-10-20T14:46:19.337Z",
+      "sent_at": "2026-10-20T14:46:19.345Z"
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792507579322_264y",
+      "created_at": "2026-10-20T14:46:19.322Z",
+      "sent_at": "2026-10-20T14:46:19.327Z"
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792507579312_i5fw",
+      "created_at": "2026-10-20T14:46:19.312Z",
+      "sent_at": "2026-10-20T14:46:19.317Z"
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792507579302_xa7k",
+      "created_at": "2026-10-20T14:46:19.302Z",
+      "sent_at": "2026-10-20T14:46:19.307Z"
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792507579293_jmfq",
+      "created_at": "2026-10-20T14:46:19.293Z",
+      "sent_at": "2026-10-20T14:46:19.298Z"
+    },
+    {
+      "recipient_email": "admin@casehub.internal",
+      "recipient_name": "Case Hub Administrator",
+      "subject": "New Competition Uploaded — National Valuation Strategy Challenge 2026 | Case Hub",
+      "template_type": "admin_new_upload",
+      "competition_id": "comp_1792507579092_6ri89",
+      "status": "sent",
+      "payload": {
+        "competitionId": "comp_1792507579092_6ri89",
+        "competitionName": "National Valuation Strategy Challenge 2026",
+        "uploaderEmail": "aarav.mehta@mba.internal",
+        "detailUrl": "http://localhost:3000/competitions/comp_1792507579092_6ri89"
+      },
+      "id": "notif_1792507579111_hq9o",
+      "created_at": "2026-10-20T14:46:19.111Z",
+      "sent_at": "2026-10-20T14:46:19.116Z"
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792507473851_ipul",
+      "created_at": "2026-10-20T14:44:33.851Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792507473844_gtja",
+      "created_at": "2026-10-20T14:44:33.844Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792507473837_5lsn",
+      "created_at": "2026-10-20T14:44:33.837Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792507473827_d5g4",
+      "created_at": "2026-10-20T14:44:33.827Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792507473819_mirg",
+      "created_at": "2026-10-20T14:44:33.819Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792507473811_6z8t",
+      "created_at": "2026-10-20T14:44:33.811Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792507473803_6er9",
+      "created_at": "2026-10-20T14:44:33.803Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792507473783_75u0",
+      "created_at": "2026-10-20T14:44:33.783Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792507473774_t8db",
+      "created_at": "2026-10-20T14:44:33.774Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792507473766_8g0i",
+      "created_at": "2026-10-20T14:44:33.766Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792507473759_g7g9",
+      "created_at": "2026-10-20T14:44:33.759Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792507473751_w221",
+      "created_at": "2026-10-20T14:44:33.751Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792507473743_g9mt",
+      "created_at": "2026-10-20T14:44:33.743Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792507473736_745g",
+      "created_at": "2026-10-20T14:44:33.736Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "aarav.mehta@mba.internal",
+      "recipient_name": "Aarav Mehta",
+      "user_id": "usr_student_001",
+      "subject": "Schedule Update: National Valuation Strategy Challenge 2026 | Case Hub",
+      "template_type": "saved_update",
+      "competition_id": "comp_1792507472323_95cok",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_1792507472323_95cok",
+        "competitionName": "National Valuation Strategy Challenge 2026",
+        "changedFields": [
+          "registration_deadline"
+        ],
+        "previousValues": {
+          "registration_deadline": "2026-10-30T14:44:32.292Z"
+        },
+        "detailUrl": "http://localhost:3000/competitions/comp_1792507472323_95cok"
+      },
+      "id": "notif_1792507472734_3jdd",
+      "created_at": "2026-10-20T14:44:32.734Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792507472699_c6a1",
+      "created_at": "2026-10-20T14:44:32.699Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792507472690_vmo9",
+      "created_at": "2026-10-20T14:44:32.690Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792507472682_vveo",
+      "created_at": "2026-10-20T14:44:32.682Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792507472675_j6ug",
+      "created_at": "2026-10-20T14:44:32.675Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792507472669_5wi3",
+      "created_at": "2026-10-20T14:44:32.669Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792507472663_45lk",
+      "created_at": "2026-10-20T14:44:32.663Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792507472655_0799",
+      "created_at": "2026-10-20T14:44:32.655Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792507472610_7or8",
+      "created_at": "2026-10-20T14:44:32.613Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792507472601_xsfx",
+      "created_at": "2026-10-20T14:44:32.601Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792507472592_atum",
+      "created_at": "2026-10-20T14:44:32.592Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792507472585_9bea",
+      "created_at": "2026-10-20T14:44:32.585Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792507472578_53rf",
+      "created_at": "2026-10-20T14:44:32.578Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792507472572_f9wo",
+      "created_at": "2026-10-20T14:44:32.572Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "newstudent@hsb.internal",
+      "recipient_name": "newstudent",
+      "user_id": "usr_student_1792507472284",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792507472565_8rqn",
+      "created_at": "2026-10-20T14:44:32.565Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "admin@casehub.internal",
+      "recipient_name": "Case Hub Administrator",
+      "subject": "New Competition Uploaded — National Valuation Strategy Challenge 2026 | Case Hub",
+      "template_type": "admin_new_upload",
+      "competition_id": "comp_1792507472323_95cok",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_1792507472323_95cok",
+        "competitionName": "National Valuation Strategy Challenge 2026",
+        "uploaderEmail": "aarav.mehta@mba.internal",
+        "detailUrl": "http://localhost:3000/competitions/comp_1792507472323_95cok"
+      },
+      "id": "notif_1792507472352_5bo3",
+      "created_at": "2026-10-20T14:44:32.352Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "admin@casehub.internal",
+      "recipient_name": "Case Hub Administrator",
+      "subject": "Automated Discovery Summary: 3 New Competitions Published | Case Hub",
+      "template_type": "admin_discovery_summary",
+      "competition_id": "comp_disc_1792507355770_lqanb",
+      "status": "failed",
+      "payload": {
+        "items_found": 38,
+        "items_published": 3,
+        "duplicates_skipped": 35,
+        "run_id": "run_1792507353350_4gib",
+        "adminDashboardUrl": "http://localhost:3000/admin"
+      },
+      "id": "notif_1792507355800_trj6",
+      "created_at": "2026-10-20T14:42:35.800Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "aarav.mehta@mba.internal",
+      "recipient_name": "Aarav Mehta",
+      "user_id": "usr_student_001",
+      "subject": "Schedule Update: National Valuation Strategy Challenge 2026 | Case Hub",
+      "template_type": "saved_update",
+      "competition_id": "comp_1792507352936_x7v1v",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_1792507352936_x7v1v",
+        "competitionName": "National Valuation Strategy Challenge 2026",
+        "changedFields": [
+          "registration_deadline"
+        ],
+        "previousValues": {
+          "registration_deadline": "2026-10-30T14:42:32.911Z"
+        },
+        "detailUrl": "http://localhost:3000/competitions/comp_1792507352936_x7v1v"
+      },
+      "id": "notif_1792507353177_c12y",
+      "created_at": "2026-10-20T14:42:33.177Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
+    {
+      "recipient_email": "admin@casehub.internal",
+      "recipient_name": "Case Hub Administrator",
+      "subject": "New Competition Uploaded — National Valuation Strategy Challenge 2026 | Case Hub",
+      "template_type": "admin_new_upload",
+      "competition_id": "comp_1792507352936_x7v1v",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_1792507352936_x7v1v",
+        "competitionName": "National Valuation Strategy Challenge 2026",
+        "uploaderEmail": "aarav.mehta@mba.internal",
+        "detailUrl": "http://localhost:3000/competitions/comp_1792507352936_x7v1v"
+      },
+      "id": "notif_1792507352966_c488",
+      "created_at": "2026-10-20T14:42:32.966Z",
+      "error_message": "Email delivery failed: RESEND_API_KEY is not configured in production environment variables."
+    },
     {
       "recipient_email": "aarav.mehta@mba.internal",
       "recipient_name": "Aarav Mehta",
@@ -2495,6 +3382,45 @@
   ],
   "discovery_logs": [
     {
+      "run_id": "run_1792507579557_8ols",
+      "source": "Unstop",
+      "started_at": "2026-10-20T14:46:19.557Z",
+      "completed_at": "2026-10-20T14:46:20.397Z",
+      "status": "success",
+      "items_found": 38,
+      "items_published": 0,
+      "duplicates_skipped": 38,
+      "errors": [],
+      "next_scheduled_at": "2026-10-23T14:46:20.397Z",
+      "id": "disc_1792507580398_lif7"
+    },
+    {
+      "run_id": "run_1792507472898_ud6b",
+      "source": "Unstop",
+      "started_at": "2026-10-20T14:44:32.898Z",
+      "completed_at": "2026-10-20T14:44:33.668Z",
+      "status": "success",
+      "items_found": 38,
+      "items_published": 0,
+      "duplicates_skipped": 38,
+      "errors": [],
+      "next_scheduled_at": "2026-10-23T14:44:33.668Z",
+      "id": "disc_1792507473669_1mkg"
+    },
+    {
+      "run_id": "run_1792507353350_4gib",
+      "source": "Unstop",
+      "started_at": "2026-10-20T14:42:33.350Z",
+      "completed_at": "2026-10-20T14:42:35.796Z",
+      "status": "success",
+      "items_found": 38,
+      "items_published": 3,
+      "duplicates_skipped": 35,
+      "errors": [],
+      "next_scheduled_at": "2026-10-23T14:42:35.796Z",
+      "id": "disc_1792507355797_q1vz"
+    },
+    {
       "run_id": "run_1792494002792_2iv1",
       "source": "Unstop",
       "started_at": "2026-10-20T11:00:02.792Z",
@@ -2602,7 +3528,7 @@
   "discovery_config": {
     "interval_days": 3,
     "enabled": true,
-    "last_successful_discovery_at": "2026-10-20T11:00:04.871Z",
+    "last_successful_discovery_at": "2026-10-20T14:46:20.397Z",
     "sources": [
       "Unstop",
       "Corporate & B-School Challenges"

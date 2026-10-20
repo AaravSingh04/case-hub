@@ -14,6 +14,8 @@ import {
   DiscoveryConfig,
   CompetitionFilterParams,
   UserRole,
+  AuthCredential,
+  EmailVerificationOtp,
 } from './types';
 import {
   SEED_USERS,
@@ -27,6 +29,8 @@ import { getDeadlineStatus } from '../utils';
 
 interface DatabaseSchema {
   users: User[];
+  auth_credentials?: AuthCredential[];
+  email_verifications?: EmailVerificationOtp[];
   competitions: Competition[];
   private_metadata: CompetitionPrivateMetadata[];
   saved_competitions: SavedCompetition[];
@@ -86,6 +90,8 @@ function loadDatabase(): DatabaseSchema {
     const parsed = JSON.parse(raw);
     return {
       users: parsed.users || SEED_USERS,
+      auth_credentials: parsed.auth_credentials || [],
+      email_verifications: parsed.email_verifications || [],
       competitions: parsed.competitions || SEED_COMPETITIONS,
       private_metadata: parsed.private_metadata || SEED_PRIVATE_METADATA,
       saved_competitions: parsed.saved_competitions || [],
@@ -704,6 +710,67 @@ export const db = {
     targetUser.updated_at = new Date().toISOString();
     saveDatabase(state);
     return targetUser;
+  },
+
+  createUser(user: User): User {
+    const state = loadDatabase();
+    const existingIndex = state.users.findIndex((u) => u.id === user.id || u.email.toLowerCase() === user.email.toLowerCase());
+    if (existingIndex >= 0) {
+      state.users[existingIndex] = { ...state.users[existingIndex], ...user, updated_at: new Date().toISOString() };
+    } else {
+      state.users.push(user);
+    }
+    saveDatabase(state);
+    return user;
+  },
+
+  getAuthCredentialByEmail(email: string): AuthCredential | null {
+    const state = loadDatabase();
+    if (!state.auth_credentials) return null;
+    return state.auth_credentials.find((c) => c.email.toLowerCase() === email.toLowerCase()) || null;
+  },
+
+  saveAuthCredential(cred: AuthCredential): void {
+    const state = loadDatabase();
+    if (!state.auth_credentials) state.auth_credentials = [];
+    const index = state.auth_credentials.findIndex((c) => c.email.toLowerCase() === cred.email.toLowerCase());
+    if (index >= 0) {
+      state.auth_credentials[index] = cred;
+    } else {
+      state.auth_credentials.push(cred);
+    }
+    saveDatabase(state);
+  },
+
+  getEmailVerificationByEmail(email: string): EmailVerificationOtp | null {
+    const state = loadDatabase();
+    if (!state.email_verifications) return null;
+    return state.email_verifications.find((v) => v.email.toLowerCase() === email.toLowerCase()) || null;
+  },
+
+  getEmailVerificationByToken(token: string): EmailVerificationOtp | null {
+    const state = loadDatabase();
+    if (!state.email_verifications) return null;
+    return state.email_verifications.find((v) => v.verification_token === token) || null;
+  },
+
+  saveEmailVerification(verif: EmailVerificationOtp): void {
+    const state = loadDatabase();
+    if (!state.email_verifications) state.email_verifications = [];
+    const index = state.email_verifications.findIndex((v) => v.email.toLowerCase() === verif.email.toLowerCase());
+    if (index >= 0) {
+      state.email_verifications[index] = verif;
+    } else {
+      state.email_verifications.push(verif);
+    }
+    saveDatabase(state);
+  },
+
+  deleteEmailVerification(email: string): void {
+    const state = loadDatabase();
+    if (!state.email_verifications) return;
+    state.email_verifications = state.email_verifications.filter((v) => v.email.toLowerCase() !== email.toLowerCase());
+    saveDatabase(state);
   },
 
   // Notifications

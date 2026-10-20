@@ -58,7 +58,7 @@ export default function BulkImportPage() {
     const templateData = [
       {
         'Competition Name': 'National Strategy League 2026',
-        Organizer: 'HSB Jaipur Consulting Club',
+        Organizer: 'National Strategy & Consulting Club',
         Description: 'Formulate an omnichannel market entry strategy for a high-growth consumer brand.',
         Category: 'Case Competitions',
         Industry: 'Consulting & Strategy',
@@ -116,7 +116,7 @@ export default function BulkImportPage() {
         <ShieldAlert className="w-12 h-12 text-academic-error mx-auto" />
         <h1 className="font-serif text-2xl font-bold text-navy-deep">Administrator Access Required</h1>
         <p className="text-sm text-neutral-muted">
-          Only authorized HSB Jaipur administrators have permission to perform bulk imports.
+          Only authorized administrators have permission to perform bulk imports.
         </p>
         <Link href="/login?redirect=/admin/import" className="btn-primary inline-flex text-sm px-6 py-2.5">
           Sign In as Admin

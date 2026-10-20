@@ -23,19 +23,20 @@ export async function runClosingSoonScheduler(): Promise<{
   });
 
   let dispatchedCount = 0;
-  const students = db.getUsers().filter((u) => u.role === 'student');
+  const students = db.getUsers().filter((u) => u.role === 'student' && (u.email_verified === undefined || u.email_verified === true));
 
   for (const comp of closingSoon) {
-    const interested = db.getUsersWhoSavedCompetition(comp.id);
-    const recipients = interested.length > 0 ? interested : students.slice(0, 3);
+    const interested = db.getUsersWhoSavedCompetition(comp.id).filter((u) => u.email_verified === undefined || u.email_verified === true);
+    const recipients = interested.length > 0 ? interested : students;
 
     for (const student of recipients) {
-      const alreadySent = existingLogs.some(
+      const currentLogs = db.getNotificationLogs();
+      const alreadySent = currentLogs.some(
         (l) =>
           l.template_type === 'closing_soon' &&
           l.competition_id === comp.id &&
           l.recipient_email === student.email &&
-          l.status === 'sent' &&
+          (l.status === 'sent' || l.status === 'pending') &&
           new Date(l.created_at).getTime() > now.getTime() - 48 * 60 * 60 * 1000
       );
 
