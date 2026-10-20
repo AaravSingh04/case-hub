@@ -203,7 +203,13 @@ export interface CaseResource {
   created_by: string;
 }
 
-export type NotificationTemplateType = 'admin_new_upload' | 'closing_soon' | 'saved_update' | 'admin_discovery_summary';
+export type NotificationTemplateType =
+  | 'admin_new_upload'
+  | 'closing_soon'
+  | 'saved_update'
+  | 'admin_discovery_summary'
+  | 'admin_test_diagnostic'
+  | 'otp_verification';
 
 export interface NotificationLog {
   id: string;

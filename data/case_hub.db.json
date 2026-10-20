@@ -23,7 +23,7 @@
       "year_of_study": "Year 2",
       "role": "student",
       "created_at": "2026-09-10T10:00:00Z",
-      "updated_at": "2026-10-20T15:17:23.864Z",
+      "updated_at": "2026-10-20T17:31:10.110Z",
       "phone_number": "+91 98765 43210",
       "email_verified": true
     },
@@ -111,6 +111,38 @@
       "role": "student",
       "created_at": "2026-10-20T15:17:25.975Z",
       "updated_at": "2026-10-20T15:17:25.975Z"
+    },
+    {
+      "id": "usr_student_1792517255033",
+      "email": "verified_1792517254942@casehub.internal",
+      "email_verified": true,
+      "role": "student",
+      "created_at": "2026-10-20T17:27:35.033Z",
+      "updated_at": "2026-10-20T17:27:35.033Z"
+    },
+    {
+      "id": "usr_student_1792517358889",
+      "email": "verified_1792517358797@casehub.internal",
+      "display_name": "Aanya Singhania",
+      "phone_number": "+91 99999 88888",
+      "program_of_study": "MBA Product Management",
+      "year_of_study": "Class of 2026",
+      "email_verified": true,
+      "role": "student",
+      "created_at": "2026-10-20T17:29:18.889Z",
+      "updated_at": "2026-10-20T17:29:18.889Z"
+    },
+    {
+      "id": "usr_student_1792517476639",
+      "email": "verified_1792517476543@casehub.internal",
+      "display_name": "Aanya Singhania",
+      "phone_number": "+91 99999 88888",
+      "program_of_study": "MBA Product Management",
+      "year_of_study": "Class of 2026",
+      "email_verified": true,
+      "role": "student",
+      "created_at": "2026-10-20T17:31:16.639Z",
+      "updated_at": "2026-10-20T17:31:16.639Z"
     }
   ],
   "auth_credentials": [
@@ -177,6 +209,30 @@
       "salt": "9c38ded9168b2cf3c625d3cd8327d30e",
       "created_at": "2026-10-20T15:17:25.979Z",
       "updated_at": "2026-10-20T15:17:25.979Z"
+    },
+    {
+      "user_id": "usr_student_1792517255033",
+      "email": "verified_1792517254942@casehub.internal",
+      "password_hash": "82247b2680185ffa45db1397aa39f96d4ee94bb63bd653c56329d95ad2c9aa1d6646c9af3662a420aafb7514ad862002ea06f5b25fcb611b7b1773c210063503",
+      "salt": "7ecc3cbea051fc48a2cb443c0e2fd4d3",
+      "created_at": "2026-10-20T17:27:35.038Z",
+      "updated_at": "2026-10-20T17:27:35.038Z"
+    },
+    {
+      "user_id": "usr_student_1792517358889",
+      "email": "verified_1792517358797@casehub.internal",
+      "password_hash": "3c24fd63b32a66b8ff56d5f97ddf272efd08c0c7e0ce145aa0cb910a34fead8a687760b87759e3bbc61fcf289042b8bf72f607a05998ac8ce58717c75e0e8776",
+      "salt": "902a39ba12221b45e59b33060153c854",
+      "created_at": "2026-10-20T17:29:18.893Z",
+      "updated_at": "2026-10-20T17:29:18.893Z"
+    },
+    {
+      "user_id": "usr_student_1792517476639",
+      "email": "verified_1792517476543@casehub.internal",
+      "password_hash": "7e73aa6f0310d13f9516cff9a87268882ecfe343142d57286ac6e25a0c23ecf3c4075c518d8fc07c0df3655d5ecc416c0a88e19f074002d6e86b93c3fca84ddb",
+      "salt": "02dfefff33956f62c7dffa2b780a28e8",
+      "created_at": "2026-10-20T17:31:16.645Z",
+      "updated_at": "2026-10-20T17:31:16.645Z"
     }
   ],
   "email_verifications": [
@@ -213,6 +269,34 @@
     }
   ],
   "competitions": [
+    {
+      "name": "Ascent'26 - The Case Competition",
+      "organizer": "Kirori Mal College",
+      "description": "Ascent'26 - The Case Competition — Active ongoing student challenge on Unstop offering corporate visibility, case problem evaluation, and cash prizes.",
+      "category": "Case Competitions",
+      "industry": "Management Consulting",
+      "registration_deadline": "2026-10-29T18:29:00.000Z",
+      "min_team_size": 2,
+      "max_team_size": 3,
+      "eligibility": "Open to enrolled college and MBA / Postgraduate management students.",
+      "mode": "Online",
+      "prize_details": "Cash prizes & PPI opportunities",
+      "entry_fee": "Free",
+      "official_registration_url": "https://unstop.com/competitions/ascent26-the-case-competition-kirori-mal-college-1771971",
+      "official_source_url": "https://unstop.com/competitions/ascent26-the-case-competition-kirori-mal-college-1771971",
+      "location": "Online",
+      "id": "comp_disc_1792517368302_otbby",
+      "uploader_id": "system_discovery",
+      "uploader_display_name": "Discovered by Case Hub",
+      "discovery_source": "Unstop",
+      "discovery_timestamp": "2026-10-20T17:29:28.302Z",
+      "created_at": "2026-10-20T17:29:28.302Z",
+      "updated_at": "2026-10-20T17:29:28.302Z",
+      "verification_status": "verified",
+      "verified_at": "2026-10-20T17:29:28.302Z",
+      "verified_by": "Case Hub Automated Discovery",
+      "is_archived": false
+    },
     {
       "name": "Managenius Got Latent",
       "organizer": "Institute of Information Technology & Management",
@@ -1754,6 +1838,12 @@
       "uploader_id": "system_discovery",
       "uploader_email": "discovery@casehub.internal",
       "created_at": "2026-10-20T14:42:35.788Z"
+    },
+    {
+      "competition_id": "comp_disc_1792517368302_otbby",
+      "uploader_id": "system_discovery",
+      "uploader_email": "discovery@casehub.internal",
+      "created_at": "2026-10-20T17:29:28.302Z"
     }
   ],
   "saved_competitions": [
@@ -1819,6 +1909,1588 @@
   "reports": [],
   "case_resources": [],
   "notification_logs": [
+    {
+      "recipient_email": "aarav.mehta@mba.internal",
+      "recipient_name": "Aarav Mehta",
+      "user_id": "usr_student_001",
+      "subject": "Schedule Update: National Valuation Strategy Challenge 2026 | Case Hub",
+      "template_type": "saved_update",
+      "competition_id": "comp_1792517468801_p8xks",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_1792517468801_p8xks",
+        "competitionName": "National Valuation Strategy Challenge 2026",
+        "changedFields": [
+          "registration_deadline"
+        ],
+        "previousValues": {
+          "registration_deadline": "2026-10-30T17:31:08.769Z"
+        },
+        "detailUrl": "http://localhost:3000/competitions/comp_1792517468801_p8xks"
+      },
+      "id": "notif_1792517469142_52wu",
+      "created_at": "2026-10-20T17:31:09.142Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "admin@casehub.internal",
+      "recipient_name": "Case Hub Administrator",
+      "subject": "New Competition Uploaded — National Valuation Strategy Challenge 2026 | Case Hub",
+      "template_type": "admin_new_upload",
+      "competition_id": "comp_1792517468801_p8xks",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_1792517468801_p8xks",
+        "competitionName": "National Valuation Strategy Challenge 2026",
+        "uploaderEmail": "aarav.mehta@mba.internal",
+        "detailUrl": "http://localhost:3000/competitions/comp_1792517468801_p8xks"
+      },
+      "id": "notif_1792517468833_fluh",
+      "created_at": "2026-10-20T17:31:08.833Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792517368932_huee",
+      "created_at": "2026-10-20T17:29:28.932Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792517368917_edpz",
+      "created_at": "2026-10-20T17:29:28.917Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792517368904_qwlp",
+      "created_at": "2026-10-20T17:29:28.904Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792517368882_e4fj",
+      "created_at": "2026-10-20T17:29:28.882Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792517368868_ug1e",
+      "created_at": "2026-10-20T17:29:28.868Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792517368855_e7ob",
+      "created_at": "2026-10-20T17:29:28.855Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792517368843_gpe4",
+      "created_at": "2026-10-20T17:29:28.843Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792517368831_e7ut",
+      "created_at": "2026-10-20T17:29:28.831Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792517368819_ouqk",
+      "created_at": "2026-10-20T17:29:28.819Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792517368807_0iuh",
+      "created_at": "2026-10-20T17:29:28.807Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792517368795_5n61",
+      "created_at": "2026-10-20T17:29:28.795Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792517368782_pbxj",
+      "created_at": "2026-10-20T17:29:28.782Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792517368772_942d",
+      "created_at": "2026-10-20T17:29:28.772Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792517368758_v6ik",
+      "created_at": "2026-10-20T17:29:28.758Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792517368747_evho",
+      "created_at": "2026-10-20T17:29:28.747Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792517368736_5ko7",
+      "created_at": "2026-10-20T17:29:28.736Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792517368725_x6dr",
+      "created_at": "2026-10-20T17:29:28.725Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792517368713_bjyq",
+      "created_at": "2026-10-20T17:29:28.713Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792517368701_ztvu",
+      "created_at": "2026-10-20T17:29:28.701Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792517368688_om4p",
+      "created_at": "2026-10-20T17:29:28.688Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792517368675_j0b2",
+      "created_at": "2026-10-20T17:29:28.675Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792517368646_myj8",
+      "created_at": "2026-10-20T17:29:28.647Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792517368634_0c5f",
+      "created_at": "2026-10-20T17:29:28.634Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792517368621_r2g8",
+      "created_at": "2026-10-20T17:29:28.621Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792517368609_3lnu",
+      "created_at": "2026-10-20T17:29:28.609Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792517368601_ouv9",
+      "created_at": "2026-10-20T17:29:28.601Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792517368590_k998",
+      "created_at": "2026-10-20T17:29:28.590Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792517368580_chf0",
+      "created_at": "2026-10-20T17:29:28.580Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792517368571_qdvh",
+      "created_at": "2026-10-20T17:29:28.571Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792517368559_z0ed",
+      "created_at": "2026-10-20T17:29:28.559Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792517368547_0ytt",
+      "created_at": "2026-10-20T17:29:28.547Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792517368533_vwoz",
+      "created_at": "2026-10-20T17:29:28.533Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792517368523_jtoi",
+      "created_at": "2026-10-20T17:29:28.523Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792517368511_0ksa",
+      "created_at": "2026-10-20T17:29:28.511Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792517368499_kz2w",
+      "created_at": "2026-10-20T17:29:28.499Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792517368488_c6jp",
+      "created_at": "2026-10-20T17:29:28.488Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792517368476_41c9",
+      "created_at": "2026-10-20T17:29:28.476Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792517368466_dnec",
+      "created_at": "2026-10-20T17:29:28.466Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792517368457_c3ws",
+      "created_at": "2026-10-20T17:29:28.457Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792517368447_u71y",
+      "created_at": "2026-10-20T17:29:28.447Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792517368437_6jw9",
+      "created_at": "2026-10-20T17:29:28.438Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792517368428_za3g",
+      "created_at": "2026-10-20T17:29:28.428Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "admin@casehub.internal",
+      "recipient_name": "Case Hub Administrator",
+      "subject": "Automated Discovery Summary: 1 New Competitions Published | Case Hub",
+      "template_type": "admin_discovery_summary",
+      "competition_id": "comp_disc_1792517368302_otbby",
+      "status": "failed",
+      "payload": {
+        "items_found": 39,
+        "items_published": 1,
+        "duplicates_skipped": 38,
+        "run_id": "run_1792517366236_ui3a",
+        "adminDashboardUrl": "http://localhost:3000/admin"
+      },
+      "id": "notif_1792517368346_i8rg",
+      "created_at": "2026-10-20T17:29:28.346Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "aarav.mehta@mba.internal",
+      "recipient_name": "Aarav Mehta",
+      "user_id": "usr_student_001",
+      "subject": "Schedule Update: National Valuation Strategy Challenge 2026 | Case Hub",
+      "template_type": "saved_update",
+      "competition_id": "comp_1792517365313_hrbqy",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_1792517365313_hrbqy",
+        "competitionName": "National Valuation Strategy Challenge 2026",
+        "changedFields": [
+          "registration_deadline"
+        ],
+        "previousValues": {
+          "registration_deadline": "2026-10-30T17:29:25.300Z"
+        },
+        "detailUrl": "http://localhost:3000/competitions/comp_1792517365313_hrbqy"
+      },
+      "id": "notif_1792517366052_cxwg",
+      "created_at": "2026-10-20T17:29:26.052Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792517366027_h0ag",
+      "created_at": "2026-10-20T17:29:26.027Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792517366019_eydc",
+      "created_at": "2026-10-20T17:29:26.019Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792517366008_yhvn",
+      "created_at": "2026-10-20T17:29:26.008Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792517365997_b9wu",
+      "created_at": "2026-10-20T17:29:25.997Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792517365985_2qua",
+      "created_at": "2026-10-20T17:29:25.985Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792517365974_fq07",
+      "created_at": "2026-10-20T17:29:25.974Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792517365962_aea3",
+      "created_at": "2026-10-20T17:29:25.962Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792517365950_up7r",
+      "created_at": "2026-10-20T17:29:25.950Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792517365939_e0z2",
+      "created_at": "2026-10-20T17:29:25.939Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792517365927_6g8r",
+      "created_at": "2026-10-20T17:29:25.927Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792517365915_ene7",
+      "created_at": "2026-10-20T17:29:25.915Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792517365904_ljjs",
+      "created_at": "2026-10-20T17:29:25.904Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792517365893_t5ds",
+      "created_at": "2026-10-20T17:29:25.893Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792517365884_dz26",
+      "created_at": "2026-10-20T17:29:25.884Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792517365877_pwo1",
+      "created_at": "2026-10-20T17:29:25.877Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792517365868_cj5z",
+      "created_at": "2026-10-20T17:29:25.868Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792517365855_renw",
+      "created_at": "2026-10-20T17:29:25.855Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792517365844_8xe6",
+      "created_at": "2026-10-20T17:29:25.844Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792517365832_ntr6",
+      "created_at": "2026-10-20T17:29:25.832Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792517365820_aq15",
+      "created_at": "2026-10-20T17:29:25.820Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792517365806_g9y6",
+      "created_at": "2026-10-20T17:29:25.806Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792517365778_mdll",
+      "created_at": "2026-10-20T17:29:25.778Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792517365766_1472",
+      "created_at": "2026-10-20T17:29:25.766Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: CaseQuest 2026 - A Policy Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821452_eras1",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821452_eras1",
+        "competitionName": "CaseQuest 2026 - A Policy Case Competition",
+        "deadline": "2026-10-21T12:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821452_eras1"
+      },
+      "id": "notif_1792517365753_2htr",
+      "created_at": "2026-10-20T17:29:25.753Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792517365742_2ge8",
+      "created_at": "2026-10-20T17:29:25.742Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792517365731_jept",
+      "created_at": "2026-10-20T17:29:25.731Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: Parivartan '26: Case Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821454_plrx0",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821454_plrx0",
+        "competitionName": "Parivartan '26: Case Competition",
+        "deadline": "2026-10-21T04:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821454_plrx0"
+      },
+      "id": "notif_1792517365722_khy0",
+      "created_at": "2026-10-20T17:29:25.722Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792517365709_9for",
+      "created_at": "2026-10-20T17:29:25.709Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792517365698_ng8f",
+      "created_at": "2026-10-20T17:29:25.698Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: General Case Study Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821459_lm47b",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821459_lm47b",
+        "competitionName": "General Case Study Competition",
+        "deadline": "2026-10-21T06:31:01.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821459_lm47b"
+      },
+      "id": "notif_1792517365687_5svp",
+      "created_at": "2026-10-20T17:29:25.687Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792517365675_8jst",
+      "created_at": "2026-10-20T17:29:25.675Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792517365662_5zlv",
+      "created_at": "2026-10-20T17:29:25.662Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: Strategy Sprint — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821465_jn8an",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821465_jn8an",
+        "competitionName": "Strategy Sprint",
+        "deadline": "2026-10-21T18:29:32.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821465_jn8an"
+      },
+      "id": "notif_1792517365652_bpq5",
+      "created_at": "2026-10-20T17:29:25.652Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792517365642_keq4",
+      "created_at": "2026-10-20T17:29:25.642Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792517365633_mimk",
+      "created_at": "2026-10-20T17:29:25.633Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: The Management Auction - Decide, Bid, Build — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821492_60ygn",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821492_60ygn",
+        "competitionName": "The Management Auction - Decide, Bid, Build",
+        "deadline": "2026-10-21T18:29:41.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821492_60ygn"
+      },
+      "id": "notif_1792517365621_ci46",
+      "created_at": "2026-10-20T17:29:25.621Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792517365610_n7hg",
+      "created_at": "2026-10-20T17:29:25.610Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792517365596_fgkv",
+      "created_at": "2026-10-20T17:29:25.597Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: Bio-Economy Hackathon 2026 (Kolkata) — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821511_uge1g",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821511_uge1g",
+        "competitionName": "Bio-Economy Hackathon 2026 (Kolkata)",
+        "deadline": "2026-10-21T18:30:00.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821511_uge1g"
+      },
+      "id": "notif_1792517365583_iyqg",
+      "created_at": "2026-10-20T17:29:25.583Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517358797@casehub.internal",
+      "recipient_name": "Aanya Singhania",
+      "user_id": "usr_student_1792517358889",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792517365569_3zf0",
+      "created_at": "2026-10-20T17:29:25.569Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "verified_1792517254942@casehub.internal",
+      "user_id": "usr_student_1792517255033",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792517365558_70hv",
+      "created_at": "2026-10-20T17:29:25.558Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "student_1792509444058@casehub.internal",
+      "recipient_name": "Vikramaditya Singhania",
+      "user_id": "usr_student_1792509445975",
+      "subject": "Closing Soon: Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition — 48-Hour Reminder | Case Hub",
+      "template_type": "closing_soon",
+      "competition_id": "comp_disc_1792493821526_wxg20",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_disc_1792493821526_wxg20",
+        "competitionName": "Innotech’26 – Annual Technical Fest | Project, Innovation & Poster Competition",
+        "deadline": "2026-10-21T18:29:06.000Z",
+        "detailUrl": "http://localhost:3000/competitions/comp_disc_1792493821526_wxg20"
+      },
+      "id": "notif_1792517365547_dmk7",
+      "created_at": "2026-10-20T17:29:25.547Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
+    {
+      "recipient_email": "admin@casehub.internal",
+      "recipient_name": "Case Hub Administrator",
+      "subject": "New Competition Uploaded — National Valuation Strategy Challenge 2026 | Case Hub",
+      "template_type": "admin_new_upload",
+      "competition_id": "comp_1792517365313_hrbqy",
+      "status": "failed",
+      "payload": {
+        "competitionId": "comp_1792517365313_hrbqy",
+        "competitionName": "National Valuation Strategy Challenge 2026",
+        "uploaderEmail": "aarav.mehta@mba.internal",
+        "detailUrl": "http://localhost:3000/competitions/comp_1792517365313_hrbqy"
+      },
+      "id": "notif_1792517365333_edh4",
+      "created_at": "2026-10-20T17:29:25.333Z",
+      "error_message": "Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings."
+    },
     {
       "recipient_email": "aarav.mehta@mba.internal",
       "recipient_name": "Aarav Mehta",
@@ -4081,6 +5753,32 @@
   ],
   "discovery_logs": [
     {
+      "run_id": "run_1792517469326_islw",
+      "source": "Unstop",
+      "started_at": "2026-10-20T17:31:09.326Z",
+      "completed_at": "2026-10-20T17:31:10.056Z",
+      "status": "success",
+      "items_found": 39,
+      "items_published": 0,
+      "duplicates_skipped": 39,
+      "errors": [],
+      "next_scheduled_at": "2026-10-23T17:31:10.056Z",
+      "id": "disc_1792517470058_kct7"
+    },
+    {
+      "run_id": "run_1792517366236_ui3a",
+      "source": "Unstop",
+      "started_at": "2026-10-20T17:29:26.236Z",
+      "completed_at": "2026-10-20T17:29:28.338Z",
+      "status": "success",
+      "items_found": 39,
+      "items_published": 1,
+      "duplicates_skipped": 38,
+      "errors": [],
+      "next_scheduled_at": "2026-10-23T17:29:28.338Z",
+      "id": "disc_1792517368339_e51q"
+    },
+    {
       "run_id": "run_1792509441933_9buz",
       "source": "Unstop",
       "started_at": "2026-10-20T15:17:21.933Z",
@@ -4266,7 +5964,7 @@
   "discovery_config": {
     "interval_days": 3,
     "enabled": true,
-    "last_successful_discovery_at": "2026-10-20T15:17:23.816Z",
+    "last_successful_discovery_at": "2026-10-20T17:31:10.056Z",
     "sources": [
       "Unstop",
       "Corporate & B-School Challenges"

@@ -117,7 +117,6 @@ function AuthForm() {
   const [regPassword, setRegPassword] = useState('');
   const [regConfirmPassword, setRegConfirmPassword] = useState('');
   const [cooldown, setCooldown] = useState(0);
-  const [devOtpCode, setDevOtpCode] = useState<string | null>(null);
 
   // Forgot Password State
   const [resetStep, setResetStep] = useState<ResetStep>('request');
@@ -125,7 +124,6 @@ function AuthForm() {
   const [resetOtp, setResetOtp] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [confirmNewPassword, setConfirmNewPassword] = useState('');
-  const [resetDevOtpCode, setResetDevOtpCode] = useState<string | null>(null);
 
   // Cooldown countdown timer
   useEffect(() => {
@@ -214,12 +212,6 @@ function AuthForm() {
         return;
       }
 
-      if (data.devCode) {
-        setDevOtpCode(data.devCode);
-      } else {
-        setDevOtpCode(null);
-      }
-
       setCooldown(data.resendCooldown || 60);
       setSuccessMessage(data.message || `Verification code sent to ${regEmail}.`);
       setRegStep('otp');
@@ -259,10 +251,6 @@ function AuthForm() {
       if (!res.ok) {
         setError(data.error || 'Could not resend code.');
         return;
-      }
-
-      if (data.devCode) {
-        setDevOtpCode(data.devCode);
       }
 
       setCooldown(data.resendCooldown || 60);
@@ -375,10 +363,9 @@ function AuthForm() {
       });
 
       const data = await res.json();
-      if (data.devCode) {
-        setResetDevOtpCode(data.devCode);
-      } else {
-        setResetDevOtpCode(null);
+      if (!res.ok) {
+        setError(data.error || 'Failed to send reset code.');
+        return;
       }
       setSuccessMessage(data.message || 'If an account exists, a reset code was sent.');
       setResetStep('confirm');
@@ -746,26 +733,6 @@ function AuthForm() {
             {/* Step 2/3: Verify OTP */}
             {regStep === 'otp' && (
               <form onSubmit={handleVerifyOtp} className="space-y-4">
-                {devOtpCode && (
-                  <div className="p-3.5 bg-amber-50/90 border border-amber-300 rounded text-xs text-navy-deep space-y-1.5 shadow-sm">
-                    <div className="flex items-center gap-1.5 font-semibold text-navy-deep">
-                      <Sparkles className="w-4 h-4 text-brass" />
-                      <span>Verification Code Generated</span>
-                    </div>
-                    <p className="text-neutral-text text-[12px] leading-relaxed">
-                      Email dispatch on this environment is in simulation mode. Your six-digit verification code is:
-                    </p>
-                    <div className="text-center py-1">
-                      <span className="inline-block font-mono text-xl font-bold tracking-[0.25em] text-navy-deep bg-white px-4 py-1 rounded border border-brass/40 shadow-sm select-all">
-                        {devOtpCode}
-                      </span>
-                    </div>
-                    <p className="text-[11px] text-neutral-muted">
-                      Enter this code in the boxes below to complete verification. (To deliver emails to live student inboxes, configure <strong className="font-mono text-navy-deep">RESEND_API_KEY</strong> or <strong className="font-mono text-navy-deep">SMTP_*</strong> in Vercel settings.)
-                    </p>
-                  </div>
-                )}
-
                 <div className="p-4 bg-ivory rounded border border-neutral-border text-center space-y-1">
                   <ShieldCheck className="w-7 h-7 text-brass mx-auto" />
                   <p className="text-xs font-semibold text-navy-deep">
@@ -938,26 +905,6 @@ function AuthForm() {
 
             {resetStep === 'confirm' && (
               <form onSubmit={handleConfirmReset} className="space-y-3.5">
-                {resetDevOtpCode && (
-                  <div className="p-3.5 bg-amber-50/90 border border-amber-300 rounded text-xs text-navy-deep space-y-1.5 shadow-sm">
-                    <div className="flex items-center gap-1.5 font-semibold text-navy-deep">
-                      <Sparkles className="w-4 h-4 text-brass" />
-                      <span>Password Reset Code Generated</span>
-                    </div>
-                    <p className="text-neutral-text text-[12px] leading-relaxed">
-                      Server email dispatch is currently in simulation mode. Your six-digit reset code is:
-                    </p>
-                    <div className="text-center py-1">
-                      <span className="inline-block font-mono text-xl font-bold tracking-[0.25em] text-navy-deep bg-white px-4 py-1 rounded border border-brass/40 shadow-sm select-all">
-                        {resetDevOtpCode}
-                      </span>
-                    </div>
-                    <p className="text-[11px] text-neutral-muted">
-                      Enter this code below to set your new account password.
-                    </p>
-                  </div>
-                )}
-
                 <div>
                   <label className="block text-xs font-bold uppercase tracking-wider text-neutral-muted mb-1 text-center">
                     6-Digit Reset Code

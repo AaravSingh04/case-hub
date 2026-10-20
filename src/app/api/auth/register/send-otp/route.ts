@@ -84,25 +84,18 @@ export async function POST(req: NextRequest) {
     });
 
     if (!sendResult.success) {
-      console.error(`[Auth] Failed to deliver OTP email to ${cleanEmail}:`, sendResult.error);
+      console.error(`[Auth] Failed to dispatch OTP email to ${cleanEmail}:`, sendResult.error);
+      db.deleteEmailVerification(cleanEmail);
       return NextResponse.json(
-        { error: sendResult.error || 'Failed to send verification email. Please check your email configuration.' },
+        { error: sendResult.error || 'Failed to dispatch verification email. Please check server email configuration.' },
         { status: 502 }
       );
     }
 
-    // In local development, also log the OTP code to terminal for pairing/debugging convenience
-    if (process.env.NODE_ENV !== 'production') {
-      console.log(`[CASE HUB DEV AUTH] Verification code for ${cleanEmail} is: ${otp}`);
-    }
-
     return NextResponse.json({
       success: true,
-      message: sendResult.simulated
-        ? `Verification code generated. (Email provider not configured; your code is ${otp})`
-        : `A 6-digit verification code has been dispatched to ${cleanEmail}.`,
+      message: `A 6-digit verification code has been dispatched to ${cleanEmail}. Please check your inbox and spam folder.`,
       resendCooldown: 60,
-      devCode: sendResult.simulated ? otp : undefined,
     });
   } catch (err: any) {
     console.error('Error sending registration OTP:', err);

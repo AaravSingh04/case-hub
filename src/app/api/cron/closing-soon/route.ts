@@ -47,13 +47,12 @@ async function handleClosingSoonRun(req: NextRequest) {
       const sentToThisComp: string[] = [];
 
       for (const user of registeredUsers) {
-        // Check idempotency: ensure closing_soon was not already sent to this user for this competition
+        // Check idempotency: ensure closing_soon was not already dispatched/logged for this user and competition
         const alreadySent = existingLogs.some(
           (l) =>
             l.template_type === 'closing_soon' &&
             l.competition_id === comp.id &&
-            l.recipient_email.toLowerCase() === user.email.toLowerCase() &&
-            l.status === 'sent'
+            l.recipient_email.toLowerCase() === user.email.toLowerCase()
         );
 
         if (!alreadySent) {

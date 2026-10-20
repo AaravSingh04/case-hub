@@ -71,15 +71,19 @@ export async function POST(req: NextRequest) {
       otp,
     });
 
-    if (process.env.NODE_ENV !== 'production') {
-      console.log(`[CASE HUB DEV RESET] Reset code for ${cleanEmail} is: ${otp}`);
+    if (!sendResult.success) {
+      console.error(`[Auth] Failed to dispatch reset OTP to ${cleanEmail}:`, sendResult.error);
+      db.deleteEmailVerification(cleanEmail);
+      return NextResponse.json(
+        { error: sendResult.error || 'Failed to dispatch password reset email. Please check server email configuration.' },
+        { status: 502 }
+      );
     }
 
     return NextResponse.json({
       success: true,
-      message: 'If an account exists with this email, a verification code has been sent.',
+      message: 'A password reset code has been dispatched to your email address. Please check your inbox.',
       resendCooldown: 60,
-      devCode: sendResult.simulated ? otp : undefined,
     });
   } catch (err: any) {
     console.error('Forgot password error:', err);

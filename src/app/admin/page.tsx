@@ -47,6 +47,59 @@ export default function AdminDashboardPage() {
   const [discoveryRunning, setDiscoveryRunning] = useState(false);
   const [discoveryFeedback, setDiscoveryFeedback] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
 
+  // Test Email Diagnostic State
+  const [testEmailRecipient, setTestEmailRecipient] = useState('');
+  const [testEmailLoading, setTestEmailLoading] = useState(false);
+  const [testEmailResult, setTestEmailResult] = useState<{
+    success: boolean;
+    message?: string;
+    error?: string;
+    messageId?: string;
+    config?: { hasApiKey: boolean; from: string; recipient: string };
+  } | null>(null);
+  const [emailConfigInfo, setEmailConfigInfo] = useState<{
+    configured: boolean;
+    apiKeyMasked?: string | null;
+    from?: string;
+    notificationRecipients?: string[];
+    isDefaultSender?: boolean;
+  } | null>(null);
+
+  const fetchEmailConfig = async () => {
+    try {
+      const res = await fetch('/api/admin/test-email');
+      if (res.ok) {
+        const data = await res.json();
+        setEmailConfigInfo(data);
+      }
+    } catch {}
+  };
+
+  const handleSendTestEmail = async () => {
+    try {
+      setTestEmailLoading(true);
+      setTestEmailResult(null);
+      const res = await fetch('/api/admin/test-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ recipientEmail: testEmailRecipient.trim() || undefined }),
+      });
+      const data = await res.json();
+      setTestEmailResult(data);
+      if (data.success) {
+        const notifRes = await fetch('/api/admin/notifications');
+        if (notifRes.ok) {
+          const notifData = await notifRes.json();
+          setNotificationLogs(notifData.logs || []);
+        }
+      }
+    } catch (err: any) {
+      setTestEmailResult({ success: false, error: err.message || 'Network error triggering test email' });
+    } finally {
+      setTestEmailLoading(false);
+    }
+  };
+
   const fetchAdminData = async () => {
     try {
       setLoading(true);
@@ -88,6 +141,7 @@ export default function AdminDashboardPage() {
   useEffect(() => {
     if (isAuthenticated && isAdmin) {
       fetchAdminData();
+      fetchEmailConfig();
     }
   }, [isAuthenticated, isAdmin]);
 
@@ -732,13 +786,123 @@ export default function AdminDashboardPage() {
 
       {/* TAB 5: NOTIFICATION LOGS & RETRY */}
       {activeTab === 'notifications' && (
-        <div className="bg-white border border-neutral-border rounded shadow-subtle p-6 space-y-4">
-          <h3 className="font-serif text-base font-bold text-navy-deep">
-            Email Notification Outbox & Retry Log
-          </h3>
-          <p className="text-xs text-neutral-muted">
-            Inspect all platform-generated transactional emails, administrative new-upload alerts, closing-soon reminders, and delivery outcomes.
-          </p>
+        <div className="space-y-6">
+          {/* Email Delivery Diagnostics & Live Test Dispatch */}
+          <div className="bg-white border border-neutral-border rounded p-6 shadow-subtle space-y-5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-brass block mb-1">
+                  Resend Email Infrastructure
+                </span>
+                <h3 className="font-serif text-xl font-bold text-navy-deep flex items-center gap-2">
+                  <Mail className="w-5 h-5 text-navy-primary" />
+                  <span>Email Delivery Diagnostics & Test Dispatch</span>
+                </h3>
+                <p className="text-xs text-neutral-muted mt-1 max-w-2xl">
+                  Inspect the live Resend configuration, verified sender identity, and dispatch a real test email to confirm server-side transactional delivery.
+                </p>
+              </div>
+
+              <button
+                onClick={fetchEmailConfig}
+                className="btn-secondary text-xs px-3 py-1.5 flex items-center gap-1.5 self-start sm:self-auto"
+                title="Refresh Configuration"
+              >
+                <RefreshCw className="w-3.5 h-3.5" />
+                <span>Refresh Status</span>
+              </button>
+            </div>
+
+            {/* Diagnostics Status Badges */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+              <div className="p-3.5 rounded bg-ivory/50 border border-neutral-border space-y-1">
+                <div className="text-[11px] font-bold uppercase text-neutral-muted">Resend API Key</div>
+                <div className="flex items-center gap-2">
+                  <span className={`w-2 h-2 rounded-full ${emailConfigInfo?.configured ? 'bg-academic-success' : 'bg-academic-error'}`} />
+                  <span className="text-xs font-semibold text-navy-deep font-mono">
+                    {emailConfigInfo?.configured ? (emailConfigInfo.apiKeyMasked || 'Configured') : 'Missing (RESEND_API_KEY)'}
+                  </span>
+                </div>
+                <div className="text-[10px] text-neutral-muted">
+                  {emailConfigInfo?.configured
+                    ? 'Server-side key is active'
+                    : 'Configure RESEND_API_KEY in Vercel / .env.local'}
+                </div>
+              </div>
+
+              <div className="p-3.5 rounded bg-ivory/50 border border-neutral-border space-y-1">
+                <div className="text-[11px] font-bold uppercase text-neutral-muted">Sender Identity (EMAIL_FROM)</div>
+                <div className="text-xs font-semibold text-navy-deep font-mono truncate" title={emailConfigInfo?.from || 'Default'}>
+                  {emailConfigInfo?.from || 'Case Hub <onboarding@resend.dev>'}
+                </div>
+                <div className="text-[10px] text-neutral-muted">
+                  {emailConfigInfo?.isDefaultSender
+                    ? 'Resend shared domain (testing)'
+                    : 'Custom sender domain'}
+                </div>
+              </div>
+
+              <div className="p-3.5 rounded bg-ivory/50 border border-neutral-border space-y-1">
+                <div className="text-[11px] font-bold uppercase text-neutral-muted">Admin Alerts Target</div>
+                <div className="text-xs font-semibold text-navy-deep font-mono truncate" title={emailConfigInfo?.notificationRecipients?.join(', ') || 'Not set'}>
+                  {emailConfigInfo?.notificationRecipients && emailConfigInfo.notificationRecipients.length > 0
+                    ? emailConfigInfo.notificationRecipients.join(', ')
+                    : 'ADMIN_NOTIFICATION_EMAILS not set'}
+                </div>
+                <div className="text-[10px] text-neutral-muted">
+                  Receives new competition alerts
+                </div>
+              </div>
+            </div>
+
+            {/* Test Email Dispatch Form */}
+            <div className="pt-2 border-t border-neutral-border/60">
+              <label className="block text-xs font-bold text-navy-deep mb-1.5">
+                Send a Real Test Email via Resend
+              </label>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  placeholder={user?.email || 'Enter recipient email address...'}
+                  value={testEmailRecipient}
+                  onChange={(e) => setTestEmailRecipient(e.target.value)}
+                  className="flex-1 px-3.5 py-2 border border-neutral-border rounded text-xs text-neutral-text focus:outline-none focus:border-brass bg-white"
+                />
+                <button
+                  onClick={handleSendTestEmail}
+                  disabled={testEmailLoading}
+                  className="btn-primary text-xs px-5 py-2 font-semibold flex items-center justify-center gap-1.5 whitespace-nowrap"
+                >
+                  <RefreshCw className={`w-3.5 h-3.5 ${testEmailLoading ? 'animate-spin' : ''}`} />
+                  <span>{testEmailLoading ? 'Dispatching via Resend...' : 'Send Test Email'}</span>
+                </button>
+              </div>
+
+              {testEmailResult && (
+                <div className={`mt-3 p-3.5 rounded text-xs border ${
+                  testEmailResult.success
+                    ? 'bg-green-50 border-academic-success/30 text-academic-success'
+                    : 'bg-red-50 border-academic-error/30 text-academic-error'
+                }`}>
+                  <div className="font-semibold">{testEmailResult.message || testEmailResult.error}</div>
+                  {testEmailResult.messageId && (
+                    <div className="mt-1 text-[11px] font-mono text-neutral-muted">
+                      Resend Message ID: {testEmailResult.messageId}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Email Outbox Log Table */}
+          <div className="bg-white border border-neutral-border rounded shadow-subtle p-6 space-y-4">
+            <h3 className="font-serif text-base font-bold text-navy-deep">
+              Email Notification Outbox & Retry Log
+            </h3>
+            <p className="text-xs text-neutral-muted">
+              Inspect all platform-generated transactional emails, administrative new-upload alerts, closing-soon reminders, and delivery outcomes.
+            </p>
 
           <div className="overflow-x-auto border border-neutral-border rounded">
             <table className="w-full text-left border-collapse text-xs">
@@ -790,6 +954,7 @@ export default function AdminDashboardPage() {
               </tbody>
             </table>
           </div>
+        </div>
         </div>
       )}
 

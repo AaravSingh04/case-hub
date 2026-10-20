@@ -14,26 +14,48 @@ export interface SendEmailResult {
   success: boolean;
   messageId?: string;
   error?: string;
-  simulated?: boolean;
 }
 
+/**
+ * Retrieves the Resend API Key securely from server-side environment variables.
+ * Never exposed to client.
+ */
+export function getResendApiKey(): string | undefined {
+  return process.env.RESEND_API_KEY?.trim() || undefined;
+}
+
+/**
+ * Derives the validated sender address from EMAIL_FROM.
+ * For Resend free tier without a custom verified domain, safely falls back to onboarding@resend.dev.
+ */
+export function getSenderEmail(): string {
+  const customFrom = process.env.EMAIL_FROM?.trim();
+  if (customFrom && customFrom.includes('@') && !customFrom.includes('.internal')) {
+    if (!customFrom.includes('<') && customFrom.includes('@')) {
+      return `Case Hub <${customFrom}>`;
+    }
+    return customFrom;
+  }
+  return 'Case Hub <onboarding@resend.dev>';
+}
+
+/**
+ * Dispatches an email via Resend through secure server-side API call.
+ * Strictly avoids simulation mode; returns explicit errors if credentials or domain verification fail.
+ */
 export async function sendRawEmail(params: {
   to: string;
   subject: string;
   html: string;
 }): Promise<SendEmailResult> {
   const { to, subject, html } = params;
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = getResendApiKey();
 
-  // 1. Resend Provider Dispatch
+  // 1. Primary: Resend Provider Dispatch
   if (apiKey) {
-    try {
-      let from = process.env.EMAIL_FROM || 'Case Hub <onboarding@resend.dev>';
-      // Resend free tier strictly requires onboarding@resend.dev unless a custom domain is verified
-      if (from.includes('.internal') || !from.includes('@')) {
-        from = 'Case Hub <onboarding@resend.dev>';
-      }
+    const from = getSenderEmail();
 
+    try {
       const response = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
@@ -50,19 +72,35 @@ export async function sendRawEmail(params: {
 
       if (!response.ok) {
         const errJson = await response.json().catch(() => ({}));
-        const errMsg = errJson.message || `Resend API failed with status ${response.status}`;
-        console.error('Failed to send email via Resend:', errMsg);
-      } else {
-        const data = await response.json();
-        console.log(`[CASE HUB EMAIL DISPATCH] Successfully delivered via Resend to ${to} (Message ID: ${data.id})`);
-        return { success: true, messageId: data.id, simulated: false };
+        const errMsg = errJson.message || `Resend API returned status ${response.status} (${response.statusText})`;
+        console.error(`[CASE HUB RESEND ERROR] Failed to send email to ${to}:`, errMsg);
+
+        let helpfulHint = '';
+        if (errMsg.toLowerCase().includes('domain') || errMsg.toLowerCase().includes('verify')) {
+          helpfulHint = ' (Hint: Resend requires a verified domain to send to external recipients, or set EMAIL_FROM="Case Hub <onboarding@resend.dev>" for testing with your registered account email).';
+        } else if (response.status === 401 || errMsg.toLowerCase().includes('api key')) {
+          helpfulHint = ' (Hint: Please verify that RESEND_API_KEY is valid in your Vercel Project Settings).';
+        }
+
+        return {
+          success: false,
+          error: `Resend delivery failed: ${errMsg}${helpfulHint}`,
+        };
       }
+
+      const data = await response.json();
+      console.log(`[CASE HUB EMAIL DISPATCH] Successfully delivered email via Resend to ${to} (Message ID: ${data.id})`);
+      return { success: true, messageId: data.id };
     } catch (err: any) {
-      console.error('Network exception in Resend sendRawEmail:', err);
+      console.error(`[CASE HUB RESEND NETWORK ERROR] Exception calling Resend API:`, err);
+      return {
+        success: false,
+        error: `Network exception connecting to Resend: ${err.message || 'Unable to connect to email provider.'}`,
+      };
     }
   }
 
-  // 2. SMTP / Nodemailer Dispatch (e.g. Gmail / Outlook / Custom SMTP)
+  // 2. Secondary Alternative: Standard SMTP / Nodemailer
   const smtpHost = process.env.SMTP_HOST;
   const smtpUser = process.env.SMTP_USER;
   const smtpPass = process.env.SMTP_PASS || process.env.GMAIL_APP_PASSWORD;
@@ -90,22 +128,23 @@ export async function sendRawEmail(params: {
       });
 
       console.log(`[CASE HUB EMAIL DISPATCH] Successfully delivered via SMTP to ${to} (Message ID: ${info.messageId})`);
-      return { success: true, messageId: info.messageId, simulated: false };
+      return { success: true, messageId: info.messageId };
     } catch (smtpErr: any) {
-      console.error('SMTP sending exception:', smtpErr);
+      console.error('[CASE HUB SMTP ERROR] SMTP sending exception:', smtpErr);
+      return {
+        success: false,
+        error: `SMTP delivery failed: ${smtpErr.message || 'SMTP transport error'}`,
+      };
     }
   }
 
-  // 3. Fallback / Unconfigured Email Provider Mode:
-  console.log(`\n======================================================`);
-  console.log(`[CASE HUB EMAIL DISPATCH] (Simulated Outbox)`);
-  console.log(`To: ${to}`);
-  console.log(`Subject: ${subject}`);
-  console.log(`Timestamp: ${new Date().toISOString()}`);
-  console.log(`Note: Configure RESEND_API_KEY or SMTP_HOST to send to live inboxes.`);
-  console.log(`======================================================\n`);
-
-  return { success: true, messageId: `sim_${Date.now()}`, simulated: true };
+  // 3. Neither Resend nor SMTP is configured: Explicit honest failure (NO SIMULATION MODE!)
+  const errorMsg = 'Email service is not configured: RESEND_API_KEY is missing from environment variables. Please add RESEND_API_KEY in your Vercel Project Settings.';
+  console.error(`[CASE HUB EMAIL ERROR] ${errorMsg}`);
+  return {
+    success: false,
+    error: errorMsg,
+  };
 }
 
 /**
